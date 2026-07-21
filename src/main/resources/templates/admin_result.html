@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1440">
+    <title>GrowInsta - 최근 AI 사용 및 결과물</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/admin_result.css}">
+</head>
+<body>
+
+    <aside>
+        <div>
+            <div class="logo-area">
+                <div class="logo">
+                    <i class="fa-solid fa-square-poll-vertical"></i> GrowInsta
+                    <span class="logo-admin-badge">ADMIN</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><i class="fa-solid fa-chart-pie"></i> 대시보드</li>
+                    <li><i class="fa-regular fa-calendar-check"></i> 오늘의 요약</li>
+                    <li><i class="fa-regular fa-lightbulb"></i> 콘텐츠 아이디어 관리</li>
+                    <li><i class="fa-solid fa-users"></i> 회원 관리</li>
+                    <li><i class="fa-regular fa-credit-card"></i> 결제 관리</li>
+                    <li class="active"><i class="fa-solid fa-headset"></i> AI 사용 이력</li>
+                    <li><i class="fa-regular fa-file-alt"></i> 결과물 관리</li>
+                    <li><i class="fa-regular fa-bell"></i> 공지 관리</li>
+                    <li><i class="fa-solid fa-gear"></i> 시스템 설정</li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="profile-box">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Admin">
+                <div class="profile-info">
+                    <p>관리자 계정</p>
+                    <span>admin@growinsta.com</span>
+                </div>
+            </div>
+            <button class="btn-logout">로그아웃</button>
+        </div>
+    </aside>
+
+    <div class="main-wrapper">
+        
+        <div class="header-top-bar">
+            <div class="noti-badge">
+                <i class="fa-regular fa-bell"></i>
+                <div class="noti-count">12</div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" class="top-profile-img" alt="">
+        </div>
+
+        <div>
+            <a href="#" class="btn-back"><i class="fa-solid fa-arrow-left"></i> 대시보드로 돌아가기</a>
+            <div class="dashboard-header">
+                <div class="header-title">
+                    <h1>최근 AI 사용 및 결과물 <i class="fa-regular fa-circle-question info-icon"></i></h1>
+                    <p>최근 AI 사용 이력과 생성된 결과물들을 확인할 수 있습니다.</p>
+                </div>
+                <div class="date-selector">
+                    <i class="fa-regular fa-calendar"></i> 2024.05.13 ~ 2024.05.20 <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            
+            <div class="tabs">
+                <div class="tab active">전체</div>
+                <div class="tab">프롬프트 생성</div>
+                <div class="tab">챗봇 대화</div>
+                <div class="tab">결과물 생성</div>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 16%;">시간</th>
+                            <th style="width: 14%;">회원</th>
+                            <th style="width: 12%;">유형</th>
+                            <th style="width: 36%;">입력/제목</th>
+                            <th style="width: 14%;">결과물 미리보기</th>
+                            <th style="width: 8%;">상세</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2024.05.20 14:30:22</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=50" alt="">yoonbj</div></td>
+                            <td><span class="badge-type image">이미지 생성</span></td>
+                            <td>여름 바다 여행 컨셉 인스타 릴스 썸네일</td>
+                            <td><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=100" class="thumb-preview" alt=""></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:28:11</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=50" alt="">haru_creator</div></td>
+                            <td><span class="badge-type prompt">프롬프트 생성</span></td>
+                            <td>팔로워 참여를 높이는 질문형 콘텐츠 아이디어</td>
+                            <td><span class="text-dash">-</span></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:27:09</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=50" alt="">design_haru</div></td>
+                            <td><span class="badge-type chat">챗봇 대화</span></td>
+                            <td>릴스 알고리즘에 대한 전략 알려줘</td>
+                            <td><span class="text-dash">-</span></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:25:47</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=50" alt="">soyun_</div></td>
+                            <td><span class="badge-type image">이미지 생성</span></td>
+                            <td>미니멀 스타일 책상 인테리어</td>
+                            <td><img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=100" class="thumb-preview" alt=""></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:24:31</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=50" alt="">travel_u</div></td>
+                            <td><span class="badge-type image">이미지 생성</span></td>
+                            <td>감성 카페 창가 사진 분위기 보정</td>
+                            <td><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=100" class="thumb-preview" alt=""></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:21:15</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=50" alt="">foodie_99</div></td>
+                            <td><span class="badge-type prompt">프롬프트 생성</span></td>
+                            <td>음식 사진 잘 찍는 팁 10가지</td>
+                            <td><span class="text-dash">-</span></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:19:02</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=50" alt="">daily_joy</div></td>
+                            <td><span class="badge-type chat">챗봇 대화</span></td>
+                            <td>인스타그램 해시태그 추천해줘</td>
+                            <td><span class="text-dash">-</span></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:17:33</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=50" alt="">growth_life</div></td>
+                            <td><span class="badge-type image">이미지 생성</span></td>
+                            <td>피트니스 운동 전/후 비교 인포그래픽</td>
+                            <td><img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=100" class="thumb-preview" alt=""></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:15:09</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=50" alt="">photo_su</div></td>
+                            <td><span class="badge-type image">이미지 생성</span></td>
+                            <td>제품 사진 배경 제거</td>
+                            <td><img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&q=80&w=100" class="thumb-preview" alt=""></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:13:45</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=50" alt="">play_with_me</div></td>
+                            <td><span class="badge-type prompt">프롬프트 생성</span></td>
+                            <td>여행 블로그 글쓰기 구조 5단계</td>
+                            <td><span class="text-dash">-</span></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:11:38</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&q=80&w=50" alt="">sunny_day</div></td>
+                            <td><span class="badge-type chat">챗봇 대화</span></td>
+                            <td>블로그 방문자 늘리는 방법 알려줘</td>
+                            <td><span class="text-dash">-</span></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:09:21</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=50" alt="">book_n_coffee</div></td>
+                            <td><span class="badge-type image">이미지 생성</span></td>
+                            <td>독서 명언 카드 뉴스 디자인</td>
+                            <td><img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&q=80&w=100" class="thumb-preview" alt=""></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:07:55</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=50" alt="">market_queen</div></td>
+                            <td><span class="badge-type prompt">프롬프트 생성</span></td>
+                            <td>고객을 사로잡는 제품 소개 문구 작성</td>
+                            <td><span class="text-dash">-</span></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:06:12</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&q=80&w=50" alt="">green_plant</div></td>
+                            <td><span class="badge-type image">이미지 생성</span></td>
+                            <td>식물 성장 타임랩스 영상 썸네일</td>
+                            <td><img src="https://images.unsplash.com/photo-1463936575829-25148e1db1b8?auto=format&fit=crop&q=80&w=100" class="thumb-preview" alt=""></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                        <tr>
+                            <td>2024.05.20 14:04:33</td>
+                            <td><div class="user-cell"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=50" alt="">movie_plus</div></td>
+                            <td><span class="badge-type chat">챗봇 대화</span></td>
+                            <td>영화 추천해줘 (힐링 영화)</td>
+                            <td><span class="text-dash">-</span></td>
+                            <td><button class="btn-text-link">상세 보기</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination-area">
+                <div></div>
+                <div class="pagination-pages">
+                    <button class="page-btn"><i class="fa-solid fa-chevron-left" style="font-size: 11px;"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">4</button>
+                    <button class="page-btn">5</button>
+                    <span class="page-ellipsis">...</span>
+                    <button class="page-btn">24</button>
+                    <button class="page-btn"><i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i></button>
+                </div>
+                <select class="select-sm">
+                    <option>15개씩 보기</option>
+                </select>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

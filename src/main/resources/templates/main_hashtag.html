@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1440">
+    <title>GrowInsta - 해시태그 트렌드 트래킹</title>
+    <!-- Pretendard 및 FontAwesome 로드 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main_hashtag.css">
+</head>
+<body>
+
+    <!-- 고정 네비게이션 사이드바 -->
+    <aside>
+        <div>
+            <div class="logo-area">
+                <div class="logo"><i class="fa-solid fa-square-poll-vertical"></i> GrowInsta</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><i class="fa-solid fa-house"></i> 홈</li>
+                    <li><i class="fa-regular fa-comments"></i> 챗봇</li>
+                    <li><i class="fa-regular fa-lightbulb"></i> 콘텐츠 아이디어</li>
+                    <li class="active"><i class="fa-solid fa-chart-line"></i> 구독</li>
+                    <li><i class="fa-solid fa-users"></i> 커뮤니티</li>
+                    <li><i class="fa-regular fa-circle-question"></i> FAQ & 문의</li>
+                </ul>
+            </nav>
+            
+            <!-- 오늘의 사용 요약 카드 블록 -->
+            <div class="summary-card">
+                <h4>오늘의 사용 요약</h4>
+                <div class="summary-row"><span>프롬프트 생성</span><span>12회</span></div>
+                <div class="summary-row"><span>챗봇 대화</span><span>8회</span></div>
+                <div class="summary-row"><span>콘텐츠 저장</span><span>5개</span></div>
+                <div class="summary-row"><span>평균 반응률</span><span>8.47%</span></div>
+                <button class="btn-summary-more">자세히 보기 <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="profile-box">
+                <i class="fa-solid fa-gear" style="color: var(--text-sub); font-size: 14px; margin-right: 4px;"></i>
+                <div class="profile-info"><h5>설정</h5></div>
+            </div>
+            <div class="profile-box">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="">
+                <div class="profile-info"><h5>yoon@example.com</h5></div>
+                <i class="fa-solid fa-chevron-up" style="font-size: 10px; margin-left: auto; color: var(--text-gray);"></i>
+            </div>
+        </div>
+    </aside>
+
+    <!-- 우측 메인 대시보드 스페이스 -->
+    <div class="main-wrapper">
+        
+        <!-- 상단 타이틀 및 날짜 필터 라인 -->
+        <div class="header-section">
+            <div class="page-title">
+                <h1>해시태그 트렌드 트래킹 <i class="fa-regular fa-circle-question" style="color: var(--text-gray); font-size: 16px; cursor: pointer; font-weight: normal;"></i></h1>
+                <p>실시간 인기 해시태그와 성과 데이터를 확인하고 전략적으로 활용해보세요.</p>
+            </div>
+            <div class="header-buttons">
+                <button class="btn-secondary"><i class="fa-regular fa-calendar"></i> 7일 (05.14 - 05.20)</button>
+                <button class="btn-secondary" style="padding: 8px 10px;"><i class="fa-solid fa-rotate-right"></i></button>
+            </div>
+        </div>
+
+        <!-- 5단 주요 핵심 데이터 지표 보드 -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <h6>총 해시태그 수</h6>
+                <div class="kpi-value">24,312</div>
+                <div class="kpi-trend">지난 7일 대비 <span class="up"><i class="fa-solid fa-caret-up"></i> 12.5%</span></div>
+            </div>
+            <div class="kpi-card">
+                <h6>평균 게시물 수</h6>
+                <div class="kpi-value">128.4K</div>
+                <div class="kpi-trend">지난 7일 대비 <span class="up"><i class="fa-solid fa-caret-up"></i> 8.7%</span></div>
+            </div>
+            <div class="kpi-card">
+                <h6>평균 좋아요 수</h6>
+                <div class="kpi-value">2.35K</div>
+                <div class="kpi-trend">지난 7일 대비 <span class="up"><i class="fa-solid fa-caret-up"></i> 15.3%</span></div>
+            </div>
+            <div class="kpi-card">
+                <h6>평균 댓글 수</h6>
+                <div class="kpi-value">312</div>
+                <div class="kpi-trend">지난 7일 대비 <span class="up"><i class="fa-solid fa-caret-up"></i> 6.2%</span></div>
+            </div>
+            <div class="kpi-card">
+                <h6>평균 저장 수</h6>
+                <div class="kpi-value">842</div>
+                <div class="kpi-trend">지난 7일 대비 <span class="up"><i class="fa-solid fa-caret-up"></i> 9.1%</span></div>
+            </div>
+        </div>
+
+        <!-- 서브 탭 이동 네비게이션 -->
+        <div class="sub-tabs">
+            <button class="sub-tab-item active">실시간 트렌드</button>
+            <button class="sub-tab-item">상승 추이</button>
+            <button class="sub-tab-item">카테고리 분석</button>
+            <button class="sub-tab-item">관련 해시태그</button>
+            <button class="sub-tab-item">활용 가이드</button>
+        </div>
+
+        <!-- 섹션 1 그리드: 실시간 인기 해시태그 TOP 50 & 실시간 트렌드 그래프 -->
+        <div class="grid-2col">
+            <div class="dashboard-box">
+                <div class="box-header"><h3 class="box-title">실시간 인기 해시태그 TOP 50</h3></div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>순위</th>
+                            <th>해시태그</th>
+                            <th>게시물 수</th>
+                            <th>증감률</th>
+                            <th>반응률</th>
+                            <th>인기 지속 시간</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="td-rank">1</td><td class="td-tag">#감성사진</td><td>128.4K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 12.5%</td><td>8.47%</td><td>3일 12시간</td></tr>
+                        <tr><td class="td-rank">2</td><td class="td-tag">#일상기록</td><td>96.2K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 8.7%</td><td>7.23%</td><td>2일 18시간</td></tr>
+                        <tr><td class="td-rank">3</td><td class="td-tag">#오늘의집</td><td>85.7K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 7.3%</td><td>6.91%</td><td>1일 22시간</td></tr>
+                        <tr><td class="td-rank">4</td><td class="td-tag">#여행스타그램</td><td>72.1K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 4.9%</td><td>7.88%</td><td>2일 6시간</td></tr>
+                        <tr><td class="td-rank">5</td><td class="td-tag">#맛집탐방</td><td>61.3K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 12.8%</td><td>9.13%</td><td>1일 14시간</td></tr>
+                        <tr><td class="td-rank">6</td><td class="td-tag">#자기계발</td><td>58.9K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 6.1%</td><td>6.45%</td><td>2일 3시간</td></tr>
+                        <tr><td class="td-rank">7</td><td class="td-tag">#운동하는여자</td><td>54.2K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 9.2%</td><td>7.11%</td><td>1일 9시간</td></tr>
+                        <tr><td class="td-rank">8</td><td class="td-tag">#카페투어</td><td>48.7K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 5.4%</td><td>6.72%</td><td>1일 7시간</td></tr>
+                        <tr><td class="td-rank">9</td><td class="td-tag">#뷰맛집</td><td>46.1K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 14.2%</td><td>8.92%</td><td>18시간 40분</td></tr>
+                        <tr><td class="td-rank">10</td><td class="td-tag">#패션스타그램</td><td>44.8K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 3.7%</td><td>6.28%</td><td>2일 11시간</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+                <div class="dashboard-box">
+                    <div class="box-header"><h3 class="box-title">실시간 트렌드 그래프</h3></div>
+                    <div class="mock-chart-placeholder">라인 차트 영역 (시계열 변화 추이)</div>
+                </div>
+                <div class="dashboard-box">
+                    <div class="box-header"><h3 class="box-title">해시태그 사용 빈도 워드클라우드</h3></div>
+                    <div class="word-cloud-box">
+                        <span class="cloud-word md">#자기계발</span>
+                        <span class="cloud-word sm">#운동하는여자</span>
+                        <span class="cloud-word sm">#자기관리란</span>
+                        <span class="cloud-word lg">#감성사진</span>
+                        <span class="cloud-word sm">#데이트코스</span>
+                        <span class="cloud-word md">#맛집탐방</span>
+                        <span class="cloud-word sm">#카페그램</span>
+                        <span class="cloud-word lg">#일상기록</span>
+                        <span class="cloud-word sm">#뷰맛집</span>
+                        <span class="cloud-word sm">#홈스타그램</span>
+                        <span class="cloud-word lg">#오늘의집</span>
+                        <span class="cloud-word sm">#패션피플</span>
+                        <span class="cloud-word sm">#여행에미치다</span>
+                        <span class="cloud-word lg">#여행스타그램</span>
+                        <span class="cloud-word sm">#식단관리</span>
+                        <span class="cloud-word sm">#취미생활</span>
+                        <span class="cloud-word sm">#미니멀라이프</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 섹션 2 그리드: 해시태그 성과 지표 비교 & 카테고리별 인기 해시태그 & 상승 중인 해시태그 -->
+        <div class="grid-2col">
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+                <div class="dashboard-box">
+                    <div class="box-header"><h3 class="box-title">해시태그 성과 지표 비교</h3></div>
+                    <div class="mock-chart-placeholder" style="height: 160px;">멀티 바 차트 영역 (게시물수 / 좋아요수 / 댓글수 / 저장수 그룹차트)</div>
+                </div>
+                <div class="dashboard-box">
+                    <div class="box-header">
+                        <h3 class="box-title">카테고리별 인기 해시태그</h3>
+                        <select class="select-box-sm"><option>전체 카테고리</option></select>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>카테고리</th>
+                                <th>인기 해시태그</th>
+                                <th>게시물 수</th>
+                                <th>증감률</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="font-weight:700;">감성/일상</td><td style="color:var(--primary); font-weight:600;">#감성사진, #일상기록, #소소일상</td><td>254.6K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 11.2%</td></tr>
+                            <tr><td style="font-weight:700;">여행/캠핑</td><td style="color:var(--primary); font-weight:600;">#여행스타그램, #여행에미치다, #국내여행</td><td>182.3K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 9.8%</td></tr>
+                            <tr><td style="font-weight:700;">맛집/카페</td><td style="color:var(--primary); font-weight:600;">#맛집탐방, #카페투어, #디저트맛집</td><td>156.7K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 13.4%</td></tr>
+                            <tr><td style="font-weight:700;">패션/뷰티</td><td style="color:var(--primary); font-weight:600;">#패션스타그램, #데일리룩, #뷰티스타그램</td><td>134.2K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 6.7%</td></tr>
+                            <tr><td style="font-weight:700;">운동/건강</td><td style="color:var(--primary); font-weight:600;">#운동하는여자, #헬스타그램, #식단관리</td><td>98.4K</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 8.1%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="dashboard-box">
+                <div class="box-header"><h3 class="box-title">상승 중인 해시태그</h3></div>
+                <table class="data-table" style="margin-top: 8px;">
+                    <thead>
+                        <tr>
+                            <th>순위</th>
+                            <th>해시태그</th>
+                            <th>증감률</th>
+                            <th>게시물 수</th>
+                            <th>반응률</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="td-rank">1</td><td class="td-tag">#미니멀라이프</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 28.4%</td><td>36.2K</td><td>9.12%</td></tr>
+                        <tr><td class="td-rank">2</td><td class="td-tag">#캠핑스타그램</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 24.7%</td><td>42.1K</td><td>8.43%</td></tr>
+                        <tr><td class="td-rank">3</td><td class="td-tag">#홈카페</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 21.3%</td><td>31.8K</td><td>7.91%</td></tr>
+                        <tr><td class="td-rank">4</td><td class="td-tag">#반려동물</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 18.9%</td><td>67.2K</td><td>8.67%</td></tr>
+                        <tr><td class="td-rank">5</td><td class="td-tag">#육아일기</td><td class="td-up"><i class="fa-solid fa-caret-up"></i> 16.8%</td><td>58.6K</td><td>7.34%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 섹션 3: 해시태그 상세 분석 종합 보드 -->
+        <div class="dashboard-box">
+            <div class="box-header">
+                <h3 class="box-title">해시태그 상세 분석</h3>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 12px; font-weight: 600; color: var(--text-sub);">해시태그 선택</span>
+                    <select class="select-box-sm"><option>#감성사진</option></select>
+                </div>
+            </div>
+            
+            <div class="detail-analysis-wrapper">
+                <!-- 기본 정보 열 -->
+                <div class="distribution-block">
+                    <div class="dist-sub-title">기본 정보</div>
+                    <div class="info-list-rows">
+                        <div class="info-item-row"><span class="lbl">해시태그</span><span class="val" style="color:var(--primary);">#감성사진</span></div>
+                        <div class="info-item-row"><span class="lbl">게시물 수</span><span class="val">128,432건</span></div>
+                        <div class="info-item-row"><span class="lbl">증감률</span><span class="val" style="color:var(--up-color);"><i class="fa-solid fa-caret-up"></i> 12.5% <span style="font-size:10px; color:var(--text-gray); font-weight:normal;">(지난 7일 대비)</span></span></div>
+                        <div class="info-item-row"><span class="lbl">평균 좋아요 수</span><span class="val">2,847개</span></div>
+                        <div class="info-item-row"><span class="lbl">평균 댓글 수</span><span class="val">356개</span></div>
+                        <div class="info-item-row"><span class="lbl">평균 저장 수</span><span class="val">912개</span></div>
+                        <div class="info-item-row"><span class="lbl">인기 지속 시간</span><span class="val">3일 12시간</span></div>
+                        <div class="info-item-row"><span class="lbl">주요 사용 시간대</span><span class="val">오후 7시 ~ 11시</span></div>
+                    </div>
+                </div>
+
+                <!-- 시간대별 게시물 수 열 -->
+                <div class="distribution-block">
+                    <div class="dist-sub-title">시간대별 게시물 수</div>
+                    <div class="mock-chart-placeholder" style="height: 100%;">시간대별 스플라인 라인 차트 영역 (0시 ~ 24시)</div>
+                </div>
+
+                <!-- 성별/연령별 분포 열 -->
+                <div class="distribution-block">
+                    <div class="dist-sub-title">성별/연령별 분포</div>
+                    <div style="display: flex; flex-direction: column; gap: 20px; border: 1px solid var(--border); padding: 16px; border-radius: 12px; height: 100%;">
+                        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 16px; height: 100%;">
+                            <!-- 성별 -->
+                            <div style="display:flex; flex-direction:column; gap:12px;">
+                                <span style="font-size:11px; font-weight:700; color:var(--text-gray);">성별 분포</span>
+                                <div class="gender-chart-row">
+                                    <div class="circle-progress-mock"></div>
+                                    <div class="gender-labels">
+                                        <div class="gender-lbl"><span class="dot purple"></span> 여성 <span style="margin-left:4px; font-weight:700;">68.4%</span></div>
+                                        <div class="gender-lbl"><span class="dot gray"></span> 남성 <span style="margin-left:4px; font-weight:700;">31.6%</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 연령별 -->
+                            <div style="display:flex; flex-direction:column; gap:8px;">
+                                <span style="font-size:11px; font-weight:700; color:var(--text-gray);">연령별 분포</span>
+                                <div class="age-bar-list">
+                                    <div class="age-bar-item"><span class="age-lbl">10대</span><div class="age-bar-track"><div class="age-bar-fill" style="width: 8.2%;"></div></div><span class="age-val">8.2%</span></div>
+                                    <div class="age-bar-item"><span class="age-lbl">20대</span><div class="age-bar-track"><div class="age-bar-fill" style="width: 42.7%;"></div></div><span class="age-val">42.7%</span></div>
+                                    <div class="age-bar-item"><span class="age-lbl">30대</span><div class="age-bar-track"><div class="age-bar-fill" style="width: 31.5%;"></div></div><span class="age-val">31.5%</span></div>
+                                    <div class="age-bar-item"><span class="age-lbl">40대</span><div class="age-bar-track"><div class="age-bar-fill" style="width: 13.2%;"></div></div><span class="age-val">13.2%</span></div>
+                                    <div class="age-bar-item"><span class="age-lbl">50대+</span><div class="age-bar-track"><div class="age-bar-fill" style="width: 4.4%;"></div></div><span class="age-val">4.4%</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 하단 3컬럼 영역: 연관 해시태그 TOP 10 & 추천 활용 인사이트 & 해시태그 활용 예시 -->
+        <div class="grid-3col">
+            <!-- 연관 해시태그 TOP 10 -->
+            <div class="dashboard-box">
+                <div class="box-header"><h3 class="box-title">연관 해시태그 TOP 10</h3></div>
+                <div class="rank-bar-list">
+                    <div class="rank-bar-item"><div class="rank-item-left"><span class="rank-num">1</span><span class="rank-tag-name">#일상기록</span></div><div class="rank-bar-graph-wrapper"><div class="horizontal-fill-bar" style="width: 85px;"></div><span class="rank-metric-val">85.2K</span></div></div>
+                    <div class="rank-bar-item"><div class="rank-item-left"><span class="rank-num">2</span><span class="rank-tag-name">#사진스타그램</span></div><div class="rank-bar-graph-wrapper"><div class="horizontal-fill-bar" style="width: 72px;"></div><span class="rank-metric-val">72.1K</span></div></div>
+                    <div class="rank-bar-item"><div class="rank-item-left"><span class="rank-num">3</span><span class="rank-tag-name">#오늘의하루</span></div><div class="rank-bar-graph-wrapper"><div class="horizontal-fill-bar" style="width: 68px;"></div><span class="rank-metric-val">68.7K</span></div></div>
+                    <div class="rank-bar-item"><div class="rank-item-left"><span class="rank-num">4</span><span class="rank-tag-name">#감성피드</span></div><div class="rank-bar-graph-wrapper"><div class="horizontal-fill-bar" style="width: 54px;"></div><span class="rank-metric-val">54.3K</span></div></div>
+                    <div class="rank-bar-item"><div class="rank-item-left"><span class="rank-num">5</span><span class="rank-tag-name">#소소한행복</span></div><div class="rank-bar-graph-wrapper"><div class="horizontal-fill-bar" style="width: 43px;"></div><span class="rank-metric-val">42.8%</span></div></div>
+                    <div class="rank-bar-item"><div class="rank-item-left"><span class="rank-num">6</span><span class="rank-tag-name">#일상스타그램</span></div><div class="rank-bar-graph-wrapper"><div class="horizontal-fill-bar" style="width: 41px;"></div><span class="rank-metric-val">41.2%</span></div></div>
+                    <div class="rank-bar-item"><div class="rank-item-left"><span class="rank-num">7</span><span class="rank-tag-name">#데일리그램</span></div><div class="rank-bar-graph-wrapper"><div class="horizontal-fill-bar" style="width: 37px;"></div><span class="rank-metric-val">36.9%</span></div></div>
+                    <div class="rank-bar-item"><div class="rank-item-left"><span class="rank-num">8</span><span class="rank-tag-name">#감성무드</span></div><div class="rank-bar-graph-wrapper"><div class="horizontal-fill-bar" style="width: 28px;"></div><span class="rank-metric-val">28.7K</span></div></div>
+                    <div class="rank-bar-item"><div class="rank-item-left"><span class="rank-num">9</span><span class="rank-tag-name">#나의하루</span></div><div class="rank-bar-graph-wrapper"><div class="horizontal-fill-bar" style="width: 24px;"></div><span class="rank-metric-val">24.5%</span></div></div>
+                    <div class="rank-bar-item"><div class="rank-item-left"><span class="rank-num">10</span><span class="rank-tag-name">#기록의힘</span></div><div class="rank-bar-graph-wrapper"><div class="horizontal-fill-bar" style="width: 19px;"></div><span class="rank-metric-val">19.3%</span></div></div>
+                </div>
+            </div>
+
+            <!-- 추천 활용 인사이트 -->
+            <div class="dashboard-box">
+                <div class="box-header"><h3 class="box-title">추천 활용 인사이트</h3></div>
+                <div class="insight-checklist">
+                    <div class="insight-item"><i class="fa-regular fa-square-check"></i> <span>오후 7시 ~ 11시 사이에 게시 시 반응률이 가장 높아요.</span></div>
+                    <div class="insight-item"><i class="fa-regular fa-square-check"></i> <span>20~30대 여성 사용자가 주로 검색하고 활용해요.</span></div>
+                    <div class="insight-item"><i class="fa-regular fa-square-check"></i> <span>#일상기록, #사진스타그램과 함께 방문 시 시너지 효과가 높아요.</span></div>
+                    <div class="insight-item"><i class="fa-regular fa-square-check"></i> <span>감성적인 무드의 사진과 함께 사용하면 좋아요 수가 증가해요.</span></div>
+                    <div class="insight-item"><i class="fa-regular fa-square-check"></i> <span>주말(토, 일) 오후 시간대에 사용량이 급증해요.</span></div>
+                </div>
+            </div>
+
+            <!-- 해시태그 활용 예시 -->
+            <div class="dashboard-box">
+                <div class="box-header"><h3 class="box-title">해시태그 활용 예시</h3></div>
+                <div class="example-cards-grid">
+                    <div class="example-card">
+                        <div class="example-img-holder"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=120" alt=""></div>
+                        <div class="example-card-body">
+                            <div class="example-cards-tags"><span>#감성사진</span><span>#일상기록</span></div>
+                            <div class="example-card-stat">좋아요 3.2K</div>
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-img-holder"><img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&q=80&w=120" alt=""></div>
+                        <div class="example-card-body">
+                            <div class="example-cards-tags"><span>#감성사진</span><span>#카페투어</span></div>
+                            <div class="example-card-stat">좋아요 2.8K</div>
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-img-holder"><img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=120" alt=""></div>
+                        <div class="example-card-body">
+                            <div class="example-cards-tags"><span>#감성사진</span><span>#오늘의하루</span></div>
+                            <div class="example-card-stat">좋아요 4.1K</div>
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-img-holder"><img src="https://images.unsplash.com/photo-1472214222541-d510753a4707?auto=format&fit=crop&q=80&w=120" alt=""></div>
+                        <div class="example-card-body">
+                            <div class="example-cards-tags"><span>#감성사진</span><span>#소소한행복</span></div>
+                            <div class="example-card-stat">좋아요 2.3K</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

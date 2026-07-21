@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1440">
+    <title>GrowInsta - 소셜 인게이지먼트 통계</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/css/main_statistics.css">
+</head>
+<body>
+
+    <aside>
+        <div>
+            <div class="logo-area">
+                <div class="logo"><i class="fa-solid fa-square-poll-vertical"></i> GrowInsta</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><i class="fa-solid fa-house"></i> 홈</li>
+                    <li><i class="fa-regular fa-comments"></i> 챗봇</li>
+                    <li class="active"><i class="fa-regular fa-lightbulb"></i> 콘텐츠 아이디어</li>
+                    <li><i class="fa-regular fa-credit-card"></i> 구독</li>
+                    <li><i class="fa-solid fa-users"></i> 커뮤니티</li>
+                    <li><i class="fa-regular fa-circle-question"></i> FAQ & 문의</li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="profile-box">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="">
+                <div class="profile-info">
+                    <h5>yoon@example.com</h5>
+                </div>
+                <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: auto; color: var(--text-gray);"></i>
+            </div>
+        </div>
+    </aside>
+
+    <div class="main-wrapper">
+        
+        <div class="header-section">
+            <div class="page-title">
+                <h1>소셜 인게이지먼트 통계 <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--primary); font-size: 18px;"></i></h1>
+                <p>해당 프롬프트로 생성된 콘텐츠의 평균 반응 데이터를 분석해보세요.</p>
+            </div>
+            <div class="filter-controls">
+                <button class="btn-date-picker"><i class="fa-regular fa-calendar"></i> 2024.05.14 - 2024.05.20 (7일) <i class="fa-solid fa-chevron-down" style="font-size: 11px; margin-left: 4px;"></i></button>
+                <select class="select-filter">
+                    <option>전체 콘텐츠</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="metrics-6-grid">
+            <div class="metric-mini-card">
+                <div class="m-icon heart"><i class="fa-solid fa-heart"></i></div>
+                <span class="m-label">좋아요</span>
+                <span class="m-value">2.4K</span>
+                <span class="m-trend">지난 7일 대비 <i class="fa-solid fa-caret-up"></i> 18.6%</span>
+            </div>
+            <div class="metric-mini-card">
+                <div class="m-icon comment"><i class="fa-solid fa-comment"></i></div>
+                <span class="m-label">댓글</span>
+                <span class="m-value">1.8K</span>
+                <span class="m-trend">지난 7일 대비 <i class="fa-solid fa-caret-up"></i> 12.3%</span>
+            </div>
+            <div class="metric-mini-card">
+                <div class="m-icon share"><i class="fa-solid fa-paper-plane"></i></div>
+                <span class="m-label">공유/저장</span>
+                <span class="m-value">3.2K</span>
+                <span class="m-trend">지난 7일 대비 <i class="fa-solid fa-caret-up"></i> 15.4%</span>
+            </div>
+            <div class="metric-mini-card">
+                <div class="m-icon bookmark"><i class="fa-solid fa-bookmark"></i></div>
+                <span class="m-label">저장</span>
+                <span class="m-value">4.35K</span>
+                <span class="m-trend">지난 7일 대비 <i class="fa-solid fa-caret-up"></i> 20.7%</span>
+            </div>
+            <div class="metric-mini-card">
+                <div class="m-icon eye"><i class="fa-solid fa-eye"></i></div>
+                <span class="m-label">도달 수</span>
+                <span class="m-value">1.24M</span>
+                <span class="m-trend">지난 7일 대비 <i class="fa-solid fa-caret-up"></i> 18.6%</span>
+            </div>
+            <div class="metric-mini-card">
+                <div class="m-icon rate"><i class="fa-solid fa-chart-pie"></i></div>
+                <span class="m-label">참여율(Engagement Rate)</span>
+                <span class="m-value">8.47%</span>
+                <span class="m-trend">지난 7일 대비 <i class="fa-solid fa-caret-up"></i> 9.3%</span>
+            </div>
+        </div>
+
+        <div class="tab-menu-bar">
+            <div class="tab-nav-item active">개요</div>
+            <div class="tab-nav-item">콘텐츠 유형 분석</div>
+            <div class="tab-nav-item">시간대별 분석</div>
+            <div class="tab-nav-item">플랫폼 분석</div>
+            <div class="tab-nav-item">콘텐츠 비교</div>
+            <div class="tab-nav-item">해시태그 분석</div>
+            <div class="tab-nav-item">게시물 상세</div>
+        </div>
+
+        <div class="grid-split-2">
+            <div class="card">
+                <div class="card-title">인게이지먼트 추이</div>
+                <div style="position: relative; height: 220px;">
+                    <canvas id="mainTrendLineChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">반응 구성 비율</div>
+                <div class="donut-layout-box">
+                    <div class="donut-chart-container">
+                        <canvas id="responseDonutChart"></canvas>
+                        <div class="donut-center-text">
+                            <p>총 반응 수</p>
+                            <h3>11.75K</h3>
+                        </div>
+                    </div>
+                    <div class="donut-legends">
+                        <div class="legend-row">
+                            <div class="legend-lbl"><span class="legend-dot" style="background: #FF6B8B;"></span>좋아요</div>
+                            <div class="legend-val">20.4% (2.4K)</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-lbl"><span class="legend-dot" style="background: #FFC107;"></span>댓글</div>
+                            <div class="legend-val">15.3% (1.8K)</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-lbl"><span class="legend-dot" style="background: #8B5CF6;"></span>공유/저장</div>
+                            <div class="legend-val">27.2% (3.2K)</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-lbl"><span class="legend-dot" style="background: #3B82F6;"></span>저장</div>
+                            <div class="legend-val">37.1% (4.35K)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">성과가 높은 콘텐츠 TOP 5</div>
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">순위</th>
+                            <th>콘텐츠 미리보기</th>
+                            <th>유형</th>
+                            <th>주제</th>
+                            <th>좋아요</th>
+                            <th>댓글</th>
+                            <th>공유/저장</th>
+                            <th>저장</th>
+                            <th>참여율</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="td-rank">1</td>
+                            <td>
+                                <div class="content-preview-box">
+                                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=100" alt="">
+                                    <p>퇴근 후 혼자만의 시간을 보내는 감성 인스타툰</p>
+                                </div>
+                            </td>
+                            <td><span class="badge-type toon">인스타툰</span></td>
+                            <td>일상/감성</td>
+                            <td>2.4K</td>
+                            <td>1.8K</td>
+                            <td>3.2K</td>
+                            <td>4.1K</td>
+                            <td style="font-weight: 700; color: var(--primary);">12.4%</td>
+                        </tr>
+                        <tr>
+                            <td class="td-rank">2</td>
+                            <td>
+                                <div class="content-preview-box">
+                                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=100" alt="">
+                                    <p>여름 바다 여행 힐링 시나리오</p>
+                                </div>
+                            </td>
+                            <td><span class="badge-type reels">릴스/쇼츠</span></td>
+                            <td>여행/힐링</td>
+                            <td>3.1K</td>
+                            <td>2.1K</td>
+                            <td>4.0K</td>
+                            <td>5.2K</td>
+                            <td style="font-weight: 700; color: var(--primary);">11.8%</td>
+                        </tr>
+                        <tr>
+                            <td class="td-rank">3</td>
+                            <td>
+                                <div class="content-preview-box">
+                                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=100" alt="">
+                                    <p>일상이 특별해지는 작은 습관 7가지</p>
+                                </div>
+                            </td>
+                            <td><span class="badge-type thumbnail">썸네일</span></td>
+                            <td>자기계발</td>
+                            <td>1.9K</td>
+                            <td>1.2K</td>
+                            <td>2.6K</td>
+                            <td>3.3K</td>
+                            <td style="font-weight: 700; color: var(--primary);">10.6%</td>
+                        </tr>
+                        <tr>
+                            <td class="td-rank">4</td>
+                            <td>
+                                <div class="content-preview-box">
+                                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=100" alt="">
+                                    <p>자존감을 높이는 하루 루틴 만들기</p>
+                                </div>
+                            </td>
+                            <td><span class="badge-type carousel">캐러셀</span></td>
+                            <td>자기계발</td>
+                            <td>1.6K</td>
+                            <td>980</td>
+                            <td>2.1K</td>
+                            <td>2.8K</td>
+                            <td style="font-weight: 700; color: var(--primary);">9.7%</td>
+                        </tr>
+                        <tr>
+                            <td class="td-rank">5</td>
+                            <td>
+                                <div class="content-preview-box">
+                                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=100" alt="">
+                                    <p>카페 감성 사진 잘 찍는 법</p>
+                                </div>
+                            </td>
+                            <td><span class="badge-type etc">기타</span></td>
+                            <td>사진/팁</td>
+                            <td>1.3K</td>
+                            <td>860</td>
+                            <td>1.9K</td>
+                            <td>2.5K</td>
+                            <td style="font-weight: 700; color: var(--primary);">8.9%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid-split-3-columns">
+            <div class="card">
+                <div class="card-title">시간대별 인게이지먼트</div>
+                <div class="heatmap-container">
+                    <div class="heatmap-row"><span class="heatmap-label-y">24시</span><div class="heatmap-cells"><div class="heatmap-cell lvl-0"></div><div class="heatmap-cell lvl-0"></div><div class="heatmap-cell lvl-1"></div><div class="heatmap-cell lvl-1"></div><div class="heatmap-cell lvl-1"></div><div class="heatmap-cell lvl-2"></div><div class="heatmap-cell lvl-2"></div></div></div>
+                    <div class="heatmap-row"><span class="heatmap-label-y">20시</span><div class="heatmap-cells"><div class="heatmap-cell lvl-2"></div><div class="heatmap-cell lvl-3"></div><div class="heatmap-cell lvl-4"></div><div class="heatmap-cell lvl-4"></div><div class="heatmap-cell lvl-3"></div><div class="heatmap-cell lvl-3"></div><div class="heatmap-cell lvl-4"></div></div></div>
+                    <div class="heatmap-row"><span class="heatmap-label-y">16시</span><div class="heatmap-cells"><div class="heatmap-cell lvl-1"></div><div class="heatmap-cell lvl-2"></div><div class="heatmap-cell lvl-2"></div><div class="heatmap-cell lvl-1"></div><div class="heatmap-cell lvl-2"></div><div class="heatmap-cell lvl-3"></div><div class="heatmap-cell lvl-3"></div></div></div>
+                    <div class="heatmap-row"><span class="heatmap-label-y">12시</span><div class="heatmap-cells"><div class="heatmap-cell lvl-2"></div><div class="heatmap-cell lvl-2"></div><div class="heatmap-cell lvl-3"></div><div class="heatmap-cell lvl-2"></div><div class="heatmap-cell lvl-2"></div><div class="heatmap-cell lvl-4"></div><div class="heatmap-cell lvl-4"></div></div></div>
+                    <div class="heatmap-row"><span class="heatmap-label-y">8시</span><div class="heatmap-cells"><div class="heatmap-cell lvl-1"></div><div class="heatmap-cell lvl-1"></div><div class="heatmap-cell lvl-1"></div><div class="heatmap-cell lvl-1"></div><div class="heatmap-cell lvl-1"></div><div class="heatmap-cell lvl-1"></div><div class="heatmap-cell lvl-1"></div></div></div>
+                    <div class="heatmap-row"><span class="heatmap-label-y">4시</span><div class="heatmap-cells"><div class="heatmap-cell lvl-0"></div><div class="heatmap-cell lvl-0"></div><div class="heatmap-cell lvl-0"></div><div class="heatmap-cell lvl-0"></div><div class="heatmap-cell lvl-0"></div><div class="heatmap-cell lvl-0"></div><div class="heatmap-cell lvl-0"></div></div></div>
+                    <div class="heatmap-row"><span class="heatmap-label-y">0시</span><div class="heatmap-cells"><div class="heatmap-cell lvl-1"></div><div class="heatmap-cell lvl-0"></div><div class="heatmap-cell lvl-0"></div><div class="heatmap-cell lvl-0"></div><div class="heatmap-cell lvl-0"></div><div class="heatmap-cell lvl-1"></div><div class="heatmap-cell lvl-1"></div></div></div>
+                </div>
+                <div class="heatmap-label-x-line">
+                    <span class="heatmap-label-x">월</span><span class="heatmap-label-x">화</span><span class="heatmap-label-x">수</span><span class="heatmap-label-x">목</span><span class="heatmap-label-x">금</span><span class="heatmap-label-x">토</span><span class="heatmap-label-x">일</span>
+                </div>
+                <div class="heatmap-legend-bar">
+                    <span>낮음</span>
+                    <div class="legend-gradient-indicator"></div>
+                    <span>높음</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">콘텐츠 유형별 평균 인게이지먼트율</div>
+                <div style="position: relative; height: 230px;">
+                    <canvas id="contentTypeBarChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-split-bottom-3">
+            <div class="card">
+                <div class="card-title">인게이지먼트 지표 상관 관계</div>
+                <table class="matrix-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>좋아요</th>
+                            <th>댓글</th>
+                            <th>공유/저장</th>
+                            <th>저장</th>
+                            <th>도달 수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="matrix-lbl-side">좋아요</td>
+                            <td class="m-weight-100">1.00</td>
+                            <td class="m-weight-70">0.78</td>
+                            <td class="m-weight-80">0.85</td>
+                            <td class="m-weight-80">0.82</td>
+                            <td class="m-weight-70">0.71</td>
+                        </tr>
+                        <tr>
+                            <td class="matrix-lbl-side">댓글</td>
+                            <td class="m-weight-70">0.78</td>
+                            <td class="m-weight-100">1.00</td>
+                            <td class="m-weight-70">0.72</td>
+                            <td class="m-weight-60">0.69</td>
+                            <td class="m-weight-60">0.65</td>
+                        </tr>
+                        <tr>
+                            <td class="matrix-lbl-side">공유/저장</td>
+                            <td class="m-weight-80">0.85</td>
+                            <td class="m-weight-70">0.72</td>
+                            <td class="m-weight-100">1.00</td>
+                            <td class="m-weight-80">0.88</td>
+                            <td class="m-weight-70">0.74</td>
+                        </tr>
+                        <tr>
+                            <td class="matrix-lbl-side">저장</td>
+                            <td class="m-weight-80">0.82</td>
+                            <td class="m-weight-60">0.69</td>
+                            <td class="m-weight-80">0.88</td>
+                            <td class="m-weight-100">1.00</td>
+                            <td class="m-weight-70">0.77</td>
+                        </tr>
+                        <tr>
+                            <td class="matrix-lbl-side">도달 수</td>
+                            <td class="m-weight-70">0.71</td>
+                            <td class="m-weight-60">0.65</td>
+                            <td class="m-weight-70">0.74</td>
+                            <td class="m-weight-70">0.77</td>
+                            <td class="m-weight-100">1.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <div class="card-title">주간 인사이트</div>
+                <div class="insight-list">
+                    <div class="insight-item">
+                        <div class="insight-icon-sphere pink"><i class="fa-solid fa-heart"></i></div>
+                        <div class="insight-text">
+                            <h5>좋아요가 가장 높은 시간대는 저녁 8시 - 10시입니다.</h5>
+                            <p>해당 시간대에 게시하면 더 많은 좋아요를 얻을 수 있어요.</p>
+                        </div>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-icon-sphere purple"><i class="fa-solid fa-comment"></i></div>
+                        <div class="insight-text">
+                            <h5>댓글은 주말 오후에 가장 활발하게 발생하고 있어요.</h5>
+                            <p>토요일과 일요일 오후 2시 - 4시에 댓글 참여가 높습니다.</p>
+                        </div>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-icon-sphere green"><i class="fa-solid fa-paper-plane"></i></div>
+                        <div class="insight-text">
+                            <h5>저장과 공유는 자기계발/팁 콘텐츠에서 높은 반응을 보입니다.</h5>
+                            <p>실용적인 정보를 제공하는 콘텐츠가 사용자에게 더 유용하게 느껴져요.</p>
+                        </div>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-icon-sphere blue"><i class="fa-solid fa-eye"></i></div>
+                        <div class="insight-text">
+                            <h5>도달 수 대비 참여율이 꾸준히 상승하고 있습니다.</h5>
+                            <p>콘텐츠 품질과 타깃 적합성이 개선되고 있는 추세입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-formula-notice">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>인게이지먼트율 = (좋아요 + 댓글 + 공유/저장 + 저장) ÷ 도달 수 × 100</span>
+        </div>
+
+    </div>
+
+    <script>
+        // 1. 인게이지먼트 추이 꺾은선 멀티 라인 차트
+        const ctxTrend = document.getElementById('mainTrendLineChart').getContext('2d');
+        new Chart(ctxTrend, {
+            type: 'line',
+            data: {
+                labels: ['05.14', '05.15', '05.16', '05.17', '05.18', '05.19', '05.20'],
+                datasets: [
+                    { label: '좋아요', data: [3200, 3000, 3300, 3500, 4200, 3800, 4000], borderColor: '#FF6B8B', borderWidth: 2.5, tension: 0.3, pointRadius: 3, fill: false },
+                    { label: '댓글', data: [5500, 5000, 5200, 5300, 5800, 5500, 5700], borderColor: '#FFC107', borderWidth: 2.5, tension: 0.3, pointRadius: 3, fill: false },
+                    { label: '공유/저장', data: [2200, 2000, 2300, 2500, 2800, 2400, 2600], borderColor: '#8B5CF6', borderWidth: 2.5, tension: 0.3, pointRadius: 3, fill: false },
+                    { label: '저장', data: [1100, 900, 1200, 1250, 1500, 1200, 1300], borderColor: '#3B82F6', borderWidth: 2.5, tension: 0.3, pointRadius: 3, fill: false }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'top', align: 'start', labels: { boxWidth: 12, font: { size: 11, weight: '600' } } } },
+                scales: {
+                    x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+                    y: { min: 0, max: 8000, ticks: { stepSize: 2000, callback: value => (value / 1000) + 'K', font: { size: 11 } } }
+                }
+            }
+        });
+
+        // 2. 반응 구성 비율 도넛 원형 파이 차트
+        const ctxDonut = document.getElementById('responseDonutChart').getContext('2d');
+        new Chart(ctxDonut, {
+            type: 'doughnut',
+            data: {
+                labels: ['좋아요', '댓글', '공유/저장', '저장'],
+                datasets: [{
+                    data: [20.4, 15.3, 27.2, 37.1],
+                    backgroundColor: ['#FF6B8B', '#FFC107', '#8B5CF6', '#3B82F6'],
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '75%',
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        // 3. 콘텐츠 유형별 평균 인게이지먼트율 그라데이션 단일 바 차트
+        const ctxBar = document.getElementById('contentTypeBarChart').getContext('2d');
+        new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['인스타툰', '릴스/쇼츠', '썸네일', '캐러셀', '기타'],
+                datasets: [{
+                    data: [12.3, 11.4, 10.8, 9.6, 8.7],
+                    backgroundColor: '#BDB2FF',
+                    hoverBackgroundColor: '#6347FF',
+                    borderRadius: 6,
+                    barPercentage: 0.45
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { 
+                    legend: { display: false },
+                    tooltip: { callbacks: { label: context => context.raw + '%' } }
+                },
+                scales: {
+                    x: { grid: { display: false }, ticks: { font: { size: 11, weight: '600' } } },
+                    y: { 
+                        min: 0, 
+                        max: 16, 
+                        ticks: { 
+                            stepSize: 4, 
+                            callback: value => value + '%', 
+                            font: { size: 11 } 
+                        } 
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

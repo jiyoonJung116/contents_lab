@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1440">
+    <title>GrowInsta - 유저 맞춤형 추천 상세</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main_user_custom.css">
+</head>
+<body>
+
+    <!-- 고정 네비게이션 사이드바 -->
+    <aside>
+        <div>
+            <div class="logo-area">
+                <div class="logo"><i class="fa-solid fa-square-poll-vertical"></i> GrowInsta</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><i class="fa-solid fa-house"></i> 홈</li>
+                    <li><i class="fa-regular fa-comments"></i> 챗봇</li>
+                    <li class="active"><i class="fa-regular fa-lightbulb"></i> 콘텐츠 아이디어</li>
+                    <li><i class="fa-regular fa-credit-card"></i> 구독</li>
+                    <li><i class="fa-solid fa-users"></i> 커뮤니티</li>
+                    <li><i class="fa-regular fa-circle-question"></i> FAQ & 문의</li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="profile-box">
+                <i class="fa-solid fa-gear" style="color: var(--text-sub); font-size: 14px; margin-right: 4px;"></i>
+                <div class="profile-info"><h5>설정</h5></div>
+            </div>
+            <div class="profile-box">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="">
+                <div class="profile-info"><h5>yoon@example.com</h5></div>
+                <i class="fa-solid fa-chevron-up" style="font-size: 10px; margin-left: auto; color: var(--text-gray);"></i>
+            </div>
+        </div>
+    </aside>
+
+    <!-- 우측 메인 대시보드 스페이스 -->
+    <div class="main-wrapper">
+        
+        <!-- 상단 유틸리티 라인 -->
+        <div class="top-utility-bar">
+            <button class="btn-back"><i class="fa-solid fa-chevron-left"></i> 목록으로 돌아가기</button>
+            <div class="right-icons">
+                <i class="fa-regular fa-bell icon-bell"></i>
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" class="top-profile-img" alt="">
+            </div>
+        </div>
+
+        <!-- 헤더 및 타이틀 블록 -->
+        <div class="header-section">
+            <div class="page-title">
+                <h1>유저 맞춤형 추천 상세</h1>
+                <p>사용자의 관심사와 계정 정보를 기반으로 맞춤형 콘텐츠 아이디어를 추천해드려요.</p>
+            </div>
+            <div class="header-buttons">
+                <button class="btn-secondary"><i class="fa-solid fa-user-gear"></i> 내 프로필 기반 설정</button>
+                <button class="btn-secondary purple-txt"><i class="fa-solid fa-rotate-right"></i> 새로고침</button>
+            </div>
+        </div>
+
+        <!-- 카테고리 셀렉터 탭 바 -->
+        <div class="category-tabs">
+            <button class="tab-item">전체</button>
+            <button class="tab-item active">인스타툰</button>
+            <button class="tab-item">릴스/쇼츠</button>
+            <button class="tab-item">썸네일</button>
+            <button class="tab-item">캐러셀</button>
+            <button class="tab-item">기타</button>
+        </div>
+
+        <!-- 유저 계정 분석 요약 배너 -->
+        <div class="info-banner-card">
+            <div class="info-profile-meta">
+                <div class="avatar-circle">🎨</div>
+                <div class="meta-details-grid">
+                    <div class="meta-column">
+                        <h6>주요 주제</h6>
+                        <div class="meta-tags-row">
+                            <span class="meta-tag pink-t">감성</span>
+                            <span class="meta-tag pink-t">일상</span>
+                            <span class="meta-tag pink-t">자기계발</span>
+                        </div>
+                    </div>
+                    <div class="meta-column">
+                        <h6>타겟 연령</h6>
+                        <p>20-30대 여성</p>
+                    </div>
+                    <div class="meta-column">
+                        <h6>활동 시간대</h6>
+                        <p>오후 7시 - 11시</p>
+                    </div>
+                    <div class="meta-column">
+                        <h6>선호 콘텐츠 유형</h6>
+                        <p>스토리텔링, 팁/노하우</p>
+                    </div>
+                    <div class="meta-column">
+                        <h6>평균 조회수</h6>
+                        <p>2.1K</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-secondary">분석 정보 변경</button>
+        </div>
+
+        <!-- 추천 아이디어 섹션 서브 타이틀 -->
+        <div class="section-sub-title">
+            <span>추천 콘텐츠 아이디어</span>
+            <i class="fa-regular fa-circle-question" style="color: var(--text-gray); font-size: 13px; cursor: pointer;"></i>
+            <button class="btn-secondary" style="margin-left: auto; padding: 6px 12px; font-size: 11px; border-radius: 8px;"><i class="fa-regular fa-copy"></i> 프롬프트 전체 복사</button>
+        </div>
+
+        <!-- 추천 아이디어 리스트 그리드 팩트 시트 -->
+        <div class="ideas-list-container">
+            
+            <!-- 아이템 1: 인스타툰 -->
+            <div class="idea-item-card">
+                <div class="idea-left-preview">
+                    <div class="preview-icon-box toon-b"><i class="fa-regular fa-comment-dots"></i></div>
+                    <div class="preview-text-info">
+                        <div>
+                            <span class="badge-type-lbl c-toon">인스타툰</span>
+                            <h3>퇴근 후 나만의 시간을 지키는 5가지 방법</h3>
+                            <p class="desc">공감되는 상황으로 시작해 해결 방법을 제시하는 스토리형 인스타툰입니다.</p>
+                        </div>
+                        <div>
+                            <div class="idea-hashtags">
+                                <span class="hash-tag">#자기계발</span><span class="hash-tag">#일상</span><span class="hash-tag">#공감</span>
+                            </div>
+                            <span class="stat-expect">예상 조회수 <strong>2.3K</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="idea-right-prompt">
+                    <div class="prompt-header">
+                        <span class="prompt-lbl">추천 프롬프트</span>
+                        <button class="icon-bookmark-btn"><i class="fa-regular fa-bookmark"></i></button>
+                    </div>
+                    <div class="prompt-body">
+                        "20-30대 여성이 퇴근 후 번아웃을 느끼는 상황을 공감형 스토리로 6컷 인스타툰으로 구성해줘. 마지막 컷에서 나만의 시간을 지키는 5가지 방법을 제시하고 따뜻한 위로 메시지로 마무리해줘."
+                    </div>
+                    <button class="btn-copy-action"><i class="fa-regular fa-copy"></i> 원본 복사</button>
+                </div>
+            </div>
+
+            <!-- 아이템 2: 릴스/쇼츠 -->
+            <div class="idea-item-card">
+                <div class="idea-left-preview">
+                    <div class="preview-icon-box reels-b"><i class="fa-regular fa-file-video"></i></div>
+                    <div class="preview-text-info">
+                        <div>
+                            <span class="badge-type-lbl c-reels">릴스/쇼츠</span>
+                            <h3>3초만에 시선 사로잡는 자기소개 방법</h3>
+                            <p class="desc">짧고 임팩트 있는 자기소개 꿀팁을 소개하는 릴스/쇼츠 콘텐츠입니다.</p>
+                        </div>
+                        <div>
+                            <div class="idea-hashtags">
+                                <span class="hash-tag">#자기계발</span><span class="hash-tag">#커뮤니케이션</span><span class="hash-tag">#팁</span>
+                            </div>
+                            <span class="stat-expect">예상 조회수 <strong>4.1K</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="idea-right-prompt">
+                    <div class="prompt-header">
+                        <span class="prompt-lbl">추천 프롬프트</span>
+                        <button class="icon-bookmark-btn"><i class="fa-regular fa-bookmark"></i></button>
+                    </div>
+                    <div class="prompt-body">
+                        "3초 안에 상대방의 시선을 사로잡는 자기소개 방법을 소개하는 30초 분량의 릴스/쇼츠 시나리오를 구성해줘. Hook - 전개 - 팁 3가지 - 마무리 순서로 대본을 작성하고, 각 장면에 어울리는 영상 연출 아이디어도 함께 제안해줘."
+                    </div>
+                    <button class="btn-copy-action"><i class="fa-regular fa-copy"></i> 원본 복사</button>
+                </div>
+            </div>
+
+            <!-- 아이템 3: 썸네일 -->
+            <div class="idea-item-card">
+                <div class="idea-left-preview">
+                    <div class="preview-icon-box thumb-b"><i class="fa-regular fa-image"></i></div>
+                    <div class="preview-text-info">
+                        <div>
+                            <span class="badge-type-lbl c-thumb">썸네일</span>
+                            <h3>일상이 특별해지는 작은 습관 7가지</h3>
+                            <p class="desc">썸네일 클릭률을 높이는 감성적인 디자인 아이디어입니다.</p>
+                        </div>
+                        <div>
+                            <div class="idea-hashtags">
+                                <span class="hash-tag">#자기계발</span><span class="hash-tag">#습관</span><span class="hash-tag">#감성</span>
+                            </div>
+                            <span class="stat-expect">예상 클릭률 <strong>8.7%</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="idea-right-prompt">
+                    <div class="prompt-header">
+                        <span class="prompt-lbl">추천 프롬프트</span>
+                        <button class="icon-bookmark-btn"><i class="fa-regular fa-bookmark"></i></button>
+                    </div>
+                    <div class="prompt-body">
+                        "일상이 특별해지는 작은 습관 7가지'라는 주제로 유튜브 썸네일 디자인 아이디어 3가지를 제안해줘. 20-30대 여성이 좋아할 만한 감성적인 색감과 폰트 조합을 사용하고, 선을 끌 수 있는 레이아웃으로 구성해줘."
+                    </div>
+                    <button class="btn-copy-action"><i class="fa-regular fa-copy"></i> 원본 복사</button>
+                </div>
+            </div>
+
+            <!-- 아이템 4: 캐러셀 -->
+            <div class="idea-item-card">
+                <div class="idea-left-preview">
+                    <div class="preview-icon-box carousel-b"><i class="fa-solid fa-ellipsis"></i></div>
+                    <div class="preview-text-info">
+                        <div>
+                            <span class="badge-type-lbl c-carousel">캐러셀</span>
+                            <h3>자존감을 높이는 하루 루틴 만들기</h3>
+                            <p class="desc">저장률이 높은 정보성 캐러셀 콘텐츠 아이디어입니다.</p>
+                        </div>
+                        <div>
+                            <div class="idea-hashtags">
+                                <span class="hash-tag">#자기계발</span><span class="hash-tag">#루틴</span><span class="hash-tag">#정보</span>
+                            </div>
+                            <span class="stat-expect">예상 저장률 <strong>6.2%</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="idea-right-prompt">
+                    <div class="prompt-header">
+                        <span class="prompt-lbl">추천 프롬프트</span>
+                        <button class="icon-bookmark-btn"><i class="fa-regular fa-bookmark"></i></button>
+                    </div>
+                    <div class="prompt-body">
+                        "자존감을 높이는 하루 루틴 만들기'라는 주제로 인스타그램 캐러셀 콘텐츠 10장을 구성해줘. 각 장에는 제목, 설명, 실천 팁을 포함하고, 마지막 장에는 핵심 요약과 동기부여 메시지를 넣어줘."
+                    </div>
+                    <button class="btn-copy-action"><i class="fa-regular fa-copy"></i> 원본 복사</button>
+                </div>
+            </div>
+
+            <!-- 아이템 5: 기타 -->
+            <div class="idea-item-card">
+                <div class="idea-left-preview">
+                    <div class="preview-icon-box etc-b"><i class="fa-regular fa-lightbulb"></i></div>
+                    <div class="preview-text-info">
+                        <div>
+                            <span class="badge-type-lbl c-etc">기타</span>
+                            <h3>내 채널 정체성을 살리는 콘텐츠 기획법</h3>
+                            <p class="desc">채널 성장에 도움이 되는 전략적인 콘텐츠 기획 아이디어입니다.</p>
+                        </div>
+                        <div>
+                            <div class="idea-hashtags">
+                                <span class="hash-tag">#콘텐츠전략</span><span class="hash-tag">#브랜딩</span><span class="hash-tag">#성장</span>
+                            </div>
+                            <span class="stat-expect">예상 조회수 <strong>1.8K</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="idea-right-prompt">
+                    <div class="prompt-header">
+                        <span class="prompt-lbl">추천 프롬프트</span>
+                        <button class="icon-bookmark-btn"><i class="fa-regular fa-bookmark"></i></button>
+                    </div>
+                    <div class="prompt-body">
+                        "내 채널의 정체성을 명확하게 만들고 꾸준히 성장시킬 수 있는 콘텐츠 기획 전략을 단계별로 설명해줘. 콘텐츠 아이디어 종류와 각각의 장단점, 실행 팁까지 포함해줘."
+                    </div>
+                    <button class="btn-copy-action"><i class="fa-regular fa-copy"></i> 원본 복사</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 하단 AI 피드백 챗봇 컨테이너 -->
+        <div class="bottom-chatbot-card">
+            <div class="chatbot-title">
+                <h4>맞춤 추천이 더 필요하신가요?</h4>
+                <p>AI 챗봇에게 더 구체적인 조건을 요청해보세요.</p>
+            </div>
+            
+            <div class="chat-chips-row">
+                <button class="chip-btn">"여름에 어울리는 감성 콘텐츠 아이디어 줘"</button>
+                <button class="chip-btn">"조회수를 높일 수 있는 콘텐츠 전략 알려줘"</button>
+                <button class="chip-btn">"팔로워가 참여할 수 있는 콘텐츠 아이디어 줘"</button>
+            </div>
+
+            <div class="chat-input-wrapper">
+                <button class="btn-attach"><i class="fa-solid fa-paperclip"></i></button>
+                <input type="text" class="chat-main-input" placeholder="원하는 콘텐츠 아이디어를 입력하세요...">
+                <button class="btn-submit-chat"><i class="fa-solid fa-arrow-up"></i></button>
+            </div>
+        </div>
+
+        <!-- 하단 디스클레이머 가이드 고지 -->
+        <div class="footer-disclaimer">
+            추천 아이디어는 AI 분석을 기반으로 생성되며, 결과는 실제 성과와 다를 수 있습니다.
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowInsta - 구독 및 결제</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/pay.css">
+</head>
+<body class="flex min-h-screen text-gray-800">
+
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col justify-between fixed h-full z-10">
+        <div class="p-6">
+            <div class="flex items-center gap-2 mb-8">
+                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">G</div>
+                <span class="text-xl font-bold tracking-tight text-gray-900">GrowInsta</span>
+            </div>
+            <nav class="space-y-1">
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 rounded-lg hover:bg-gray-50 font-medium text-sm">
+                    <i class="fa-solid fa-house text-gray-400 w-5"></i> 홈
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 rounded-lg hover:bg-gray-50 font-medium text-sm">
+                    <i class="fa-regular fa-comments text-gray-400 w-5"></i> 챗봇
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 rounded-lg hover:bg-gray-50 font-medium text-sm">
+                    <i class="fa-regular fa-lightbulb text-gray-400 w-5"></i> 콘텐츠 아이디어
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 bg-indigo-50 text-indigo-600 rounded-lg font-semibold text-sm">
+                    <i class="fa-regular fa-credit-card text-indigo-500 w-5"></i> 구독
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 rounded-lg hover:bg-gray-50 font-medium text-sm">
+                    <i class="fa-solid fa-users text-gray-400 w-5"></i> 커뮤니티
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 rounded-lg hover:bg-gray-50 font-medium text-sm">
+                    <i class="fa-regular fa-circle-question text-gray-400 w-5"></i> FAQ & 문의
+                </a>
+            </nav>
+        </div>
+
+        <div class="p-4 border-t border-gray-100 bg-gray-50">
+            <div class="bg-indigo-50 rounded-xl p-4 mb-4 border border-indigo-100">
+                <div class="text-indigo-600 text-xs font-bold mb-1"><i class="fa-solid fa-crown mr-1"></i> 프리미엄 기능</div>
+                <p class="text-gray-700 text-xs font-semibold mb-2 leading-relaxed">모든 기능을 무제한으로 사용해보세요!</p>
+                <button class="w-full bg-white text-indigo-600 border border-indigo-200 py-1.5 rounded-lg text-xs font-bold hover:bg-indigo-100 transition-all">플랜 비교하기 &rarr;</button>
+            </div>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-gray-600 hover:text-gray-900 font-medium text-sm mb-2">
+                <i class="fa-solid fa-gear text-gray-400"></i> 설정
+            </a>
+            <div class="flex items-center gap-3 px-2 py-1">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Profile" class="w-8 h-8 rounded-full object-cover">
+                <div class="overflow-hidden">
+                    <div class="text-xs font-bold text-gray-800 truncate">yoon@example.com</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="flex-1 ml-64 p-8 max-w-7xl">
+        <header class="flex justify-between items-center mb-8">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-900 tracking-tight">구독</h1>
+                <p class="text-sm text-gray-500 mt-1">플랜을 선택하고 더 강력한 기능을 경험해보세요.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="relative p-2 text-gray-400 hover:text-gray-600">
+                    <i class="fa-regular fa-bell text-xl"></i>
+                    <span class="absolute top-1 right-1 bg-red-500 w-2 h-2 rounded-full"></span>
+                </button>
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Profile" class="w-9 h-9 rounded-full object-cover border border-gray-200">
+            </div>
+        </header>
+
+        <div class="flex border-b border-gray-200 mb-10">
+            <button class="border-b-2 border-indigo-600 px-6 py-3 text-indigo-600 font-semibold text-sm">플랜 선택</button>
+            <button class="px-6 py-3 text-gray-400 hover:text-gray-600 font-medium text-sm">결제 이력</button>
+        </div>
+
+        <section class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-lg font-bold text-gray-900">플랜 선택</h2>
+                <div class="flex items-center gap-3 bg-gray-100 p-1 rounded-lg text-xs">
+                    <span class="text-gray-500 font-medium pl-2">월간 결제</span>
+                    <button class="w-10 h-6 bg-indigo-600 rounded-full p-1 transition duration-300 focus:outline-none flex justify-end">
+                        <div class="bg-white w-4 h-4 rounded-full shadow-md"></div>
+                    </button>
+                    <span class="text-indigo-600 font-bold pr-2">연간 결제 <span class="text-red-500 font-extrabold">(20% 할인)</span></span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm relative">
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900">프리</h3>
+                        <p class="text-xs text-gray-400 mt-1">GrowInsta를 무료로 시작해보세요.</p>
+                        <div class="my-6">
+                            <span class="text-3xl font-bold text-gray-900">₩0</span><span class="text-gray-400 text-sm font-medium"> / 월</span>
+                        </div>
+                        <button class="w-full bg-gray-100 text-gray-400 font-semibold py-2.5 rounded-xl text-sm mb-6 cursor-not-allowed">현재 플랜</button>
+                        <hr class="border-gray-100 mb-6">
+                        <ul class="space-y-3.5 text-xs">
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-green-500 mt-0.5"></i> AI 챗봇 기본 이용</li>
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-green-500 mt-0.5"></i> 콘텐츠 아이디어 추천 (일 5회)</li>
+                            <li class="flex items-start gap-2.5 text-gray-300 line-through"><i class="fa-solid fa-xmark mt-0.5"></i> 성장 전략 분석</li>
+                            <li class="flex items-start gap-2.5 text-gray-300 line-through"><i class="fa-solid fa-xmark mt-0.5"></i> 채널 규모별 추천 프롬프트</li>
+                            <li class="flex items-start gap-2.5 text-gray-300 line-through"><i class="fa-solid fa-xmark mt-0.5"></i> 북마크 저장</li>
+                            <li class="flex items-start gap-2.5 text-gray-300 line-through"><i class="fa-solid fa-xmark mt-0.5"></i> 고급 데이터 분석</li>
+                            <li class="flex items-start gap-2.5 text-gray-300 line-through"><i class="fa-solid fa-xmark mt-0.5"></i> 우선 고객 지원</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white border-2 border-indigo-600 rounded-2xl p-6 flex flex-col justify-between shadow-md relative">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-wider">추천 플랜</span>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900">프로</h3>
+                        <p class="text-xs text-gray-400 mt-1">콘텐츠 제작과 채널 성장을 가속화하세요.</p>
+                        <div class="my-6">
+                            <span class="text-3xl font-bold text-gray-900">₩14,900</span><span class="text-gray-400 text-sm font-medium"> / 월</span>
+                            <div class="text-[11px] text-indigo-500 font-semibold mt-1">₩186,000 / 연 <span class="bg-indigo-50 text-indigo-600 px-1.5 py-0.5 rounded ml-1">20% 할인</span></div>
+                        </div>
+                        <button class="w-full bg-indigo-600 text-white hover:bg-indigo-700 font-semibold py-2.5 rounded-xl text-sm mb-6 transition-all shadow-sm">프로 플랜 선택</button>
+                        <hr class="border-gray-100 mb-6">
+                        <ul class="space-y-3.5 text-xs">
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-indigo-500 mt-0.5"></i> <span class="font-semibold text-gray-900">AI 챗봇 무제한 이용</span></li>
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-indigo-500 mt-0.5"></i> <span class="font-semibold text-gray-900">콘텐츠 아이디어 추천 (무제한)</span></li>
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-indigo-500 mt-0.5"></i> 성장 전략 분석</li>
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-indigo-500 mt-0.5"></i> 채널 규모별 추천 프롬프트</li>
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-indigo-500 mt-0.5"></i> 북마크 저장 (무제한)</li>
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-indigo-500 mt-0.5"></i> 고급 데이터 분석</li>
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-indigo-500 mt-0.5"></i> 이메일 지원</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm relative">
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900">비즈니스</h3>
+                        <p class="text-xs text-gray-400 mt-1">팀 협업과 고급 분석이 필요한 분들을 위해.</p>
+                        <div class="my-6">
+                            <span class="text-3xl font-bold text-gray-900">₩29,900</span><span class="text-gray-400 text-sm font-medium"> / 월</span>
+                            <div class="text-[11px] text-indigo-500 font-semibold mt-1">₩358,800 / 연 <span class="bg-indigo-50 text-indigo-600 px-1.5 py-0.5 rounded ml-1">20% 할인</span></div>
+                        </div>
+                        <button class="w-full bg-white text-indigo-600 border border-indigo-200 hover:bg-indigo-50 font-semibold py-2.5 rounded-xl text-sm mb-6 transition-all">비즈니스 플랜 선택</button>
+                        <hr class="border-gray-100 mb-6">
+                        <ul class="space-y-3.5 text-xs">
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-indigo-500 mt-0.5"></i> 프로 플랜의 모든 기능</li>
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-indigo-500 mt-0.5"></i> <span class="font-semibold text-gray-900">팀 멤버 추가 (최대 5명)</span></li>
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-indigo-500 mt-0.5"></i> 공유 라이브러리</li>
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-indigo-500 mt-0.5"></i> 맞춤형 리포트</li>
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-indigo-500 mt-0.5"></i> API 액세스 (베타)</li>
+                            <li class="flex items-start gap-2.5 text-gray-600"><i class="fa-solid fa-check text-indigo-500 mt-0.5"></i> 우선 고객 지원 (24시간 이내)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 flex items-center justify-between text-xs text-gray-500">
+                <div class="flex items-center gap-2">
+                    <i class="fa-regular fa-circle-check text-indigo-500"></i>
+                    <span>모든 플랜은 언제든지 변경 또는 취소할 수 있습니다. 결제는 토스페이먼츠를 통해 안전하게 처리됩니다.</span>
+                </div>
+                <div class="flex items-center gap-1.5 font-semibold text-gray-400">
+                    <span>Powered by</span>
+                    <span class="text-blue-600 font-extrabold text-sm tracking-tight"><i class="fa-solid fa-money-bill-transfer mr-1"></i>toss payments</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-lg font-bold text-gray-900 mb-6">결제하기</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+                
+                <div class="bg-white border border-gray-200 rounded-2xl p-6 md:col-span-2 space-y-6">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">선택한 플랜</label>
+                        <div class="flex items-center gap-2">
+                            <span class="text-base font-bold text-gray-900">프로 플랜 (연간)</span>
+                            <span class="bg-indigo-50 text-indigo-600 text-[10px] font-bold px-2 py-0.5 rounded-full">20% 할인</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">결제 금액</label>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-2xl font-bold text-gray-900">₩186,000</span>
+                            <span class="text-sm text-gray-300 line-through">₩232,800</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">결제 수단</label>
+                        <div class="border-2 border-indigo-600 rounded-xl p-4 bg-indigo-50/30 flex justify-between items-center cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" checked class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                                <span class="text-sm font-semibold text-gray-900">신용카드 / 체크카드</span>
+                            </div>
+                            <span class="text-blue-600 font-extrabold text-xs tracking-tight"><i class="fa-solid fa-money-bill-transfer mr-1"></i>toss payments</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-indigo-600 text-white hover:bg-indigo-700 font-bold py-3.5 rounded-xl text-sm transition-all shadow-md shadow-indigo-100">₩186,000 결제하기</button>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-2xl p-6 space-y-5">
+                    <h4 class="text-sm font-bold text-gray-900">프로 플랜 혜택</h4>
+                    <div class="space-y-4">
+                        <div class="flex gap-3">
+                            <div class="w-7 h-7 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 text-xs shrink-0"><i class="fa-regular fa-comments"></i></div>
+                            <div>
+                                <h5 class="text-xs font-bold text-gray-900">AI 챗봇 무제한</h5>
+                                <p class="text-[11px] text-gray-400 mt-0.5">제한 없이 AI 챗봇과 대화하고 아이디어를 생성하세요.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="w-7 h-7 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 text-xs shrink-0"><i class="fa-regular fa-lightbulb"></i></div>
+                            <div>
+                                <h5 class="text-xs font-bold text-gray-900">콘텐츠 아이디어 무제한</h5>
+                                <p class="text-[11px] text-gray-400 mt-0.5">데이터 기반 콘텐츠 아이디어와 프롬프트를 추천받으세요.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="w-7 h-7 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 text-xs shrink-0"><i class="fa-solid fa-chart-line"></i></div>
+                            <div>
+                                <h5 class="text-xs font-bold text-gray-900">성장 전략 분석</h5>
+                                <p class="text-[11px] text-gray-400 mt-0.5">데이터 기반 인사이트로 채널 성장을 계획하세요.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="w-7 h-7 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 text-xs shrink-0"><i class="fa-regular fa-bookmark"></i></div>
+                            <div>
+                                <h5 class="text-xs font-bold text-gray-900">북마크 저장 무제한</h5>
+                                <p class="text-[11px] text-gray-400 mt-0.5">마음에 드는 프롬프트를 저장하고 관리하세요.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="w-7 h-7 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 text-xs shrink-0"><i class="fa-solid fa-chart-pie"></i></div>
+                            <div>
+                                <h5 class="text-xs font-bold text-gray-900">고급 데이터 분석</h5>
+                                <p class="text-[11px] text-gray-400 mt-0.5">더 깊이 있는 분석으로 성과를 최적화하세요.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+            <div class="p-6 border-b border-gray-100">
+                <h2 class="text-lg font-bold text-gray-900">결제 이력</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-xs">
+                    <thead>
+                        <tr class="bg-gray-50 border-b border-gray-100 text-gray-400 font-bold">
+                            <th class="p-4 pl-6">결제 일시</th>
+                            <th class="p-4">플랜</th>
+                            <th class="p-4">결제 금액</th>
+                            <th class="p-4">결제 수단</th>
+                            <th class="p-4">결제 상태</th>
+                            <th class="p-4 pr-6 text-right">영수증</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 font-medium text-gray-700">
+                        <tr class="hover:bg-gray-50/50">
+                            <td class="p-4 pl-6 text-gray-400">2024.05.20 14:30:22</td>
+                            <td class="p-4 font-bold text-gray-900">프로 (연간)</td>
+                            <td class="p-4 font-bold text-gray-900">₩186,000</td>
+                            <td class="p-4 text-gray-500">신용카드 (•••• 4242)</td>
+                            <td class="p-4"><span class="bg-emerald-50 text-emerald-600 px-2 py-1 rounded-md text-[11px] font-bold">결제 완료</span></td>
+                            <td class="p-4 pr-6 text-right"><button class="border border-gray-200 hover:bg-gray-50 text-gray-600 px-2.5 py-1 rounded-md font-semibold">영수증 보기</button></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50">
+                            <td class="p-4 pl-6 text-gray-400">2024.04.20 14:30:22</td>
+                            <td class="p-4 font-bold text-gray-900">프로 (월간)</td>
+                            <td class="p-4 font-bold text-gray-900">₩14,900</td>
+                            <td class="p-4 text-gray-500">신용카드 (•••• 4242)</td>
+                            <td class="p-4"><span class="bg-emerald-50 text-emerald-600 px-2 py-1 rounded-md text-[11px] font-bold">결제 완료</span></td>
+                            <td class="p-4 pr-6 text-right"><button class="border border-gray-200 hover:bg-gray-50 text-gray-600 px-2.5 py-1 rounded-md font-semibold">영수증 보기</button></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50">
+                            <td class="p-4 pl-6 text-gray-400">2024.03.20 14:30:22</td>
+                            <td class="p-4 font-bold text-gray-900">프리</td>
+                            <td class="p-4 font-bold text-gray-900">₩0</td>
+                            <td class="p-4 text-gray-400">-</td>
+                            <td class="p-4"><span class="bg-gray-100 text-gray-400 px-2 py-1 rounded-md text-[11px] font-bold">무료</span></td>
+                            <td class="p-4 pr-6 text-right"><span class="text-gray-300 font-semibold px-2.5 py-1">-</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50">
+                            <td class="p-4 pl-6 text-gray-400">2024.02.20 14:30:22</td>
+                            <td class="p-4 font-bold text-gray-900">프로 (월간)</td>
+                            <td class="p-4 font-bold text-gray-900">₩14,900</td>
+                            <td class="p-4 text-gray-500">신용카드 (•••• 4242)</td>
+                            <td class="p-4"><span class="bg-emerald-50 text-emerald-600 px-2 py-1 rounded-md text-[11px] font-bold">결제 완료</span></td>
+                            <td class="p-4 pr-6 text-right"><button class="border border-gray-200 hover:bg-gray-50 text-gray-600 px-2.5 py-1 rounded-md font-semibold">영수증 보기</button></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50/50">
+                            <td class="p-4 pl-6 text-gray-400">2024.01.20 14:30:22</td>
+                            <td class="p-4 font-bold text-gray-900">프로 (월간)</td>
+                            <td class="p-4 font-bold text-gray-900">₩14,900</td>
+                            <td class="p-4 text-gray-500">신용카드 (•••• 4242)</td>
+                            <td class="p-4"><span class="bg-emerald-50 text-emerald-600 px-2 py-1 rounded-md text-[11px] font-bold">결제 완료</span></td>
+                            <td class="p-4 pr-6 text-right"><button class="border border-gray-200 hover:bg-gray-50 text-gray-600 px-2.5 py-1 rounded-md font-semibold">영수증 보기</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="p-4 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400 font-medium bg-gray-50/50">
+                <button class="px-2 py-1 border border-gray-200 rounded-md bg-white hover:bg-gray-50 text-gray-600 cursor-not-allowed" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="flex gap-1.5">
+                    <button class="w-6 h-6 bg-indigo-600 text-white rounded-md font-bold">1</button>
+                </div>
+                <button class="px-2 py-1 border border-gray-200 rounded-md bg-white hover:bg-gray-50 text-gray-600 cursor-not-allowed" disabled><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

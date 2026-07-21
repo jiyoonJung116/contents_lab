@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrowInsta - AI 사용 이력</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/ai_history.css">
+  <link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+
+  <aside>
+    <div>
+      <div class="logo-area">
+        <div class="logo">
+          <i class="fa-solid fa-chart-pie"></i> GrowInsta
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><i class="fa-solid fa-house"></i> 홈</li>
+          <li><i class="fa-solid fa-comment-dots"></i> 챗봇</li>
+          <li><i class="fa-solid fa-lightbulb"></i> 콘텐츠 아이디어</li>
+          <li><i class="fa-solid fa-credit-card"></i> 구독</li>
+          <li><i class="fa-solid fa-users"></i> 커뮤니티</li>
+          <li><i class="fa-solid fa-circle-question"></i> FAQ & 문의</li>
+        </ul>
+      </nav>
+    </div>
+
+    <div>
+      <div class="summary-widget">
+        <h4>오늘의 사용 요약</h4>
+        <div class="summary-row"><span>프롬프트 생성</span><span>12회</span></div>
+        <div class="summary-row"><span>챗봇 대화</span><span>8회</span></div>
+        <div class="summary-row"><span>콘텐츠 저장</span><span>5개</span></div>
+        <div class="summary-row accent"><span>평균 반응률</span><span>8.47%</span></div>
+        <button class="btn-widget-more">자세히 보기 <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="sidebar-bottom-nav">
+        <nav>
+          <ul>
+            <li class="active"><i class="fa-solid fa-gear"></i> 설정</li>
+            <li>
+              <a href="/user/logout">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> 로그아웃
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-wrapper">
+    <div class="header-top-bar">
+      <div class="page-title-area">
+        <h1>AI 사용 이력</h1>
+        <p>AI 기능별 사용 이력을 확인하고 관리하세요.</p>
+      </div>
+      <div class="header-right-meta">
+        <div class="noti-badge">
+          <i class="fa-regular fa-bell"></i>
+          <span class="noti-count">12</span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" class="top-profile-img" alt="User Profile">
+      </div>
+    </div>
+
+    <div class="tab-menu">
+      <div class="tab-item">계정 정보</div>
+      <div class="tab-item">결제 내역</div>
+      <div class="tab-item active">AI 사용 이력</div>
+      <div class="tab-item">저장한 콘텐츠</div>
+      <div class="tab-item">북마크 프롬프트</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header-flex" style="margin-bottom: 18px;">
+        <div class="card-title-main">
+          이번 달 사용 현황 <span class="sub-date">(2024.05.01 ~ 2024.05.20)</span>
+        </div>
+        <select class="select-control" style="padding: 6px 12px; font-size: 12px;">
+          <option>2024.05</option>
+        </select>
+      </div>
+
+      <div class="usage-grid-5">
+        <div class="usage-card-item">
+          <div class="usage-card-top">
+            <div class="fn-icon-box prompt"><i class="fa-solid fa-pen-nib"></i></div>
+            <div>
+              <div class="fn-meta-lbl">프롬프트 생성</div>
+              <div class="fn-meta-qty">127<span class="total-limit"> / 200회</span></div>
+            </div>
+          </div>
+          <div class="usage-card-bottom">
+            <div class="progress-track-mini"><div class="progress-bar-mini" style="width: 63.5%; background: var(--fn-prompt);"></div></div>
+            <div class="progress-container"><span>사용률</span><span>63%</span></div>
+          </div>
+        </div>
+
+        <div class="usage-card-item">
+          <div class="usage-card-top">
+            <div class="fn-icon-box chatbot"><i class="fa-solid fa-comments"></i></div>
+            <div>
+              <div class="fn-meta-lbl">챗봇 대화</div>
+              <div class="fn-meta-qty">89<span class="total-limit"> / 200회</span></div>
+            </div>
+          </div>
+          <div class="usage-card-bottom">
+            <div class="progress-track-mini"><div class="progress-bar-mini" style="width: 44.5%; background: var(--fn-chatbot);"></div></div>
+            <div class="progress-container"><span>사용률</span><span>45%</span></div>
+          </div>
+        </div>
+
+        <div class="usage-card-item">
+          <div class="usage-card-top">
+            <div class="fn-icon-box image"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div>
+              <div class="fn-meta-lbl">이미지 생성</div>
+              <div class="fn-meta-qty">53<span class="total-limit"> / 100회</span></div>
+            </div>
+          </div>
+          <div class="usage-card-bottom">
+            <div class="progress-track-mini"><div class="progress-bar-mini" style="width: 53%; background: var(--fn-image);"></div></div>
+            <div class="progress-container"><span>사용률</span><span>53%</span></div>
+          </div>
+        </div>
+
+        <div class="usage-card-item">
+          <div class="usage-card-top">
+            <div class="fn-icon-box save"><i class="fa-solid fa-bookmark"></i></div>
+            <div>
+              <div class="fn-meta-lbl">콘텐츠 저장</div>
+              <div class="fn-meta-qty">32<span class="total-limit"> / 100개</span></div>
+            </div>
+          </div>
+          <div class="usage-card-bottom">
+            <div class="progress-track-mini"><div class="progress-bar-mini" style="width: 32%; background: var(--fn-save);"></div></div>
+            <div class="progress-container"><span>사용률</span><span>32%</span></div>
+          </div>
+        </div>
+
+        <div class="usage-card-item">
+          <div class="usage-card-top">
+            <div class="fn-icon-box report"><i class="fa-solid fa-chart-line"></i></div>
+            <div>
+              <div class="fn-meta-lbl">AI 분석 리포트</div>
+              <div class="fn-meta-qty">18<span class="total-limit"> / 50회</span></div>
+            </div>
+          </div>
+          <div class="usage-card-bottom">
+            <div class="progress-track-mini"><div class="progress-bar-mini" style="width: 36%; background: var(--fn-report);"></div></div>
+            <div class="progress-container"><span>사용률</span><span>36%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header-flex">
+        <div class="card-title-main">AI 기능별 사용 추이</div>
+        <select class="select-control" style="padding: 6px 12px; font-size: 12px;">
+          <option>일간</option>
+        </select>
+      </div>
+
+      <div class="chart-legend-row">
+        <div class="legend-item"><span class="legend-dot dot-prompt"></span> 프롬프트 생성</div>
+        <div class="legend-item"><span class="legend-dot dot-chatbot"></span> 챗봇 대화</div>
+        <div class="legend-item"><span class="legend-dot dot-image"></span> 이미지 생성</div>
+        <div class="legend-item"><span class="legend-dot dot-save"></span> 콘텐츠 저장</div>
+        <div class="legend-item"><span class="legend-dot dot-report"></span> AI 분석 리포트</div>
+      </div>
+
+      <div class="mock-chart-canvas-area">
+        <svg class="mock-svg-line-container">
+          <path d="M 0,90 Q 200,60 400,75 T 800,50 T 1200,40" fill="none" stroke="var(--fn-prompt)" stroke-width="2"/>
+          <path d="M 0,130 Q 200,110 400,115 T 800,100 T 1200,80" fill="none" stroke="var(--fn-chatbot)" stroke-width="2"/>
+          <path d="M 0,170 Q 200,150 400,150 T 800,140 T 1200,120" fill="none" stroke="var(--fn-image)" stroke-width="2"/>
+          <path d="M 0,200 Q 200,195 400,190 T 800,185 T 1200,175" fill="none" stroke="var(--fn-save)" stroke-width="2"/>
+          <path d="M 0,225 Q 200,220 400,223 T 800,215 T 1200,210" fill="none" stroke="var(--fn-report)" stroke-width="2"/>
+        </svg>
+        <span class="chart-placeholder-text">[Chart Rendering Area - Chart.js / ApexCharts 컴포넌트 탑재 구역]</span>
+      </div>
+      <div class="chart-x-axis-labels">
+        <span>05.01</span><span>05.04</span><span>05.07</span><span>05.10</span><span>05.13</span><span>05.16</span><span>05.19</span><span>05.20</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-toolbar">
+        <div class="card-title-main">상세 사용 내역</div>
+        <div class="toolbar-right-side">
+          <select class="select-control" style="padding: 6px 12px; font-size: 12px;">
+            <option>전체 기능</option>
+          </select>
+          <div class="date-range-display">
+            <input type="text" value="2024.05.01 ~ 2024.05.20" readonly style="font-size: 12px;">
+            <i class="fa-regular fa-calendar"></i>
+          </div>
+          <button class="btn-outline-sm"><i class="fa-solid fa-arrow-up-from-bracket"></i> 내보내기</button>
+        </div>
+      </div>
+
+      <table class="history-data-table">
+        <thead>
+          <tr>
+            <th style="width: 180px;">날짜/시간</th>
+            <th style="width: 160px;">기능</th>
+            <th>내용</th>
+            <th style="width: 100px;">사용량</th>
+            <th style="width: 100px; text-align: center;">상세 정보</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color: var(--text-sub); font-size: 12px;">2024.05.20 14:32:21</td>
+            <td><div class="table-inline-badge" style="color: var(--fn-prompt);"><div class="fn-icon-box prompt" style="width:22px; height:22px; border-radius:4px;"><i class="fa-solid fa-pen-nib"></i></div>프롬프트 생성</div></td>
+            <td>여름 감성 인스타 릴스 아이디어</td>
+            <td>1회</td>
+            <td style="text-align: center;"><button class="btn-table-action-sm">상세 보기</button></td>
+          </tr>
+          <tr>
+            <td style="color: var(--text-sub); font-size: 12px;">2024.05.20 14:30:18</td>
+            <td><div class="table-inline-badge" style="color: var(--fn-chatbot);"><div class="fn-icon-box chatbot" style="width:22px; height:22px; border-radius:4px;"><i class="fa-solid fa-comments"></i></div>챗봇 대화</div></td>
+            <td>여행 계정 성장 전략에 대해 상담</td>
+            <td>12회</td>
+            <td style="text-align: center;"><button class="btn-table-action-sm">상세 보기</button></td>
+          </tr>
+          <tr>
+            <td style="color: var(--text-sub); font-size: 12px;">2024.05.20 14:25:47</td>
+            <td><div class="table-inline-badge" style="color: var(--fn-image);"><div class="fn-icon-box image" style="width:22px; height:22px; border-radius:4px;"><i class="fa-solid fa-wand-magic-sparkles"></i></div>이미지 생성</div></td>
+            <td>바다 배경 감성 사진 생성</td>
+            <td>2회</td>
+            <td style="text-align: center;"><button class="btn-table-action-sm">상세 보기</button></td>
+          </tr>
+          <tr>
+            <td style="color: var(--text-sub); font-size: 12px;">2024.05.20 14:20:33</td>
+            <td><div class="table-inline-badge" style="color: var(--fn-save);"><div class="fn-icon-box save" style="width:22px; height:22px; border-radius:4px;"><i class="fa-solid fa-bookmark"></i></div>콘텐츠 저장</div></td>
+            <td>감성 인스타툰 콘텐츠 저장</td>
+            <td>1개</td>
+            <td style="text-align: center;"><button class="btn-table-action-sm">상세 보기</button></td>
+          </tr>
+          <tr>
+            <td style="color: var(--text-sub); font-size: 12px;">2024.05.20 14:15:12</td>
+            <td><div class="table-inline-badge" style="color: var(--fn-report);"><div class="fn-icon-box report" style="width:22px; height:22px; border-radius:4px;"><i class="fa-solid fa-chart-line"></i></div>AI 분석 리포트</div></td>
+            <td>인스타 계정 성과 분석 리포트</td>
+            <td>1회</td>
+            <td style="text-align: center;"><button class="btn-table-action-sm">상세 보기</button></td>
+          </tr>
+          <tr>
+            <td style="color: var(--text-sub); font-size: 12px;">2024.05.20 13:58:43</td>
+            <td><div class="table-inline-badge" style="color: var(--fn-prompt);"><div class="fn-icon-box prompt" style="width:22px; height:22px; border-radius:4px;"><i class="fa-solid fa-pen-nib"></i></div>프롬프트 생성</div></td>
+            <td>카페 홍보용 릴스 스크립트 작성</td>
+            <td>1회</td>
+            <td style="text-align: center;"><button class="btn-table-action-sm">상세 보기</button></td>
+          </tr>
+          <tr>
+            <td style="color: var(--text-sub); font-size: 12px;">2024.05.20 13:50:02</td>
+            <td><div class="table-inline-badge" style="color: var(--fn-chatbot);"><div class="fn-icon-box chatbot" style="width:22px; height:22px; border-radius:4px;"><i class="fa-solid fa-comments"></i></div>챗봇 대화</div></td>
+            <td>해시태그 추천 부탁해</td>
+            <td>6회</td>
+            <td style="text-align: center;"><button class="btn-table-action-sm">상세 보기</button></td>
+          </tr>
+          <tr>
+            <td style="color: var(--text-sub); font-size: 12px;">2024.05.20 13:41:29</td>
+            <td><div class="table-inline-badge" style="color: var(--fn-image);"><div class="fn-icon-box image" style="width:22px; height:22px; border-radius:4px;"><i class="fa-solid fa-wand-magic-sparkles"></i></div>이미지 생성</div></td>
+            <td>미니멀 인테리어 이미지 생성</td>
+            <td>1회</td>
+            <td style="text-align: center;"><button class="btn-table-action-sm">상세 보기</button></td>
+          </tr>
+          <tr>
+            <td style="color: var(--text-sub); font-size: 12px;">2024.05.20 13:30:11</td>
+            <td><div class="table-inline-badge" style="color: var(--fn-save);"><div class="fn-icon-box save" style="width:22px; height:22px; border-radius:4px;"><i class="fa-solid fa-bookmark"></i></div>콘텐츠 저장</div></td>
+            <td>여행 릴스 아이디어 모음 저장</td>
+            <td>2개</td>
+            <td style="text-align: center;"><button class="btn-table-action-sm">상세 보기</button></td>
+          </tr>
+          <tr>
+            <td style="color: var(--text-sub); font-size: 12px;">2024.05.20 13:12:05</td>
+            <td><div class="table-inline-badge" style="color: var(--fn-report);"><div class="fn-icon-box report" style="width:22px; height:22px; border-radius:4px;"><i class="fa-solid fa-chart-line"></i></div>AI 분석 리포트</div></td>
+            <td>팔로워 증가 요인 분석</td>
+            <td>1회</td>
+            <td style="text-align: center;"><button class="btn-table-action-sm">상세 보기</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination-footer-bar">
+        <div class="pagination-numbers-wrap">
+          <div class="page-box"><i class="fa-solid fa-chevron-left"></i></div>
+          <div class="page-box active">1</div>
+          <div class="page-box">2</div>
+          <div class="page-box">3</div>
+          <div class="page-box">4</div>
+          <div class="page-box">5</div>
+          <div class="page-ellipse">...</div>
+          <div class="page-box">20</div>
+          <div class="page-box"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+        <select class="select-control" style="padding: 6px 12px; font-size: 12px;">
+          <option>10개씩 보기</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card" style="background: #F8F9FD;">
+      <div class="card-title-main" style="margin-bottom: 20px;">AI 사용 가이드</div>
+      
+      <div class="guide-box-layout">
+        <div class="guide-left-list-container">
+          <div class="guide-row-item">
+            <div class="guide-icon-circle"><i class="fa-regular fa-lightbulb"></i></div>
+            <div class="guide-text-block">
+              <h5>사용량은 기능별로 매일 00시에 초기화됩니다.</h5>
+            </div>
+          </div>
+          <div class="guide-row-item">
+            <div class="guide-icon-circle"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+            <div class="guide-text-block">
+              <h5>더 많은 사용량이 필요하신가요?</h5>
+              <p>구독 플랜을 업그레이드하면 더 많은 AI 기능을 이용할 수 있습니다.</p>
+            </div>
+          </div>
+          <div class="guide-row-item">
+            <div class="guide-icon-circle"><i class="fa-regular fa-star"></i></div>
+            <div class="guide-text-block">
+              <h5>AI 사용 팁</h5>
+              <p>프롬프트를 구체적으로 작성할수록 더 정확한 결과를 얻을 수 있습니다.</p>
+            </div>
+          </div>
+          <div class="guide-row-item">
+            <div class="guide-icon-circle"><i class="fa-regular fa-comment-dots"></i></div>
+            <div class="guide-text-block">
+              <h5>문의사항이 있으신가요?</h5>
+              <p>AI 사용 관련 문의는 고객센터를 통해 연락해주세요.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-right-action-stack">
+          <button class="btn-guide-block accent">플랜 업그레이드</button>
+          <button class="btn-guide-block">프롬프트 가이드 보기</button>
+          <button class="btn-guide-block">고객센터 문의하기</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

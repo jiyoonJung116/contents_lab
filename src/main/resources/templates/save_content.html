@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrowInsta - 저장한 콘텐츠</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/save_content.css">
+  <link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+  <aside>
+    <div>
+      <div class="logo-area">
+        <div class="logo"><i class="fa-solid fa-chart-pie"></i> GrowInsta</div>
+      </div>
+      <nav>
+        <ul>
+          <li><i class="fa-solid fa-house"></i> 홈</li>
+          <li><i class="fa-solid fa-comment-dots"></i> 챗봇</li>
+          <li><i class="fa-solid fa-lightbulb"></i> 콘텐츠 아이디어</li>
+          <li><i class="fa-solid fa-credit-card"></i> 구독</li>
+          <li><i class="fa-solid fa-users"></i> 커뮤니티</li>
+          <li><i class="fa-solid fa-circle-question"></i> FAQ & 문의</li>
+        </ul>
+      </nav>
+    </div>
+
+    <div>
+      <div class="summary-widget">
+        <h4>오늘의 사용 요약</h4>
+        <div class="summary-row"><span>프롬프트 생성</span><span>12회</span></div>
+        <div class="summary-row"><span>챗봇 대화</span><span>8회</span></div>
+        <div class="summary-row"><span>콘텐츠 저장</span><span>5개</span></div>
+        <div class="summary-row accent"><span>평균 반응률</span><span>8.47%</span></div>
+        <button class="btn-widget-more">자세히 보기 <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="sidebar-bottom-nav">
+        <nav>
+          <ul>
+            <li class="active"><i class="fa-solid fa-gear"></i> 설정</li>
+            <li>
+              <a href="/user/logout">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> 로그아웃
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-wrapper">
+    <div class="header-top-bar">
+      <div class="page-title-area">
+        <h1>내 정보 관리</h1>
+        <p>계정 정보 및 구독 정보를 관리하세요.</p>
+      </div>
+      <div class="header-right-meta">
+        <div class="noti-badge">
+          <i class="fa-regular fa-bell"></i>
+          <span class="noti-count">12</span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" class="top-profile-img" alt="User Profile">
+      </div>
+    </div>
+
+    <div class="tab-menu">
+      <div class="tab-item">계정 정보</div>
+      <div class="tab-item">결제 내역</div>
+      <div class="tab-item">AI 사용 이력</div>
+      <div class="tab-item active">저장한 콘텐츠</div>
+      <div class="tab-item">북마크 프롬프트</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header-flex" style="margin-bottom: 12px;">
+        <div>
+          <div class="card-title-main">저장한 콘텐츠</div>
+          <p style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">내가 저장한 콘텐츠를 모아볼 수 있어요.</p>
+        </div>
+        <div class="search-filter-right">
+          <select class="select-control"><option>최신 저장순</option></select>
+          <button class="btn-outline-sm"><i class="fa-solid fa-folder-gear"></i> 폴더 관리</button>
+        </div>
+      </div>
+
+      <div class="control-panel-row">
+        <div class="chip-group">
+          <div class="filter-chip active">전체</div>
+          <div class="filter-chip">이미지</div>
+          <div class="filter-chip">텍스트</div>
+          <div class="filter-chip">아이디어</div>
+          <div class="filter-chip">콘텐츠 분석</div>
+          <div class="filter-chip">기타</div>
+        </div>
+        <div class="search-filter-right">
+          <div class="search-input-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="콘텐츠 제목 또는 키워드 검색">
+          </div>
+          <select class="select-control"><option>전체 기간</option></select>
+          <button class="btn-outline-sm" style="padding: 8px 10px;"><i class="fa-regular fa-calendar"></i></button>
+        </div>
+      </div>
+
+      <div class="gallery-grid-4">
+        <div class="gallery-card-item">
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=400" class="thumb-area" alt="Thumbnail">
+          <div class="card-info-body">
+            <span class="type-badge-mini image">이미지</span>
+            <div class="card-info-title">감성적인 홈카페 인테리어</div>
+            <div class="card-info-footer">
+              <span class="card-info-date">2024.05.20 14:32</span>
+              <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card-item">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=400" class="thumb-area" alt="Thumbnail">
+          <div class="card-info-body">
+            <span class="type-badge-mini image">이미지</span>
+            <div class="card-info-title">여름 바다 여행 감성 사진</div>
+            <div class="card-info-footer">
+              <span class="card-info-date">2024.05.20 14:21</span>
+              <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card-item">
+          <div class="thumb-area text-placeholder">
+            "내일 한걸음 더 도약하기 위한 오늘의 루틴! 바쁜 일상 속 작은 여유를 만끽해보세요."
+          </div>
+          <div class="card-info-body">
+            <span class="type-badge-mini text">텍스트</span>
+            <div class="card-info-title">여행 계정 소개 문구</div>
+            <div class="card-info-footer">
+              <span class="card-info-date">2024.05.20 13:58</span>
+              <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card-item">
+          <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=400" class="thumb-area" alt="Thumbnail">
+          <div class="card-info-body">
+            <span class="type-badge-mini idea">아이디어</span>
+            <div class="card-info-title">5월 인스타 콘텐츠 기획안</div>
+            <div class="card-info-footer">
+              <span class="card-info-date">2024.05.20 13:42</span>
+              <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card-item">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=400" class="thumb-area" alt="Thumbnail">
+          <div class="card-info-body">
+            <span class="type-badge-mini report">분석 리포트</span>
+            <div class="card-info-title">계정 성장 분석 리포트 (5월)</div>
+            <div class="card-info-footer">
+              <span class="card-info-date">2024.05.20 13:10</span>
+              <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card-item">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=400" class="thumb-area" alt="Thumbnail">
+          <div class="card-info-body">
+            <span class="type-badge-mini image">이미지</span>
+            <div class="card-info-title">스위스 여행 풍경 사진</div>
+            <div class="card-info-footer">
+              <span class="card-info-date">2024.05.20 12:51</span>
+              <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card-item">
+          <div class="thumb-area text-placeholder">
+            "아침 햇살과 커피 한 잔의 조화. 여러분의 오늘 하루는 어떻게 시작하셨나요?"
+          </div>
+          <div class="card-info-body">
+            <span class="type-badge-mini text">텍스트</span>
+            <div class="card-info-title">아침 루틴 공유 글 캡션</div>
+            <div class="card-info-footer">
+              <span class="card-info-date">2024.05.20 12:33</span>
+              <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-card-item">
+          <div class="thumb-area text-placeholder" style="background: #F1F5F9; align-items: flex-start; text-align: left;">
+            ☑ 콘텐츠 아이디어 회의<br>☑ 촬영 장소 리스트업<br>☑ 편집 & 업로드
+          </div>
+          <div class="card-info-body">
+            <span class="type-badge-mini etc">기타</span>
+            <div class="card-info-title">콘텐츠 제작 체크리스트</div>
+            <div class="card-info-footer">
+              <span class="card-info-date">2024.05.20 11:45</span>
+              <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="center-load-more">
+        <button class="btn-outline-sm" style="color: var(--primary); border-color: var(--primary); padding: 10px 24px;">더 많은 콘텐츠 보기 <i class="fa-solid fa-chevron-down"></i></button>
+      </div>
+
+      <div class="card-title-main" style="margin-bottom: 16px; border-top: 1px solid var(--border); padding-top: 24px;">
+        저장한 콘텐츠 목록 <span style="font-size: 13px; font-weight: 600; color: var(--text-gray); margin-left: 6px;">총 42개</span>
+      </div>
+
+      <div class="list-table-container">
+        <table class="content-list-table">
+          <thead>
+            <tr>
+              <th style="width: 140px;">저장일</th>
+              <th style="width: 110px;">구분</th>
+              <th style="width: 200px;">제목</th>
+              <th>내용 요약</th>
+              <th style="width: 130px;">폴더</th>
+              <th style="width: 150px;">태그</th>
+              <th style="width: 80px; text-align: right;">작업</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-text-muted">2024.05.20 14:32:21</td>
+              <td><span class="table-inline-type image"><i class="fa-regular fa-image"></i> 이미지</span></td>
+              <td>감성적인 홈카페 인테리어</td>
+              <td class="td-text-muted">따뜻한 조명과 식물이 있는 홈카페 인테리어 사진</td>
+              <td>인테리어 참고</td>
+              <td class="tag-text-blue">#홈카페 #인테리어</td>
+              <td>
+                <div class="table-action-icons">
+                  <button class="btn-table-icon"><i class="fa-solid fa-bookmark"></i></button>
+                  <button class="btn-table-icon delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-text-muted">2024.05.20 14:21:18</td>
+              <td><span class="table-inline-type image"><i class="fa-regular fa-image"></i> 이미지</span></td>
+              <td>여름 바다 여행 감성 사진</td>
+              <td class="td-text-muted">야자수와 바다가 보이는 여름 여행 사진</td>
+              <td>여행 사진</td>
+              <td class="tag-text-blue">#여름 #여행</td>
+              <td>
+                <div class="table-action-icons">
+                  <button class="btn-table-icon"><i class="fa-solid fa-bookmark"></i></button>
+                  <button class="btn-table-icon delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-text-muted">2024.05.20 13:58:07</td>
+              <td><span class="table-inline-type text"><i class="fa-regular fa-file-lines"></i> 텍스트</span></td>
+              <td>여행 계정 소개 문구</td>
+              <td class="td-text-muted">여행의 순간을 기록하고 공유하는 계정 소개 문구</td>
+              <td>캡션 모음</td>
+              <td class="tag-text-blue">#소개 #계정</td>
+              <td>
+                <div class="table-action-icons">
+                  <button class="btn-table-icon"><i class="fa-solid fa-bookmark"></i></button>
+                  <button class="btn-table-icon delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-text-muted">2024.05.20 13:42:55</td>
+              <td><span class="table-inline-type idea"><i class="fa-regular fa-lightbulb"></i> 아이디어</span></td>
+              <td>5월 인스타 콘텐츠 기획안</td>
+              <td class="td-text-muted">5월 한 달간 인스타그램 콘텐츠 아이디어 정리</td>
+              <td>콘텐츠 기획</td>
+              <td class="tag-text-blue">#기획 #콘텐츠</td>
+              <td>
+                <div class="table-action-icons">
+                  <button class="btn-table-icon"><i class="fa-solid fa-bookmark"></i></button>
+                  <button class="btn-table-icon delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-text-muted">2024.05.20 13:10:32</td>
+              <td><span class="table-inline-type report"><i class="fa-solid fa-chart-line"></i> 분석 리포트</span></td>
+              <td>계정 성장 분석 리포트 (5월)</td>
+              <td class="td-text-muted">5월 계정 성장 및 인사이트 분석 리포트</td>
+              <td>분석 리포트</td>
+              <td class="tag-text-blue">#분석 #리포트</td>
+              <td>
+                <div class="table-action-icons">
+                  <button class="btn-table-icon"><i class="fa-solid fa-bookmark"></i></button>
+                  <button class="btn-table-icon delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-text-muted">2024.05.20 12:51:44</td>
+              <td><span class="table-inline-type image"><i class="fa-regular fa-image"></i> 이미지</span></td>
+              <td>스위스 여행 풍경 사진</td>
+              <td class="td-text-muted">스위스 알프스 풍경 사진 모음</td>
+              <td>여행 사진</td>
+              <td class="tag-text-blue">#스위스 #풍경</td>
+              <td>
+                <div class="table-action-icons">
+                  <button class="btn-table-icon"><i class="fa-solid fa-bookmark"></i></button>
+                  <button class="btn-table-icon delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-text-muted">2024.05.20 12:33:16</td>
+              <td><span class="table-inline-type text"><i class="fa-regular fa-file-lines"></i> 텍스트</span></td>
+              <td>아침 루틴 공유 글 캡션</td>
+              <td class="td-text-muted">아침 루틴을 공유하는 캡션 문구</td>
+              <td>캡션 모음</td>
+              <td class="tag-text-blue">#루틴 #아침</td>
+              <td>
+                <div class="table-action-icons">
+                  <button class="btn-table-icon"><i class="fa-solid fa-bookmark"></i></button>
+                  <button class="btn-table-icon delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination-footer-bar">
+        <div class="pagination-numbers-wrap">
+          <div class="page-box"><i class="fa-solid fa-chevron-left"></i></div>
+          <div class="page-box active">1</div>
+          <div class="page-box">2</div>
+          <div class="page-box">3</div>
+          <div class="page-box">4</div>
+          <div class="page-box">5</div>
+          <div class="page-ellipse">...</div>
+          <div class="page-box">20</div>
+          <div class="page-box"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+        <select class="select-control" style="padding: 6px 12px; font-size: 12px;"><option>10개씩 보기</option></select>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

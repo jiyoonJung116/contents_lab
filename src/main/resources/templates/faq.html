@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1440">
+    <title>GrowInsta - FAQ & 문의</title>
+    <!-- Pretendard 및 FontAwesome 아이콘 라이브러리 로드 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/faq.css">
+</head>
+<body>
+
+    <!-- 좌측 공통 고정 네비게이션 메뉴바 -->
+    <aside>
+        <div>
+            <div class="logo-area">
+                <div class="logo"><i class="fa-solid fa-square-poll-vertical"></i> GrowInsta</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><i class="fa-solid fa-house"></i> 홈</li>
+                    <li><i class="fa-regular fa-comments"></i> 챗봇</li>
+                    <li><i class="fa-regular fa-lightbulb"></i> 콘텐츠 아이디어</li>
+                    <li><i class="fa-solid fa-chart-line"></i> 구독</li>
+                    <li><i class="fa-solid fa-users"></i> 커뮤니티</li>
+                    <li class="active"><i class="fa-regular fa-circle-question"></i> FAQ & 문의</li>
+                </ul>
+            </nav>
+            
+            <!-- 왼쪽 사이드 윙 하단 도움말 카드 배너 -->
+            <div class="help-banner">
+                <h4>도움이 더 필요하신가요?</h4>
+                <p>원하는 답변을 찾지 못하셨다면 문의하기를 통해 도움을 받을 수 있어요.</p>
+                <button class="btn-help-trigger">문의하기 <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="profile-box">
+                <i class="fa-solid fa-gear" style="color: var(--text-sub); font-size: 14px; margin-right: 4px;"></i>
+                <div class="profile-info"><h5>설정</h5></div>
+            </div>
+            <div class="profile-box">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="User Avatar">
+                <div class="profile-info"><h5>yoon@example.com</h5></div>
+                <i class="fa-solid fa-chevron-up" style="font-size: 10px; margin-left: auto; color: var(--text-gray);"></i>
+            </div>
+        </div>
+    </aside>
+
+    <!-- 우측 메인 대시보드 스페이스 -->
+    <div class="main-container">
+        
+        <!-- 대시보드 상단 헤더 래퍼 -->
+        <div class="header-wrap">
+            <div class="header-title">
+                <h1>FAQ & 문의</h1>
+                <p>자주 묻는 질문을 확인하거나, 문의사항을 남겨주세요.</p>
+            </div>
+            <div class="header-right-icons">
+                <div class="bell-icon-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="bell-badge">3</span>
+                </div>
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" class="header-avatar" alt="Avatar">
+            </div>
+        </div>
+
+        <!-- 내부 섹션 전환 수평 탭 메뉴 -->
+        <div class="main-tabs">
+            <button class="tab-item active">FAQ</button>
+            <button class="tab-item">내 문의 내역</button>
+        </div>
+
+        <!-- FAQ 통합 리스트 검색 영역 카드 -->
+        <div class="content-card">
+            <div class="faq-filter-grid">
+                <div class="search-input-box">
+                    <input type="text" placeholder="궁금한 내용을 검색해보세요.">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div>
+                    <select class="select-box">
+                        <option>전체</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 아코디언 목록 리스트 -->
+            <div class="faq-accordion-list">
+                <!-- 아코디언 아이템 1 (열린 상태) -->
+                <div class="faq-item open">
+                    <div class="faq-trigger">
+                        <span>GrowInsta는 어떤 서비스인가요?</span>
+                        <i class="fa-solid fa-minus faq-icon"></i>
+                    </div>
+                    <div class="faq-content">
+                        GrowInsta는 AI 챗봇을 통해 콘텐츠 아이디어를 생성하고, 성장 전략을 제공하며,<br>
+                        커뮤니티를 통해 크리에이터들과 소통할 수 있는 플랫폼입니다.
+                    </div>
+                </div>
+
+                <!-- 아코디언 아이템 2 -->
+                <div class="faq-item">
+                    <div class="faq-trigger">
+                        <span>무료 체험은 어떻게 이용하나요?</span>
+                        <i class="fa-solid fa-plus faq-icon"></i>
+                    </div>
+                </div>
+
+                <!-- 아코디언 아이템 3 -->
+                <div class="faq-item">
+                    <div class="faq-trigger">
+                        <span>결제는 어떤 방식으로 이루어지나요?</span>
+                        <i class="fa-solid fa-plus faq-icon"></i>
+                    </div>
+                </div>
+
+                <!-- 아코디언 아이템 4 -->
+                <div class="faq-item">
+                    <div class="faq-trigger">
+                        <span>구독 플랜은 언제든지 변경하거나 취소할 수 있나요?</span>
+                        <i class="fa-solid fa-plus faq-icon"></i>
+                    </div>
+                </div>
+
+                <!-- 아코디언 아이템 5 -->
+                <div class="faq-item">
+                    <div class="faq-trigger">
+                        <span>생성한 콘텐츠 아이디어는 어디에서 확인할 수 있나요?</span>
+                        <i class="fa-solid fa-plus faq-icon"></i>
+                    </div>
+                </div>
+
+                <!-- 아코디언 아이템 6 -->
+                <div class="faq-item">
+                    <div class="faq-trigger">
+                        <span>커뮤니티 이용 가이드라인이 있나요?</span>
+                        <i class="fa-solid fa-plus faq-icon"></i>
+                    </div>
+                </div>
+
+                <!-- 아코디언 아이템 7 -->
+                <div class="faq-item">
+                    <div class="faq-trigger">
+                        <span>개인정보는 안전하게 보호되나요?</span>
+                        <i class="fa-solid fa-plus faq-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 하단 섹션: 내 문의 내역 데이터 보드 -->
+        <div class="content-card">
+            <div class="card-header-row">
+                <div class="card-title-group">
+                    <h2>내 문의 내역</h2>
+                    <p>내가 작성한 문의글만 확인할 수 있습니다.</p>
+                </div>
+                <button class="btn-primary-action">문의하기</button>
+            </div>
+
+            <!-- 테이블 내부 상단 필터 태그 필드 -->
+            <div class="filter-btn-group">
+                <button class="btn-filter-tag active">전체</button>
+                <button class="btn-filter-tag">답변 대기</button>
+                <button class="btn-filter-tag">답변 완료</button>
+            </div>
+
+            <!-- 문의 목록 리스트 테이블 -->
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">번호</th>
+                        <th>제목</th>
+                        <th style="width: 140px;">카테고리</th>
+                        <th style="width: 120px;">상태</th>
+                        <th style="width: 180px;">최종 답변</th>
+                        <th style="width: 180px;">작성일</th>
+                        <th style="width: 40px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>128</td>
+                        <td class="td-title">결제 후 구독이 활성화되지 않았어요.</td>
+                        <td>구독/결제</td>
+                        <td><span class="badge-status done">답변 완료</span></td>
+                        <td style="color: var(--text-sub);">2024.05.20 14:30</td>
+                        <td style="color: var(--text-gray);">2024.05.20 13:45</td>
+                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
+                    </tr>
+                    <tr>
+                        <td>127</td>
+                        <td class="td-title">AI 챗봇 응답이 정확하지 않은 것 같아요.</td>
+                        <td>서비스 이용</td>
+                        <td><span class="badge-status wait">답변 대기</span></td>
+                        <td style="color: var(--text-gray);">-</td>
+                        <td style="color: var(--text-gray);">2024.05.19 16:22</td>
+                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
+                    </tr>
+                    <tr>
+                        <td>126</td>
+                        <td class="td-title">비밀번호를 변경하고 싶어요.</td>
+                        <td>계정/보안</td>
+                        <td><span class="badge-status done">답변 완료</span></td>
+                        <td style="color: var(--text-sub);">2024.05.18 11:05</td>
+                        <td style="color: var(--text-gray);">2024.05.18 09:41</td>
+                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
+                    </tr>
+                    <tr>
+                        <td>125</td>
+                        <td class="td-title">환불 요청은 어떻게 하나요?</td>
+                        <td>구독/결제</td>
+                        <td><span class="badge-status done">답변 완료</span></td>
+                        <td style="color: var(--text-sub);">2024.05.17 15:13</td>
+                        <td style="color: var(--text-gray);">2024.05.17 14:02</td>
+                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
+                    </tr>
+                    <tr>
+                        <td>124</td>
+                        <td class="td-title">커뮤니티 게시글이 삭제된 이유가 궁금해요.</td>
+                        <td>커뮤니티</td>
+                        <td><span class="badge-status done">답변 완료</span></td>
+                        <td style="color: var(--text-sub);">2024.05.15 10:33</td>
+                        <td style="color: var(--text-gray);">2024.05.15 09:18</td>
+                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                        <td class="td-title">추천 콘텐츠 아이디어가 보이지 않아요.</td>
+                        <td>콘텐츠 아이디어</td>
+                        <td><span class="badge-status done">답변 완료</span></td>
+                        <td style="color: var(--text-sub);">2024.05.14 17:50</td>
+                        <td style="color: var(--text-gray);">2024.05.14 16:11</td>
+                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
+                    </tr>
+                    <tr>
+                        <td>122</td>
+                        <td class="td-title">프로필 이미지 업로드가 안 돼요.</td>
+                        <td>계정/보안</td>
+                        <td><span class="badge-status done">답변 완료</span></td>
+                        <td style="color: var(--text-sub);">2024.05.13 13:27</td>
+                        <td style="color: var(--text-gray);">2024.05.13 11:08</td>
+                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 하단 제어 바 (페이지네이션 및 드롭다운) -->
+            <div class="table-ctrls-wrap">
+                <div></div>
+                <ul class="pagination-list">
+                    <li class="page-node arrow"><i class="fa-solid fa-chevron-left" style="font-size: 11px;"></i></li>
+                    <li class="page-node active">1</li>
+                    <li class="page-node">2</li>
+                    <li class="page-node arrow"><i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i></li>
+                </ul>
+                <select class="select-box-sm">
+                    <option>10개씩 보기</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

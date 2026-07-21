@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowInsta - 로그인 (화면 비율 100% 최적화)</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="container">
+        <section class="visual-side">
+            <div class="brand-logo">
+                <i class="fa-solid fa-chart-pie"></i> GrowInsta
+            </div>
+
+            <div class="brand-slogan">
+                <h1>AI와 함께<br><span>인스타 성장</span>을<br>더 빠르게.</h1>
+                <p>콘텐츠 아이디어부터 성장 전략까지,<br>모든 것을 한 곳에서!</p>
+            </div>
+
+            <div class="mockup-graphics">
+                <div class="floating-card fc-1">
+                    <div class="label">콘텐츠 아이디어</div>
+                    <div class="graph-line" style="width: 45px;"></div>
+                </div>
+                <div class="floating-card fc-2">
+                    <div class="label">조회수</div>
+                    <div class="value">12.5K</div>
+                    <div class="graph-line" style="background: #22c55e;"></div>
+                </div>
+                <div class="floating-card fc-3">
+                    <div class="label">성장 전략</div>
+                    <div class="graph-line" style="width: 35px; background: #ff5a5f;"></div>
+                </div>
+                
+                <div class="phone-mockup">
+                    <div class="phone-header">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> GrowInsta
+                    </div>
+                    <div class="phone-card">
+                        <div class="tag">오늘의 아이디어</div>
+                        <div class="title">감성적인 여행 릴스 아이디어</div>
+                        <div class="desc">#여행 #감성 #일상</div>
+                        <div class="phone-img-box"></div>
+                    </div>
+                    <div class="phone-card" style="padding: 6px 10px;">
+                        <div class="title" style="font-size: 9px; margin: 0;">추천 프롬프트</div>
+                    </div>
+                </div>
+
+                <div class="deco-object"></div>
+            </div>
+
+            <div class="visual-footer">
+                <p style="font-size: 12px; color: #555; font-weight: 600; text-align: center;">수많은 크리에이터들이<br>GrowInsta와 함께 성장하고 있어요.</p>
+                <div class="creator-profiles">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=60&q=80" alt="User">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=60&q=80" alt="User">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=60&q=80" alt="User">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=60&q=80" alt="User">
+                    <div class="more-count">+10K</div>
+                </div>
+                <div class="rating-box">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="rating-text" style="font-size: 12px;">4.9/5 <span style="color:#888; font-weight: 400;">(사용자 평점)</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="login-side">
+            <div class="login-box">
+                <div class="login-header">
+                    <h2>로그인</h2>
+                    <p>계정에 로그인하고 모든 기능을 이용해보세요.</p>
+                </div>
+                <form id="loginForm" action="/api/user/login" method="POST">
+                    <div class="input-group">
+                        <label for="email">이메일</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="email" name="email" placeholder="이메일 주소를 입력하세요" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">비밀번호</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+                            <i class="fa-regular fa-eye password-toggle" id="togglePassword"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" checked>
+                            <span class="checkmark"></span>
+                            로그인 상태 유지
+                        </label>
+                        <a href="#" class="find-password">비밀번호 찾기</a>
+                    </div>
+
+                    <button type="submit" class="btn-login">로그인</button>
+                </form>
+
+                <div class="divider">또는</div>
+
+                <button class="btn-social">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                    Google로 계속하기
+                </button>
+                <button class="btn-social">
+                    <i class="fa-brands fa-apple" style="color: #000000; font-size: 18px;"></i>
+                    Apple로 계속하기
+                </button>
+
+                <div class="signup-prompt">
+                    계정이 없으신가요? <a href="#">회원가입</a>
+                </div>
+
+                <div class="login-footer">
+                    <div class="footer-links">
+                        <a href="#">이용약관</a>
+                        <span style="color: #cbd5e1; font-size:12px;">|</span>
+                        <a href="#">개인정보처리방침</a>
+                        <span style="color: #cbd5e1; font-size:12px;">|</span>
+                        <a href="#">고객센터</a>
+                    </div>
+                    <div class="copyright">
+                        &copy; 2024 GrowInsta. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function () {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        const loginForm = document.querySelector('#loginForm');
+
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new URLSearchParams(new FormData(loginForm));
+
+            fetch('/api/user/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData
+            })
+            .then(response => response.json()) 
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('로그인에 성공했습니다!');
+                    location.href = '/'; 
+                } else {
+                    alert(data.error || data.message || '로그인 실패');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('서버 통신 중 오류가 발생했습니다.');
+            });
+        });
+    </script>
+</body>
+</html>

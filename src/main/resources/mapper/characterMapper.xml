@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jjy.contents_lab.mapper.CharacterMapper">
+    <resultMap id="MessageMap" type="com.jjy.contents_lab.dto.MessageDto">
+        <id property="id" column="id"/>
+        <result property="roomId" column="room_id"/>
+        <result property="senderType" column="sender_type"/>
+        <result property="senderId" column="sender_id"/>
+        <result property="content" column="content"/>
+        <result property="hasReference" column="has_reference"/>
+        <result property="createDate" column="create_date"/>
+    </resultMap>
+
+    <resultMap id="ChatRoomMap" type="com.jjy.contents_lab.dto.ChatRoomDto">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <result property="aspectRatio" column="aspect_ratio"/>
+        <result property="customWidth" column="custom_width"/>
+        <result property="customHeight" column="custom_height"/>
+        <result property="settingAutoText" column="setting_auto_text"/>
+        <result property="settingStyleConsistent" column="setting_style_consistent"/>
+        <result property="settingAutoMetadata" column="setting_auto_metadata"/>
+        <result property="saveLocationId" column="save_location_id"/>
+        <result property="roomId" column="room_id"/>
+        <result property="roomType" column="room_type"/>
+        <result property="createDate" column="create_date"/>
+        <result property="updateDate" column="update_date"/>
+    </resultMap>
+
+    <select id="selectMessagesByRoomId" parameterType="string" resultType="map">
+        SELECT 
+            m.id, 
+            m.room_id, 
+            m.sender_type, 
+            m.content, 
+            DATE_FORMAT(m.create_date, '%Y-%m-%d %H:%i:%s') AS createDate,
+            g.image_url
+        FROM messages m
+        LEFT JOIN generated_images g
+        ON m.id = g.message_id
+        WHERE room_id = #{roomId}
+        ORDER BY m.create_date ASC
+    </select>
+
+    <select id="getRoomList" parameterType="long" resultMap="ChatRoomMap">
+        SELECT 
+            id,
+            name,
+            description,
+            room_type,
+            room_id
+        FROM chat_rooms
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="getImagesByType" resultType="map">
+        SELECT  
+            id, 
+            image_url, 
+            actual_prompt
+        FROM generated_images
+        WHERE user_id = #{userId} 
+            AND image_type = #{imageType}
+        ORDER BY create_date DESC
+    </select>
+
+    <select id="getSavedScripts" resultType="map">
+        SELECT 
+            m.id, 
+            m.content, 
+            cr.name as room_name
+        FROM messages m
+        JOIN chat_rooms cr ON m.room_id = cr.id
+        WHERE cr.user_id = #{userId} 
+            AND cr.room_type = 'card' 
+            AND m.sender_type = 'BOT'
+        ORDER BY m.create_date DESC
+    </select>
+
+    <select id="selectChatRoomByRoomId" parameterType="string" resultType="map">
+        SELECT 
+            id,
+            name,
+            description,
+            room_id
+        FROM chat_rooms
+        WHERE room_id = #{roomId}
+    </select>
+
+    <select id="selectScriptById" parameterType="string" resultType="map">
+        SELECT 
+            m.id,
+            m.room_id,
+            m.sender_type,
+            m.content, 
+            cr.name
+        FROM messages m
+        LEFT JOIN chat_rooms cr
+            ON m.room_id = cr.id
+        WHERE m.id = #{scriptId}
+    </select>
+
+    <select id="selectCharacterById" parameterType="string" resultType="map">
+        SELECT 
+            id,
+            user_id,   
+            image_url,
+            thumbnail_url,
+            actual_prompt,
+            CONCAT('캐릭터_', id) AS characterName
+        FROM generated_images
+        WHERE id = #{charId} 
+            AND image_type = 'character'
+    </select>
+
+    <insert id="insertMessage" parameterType="map" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO messages 
+        SET room_id = #{roomId},
+            sender_type = #{senderType},
+            content = #{content},
+            has_reference = 'N',
+            create_date = NOW()
+    </insert>    
+
+    <insert id="insertGeneratedImage" parameterType="map">
+        INSERT INTO generated_images 
+        SET message_id = #{messageId},
+            user_id = #{userId},
+            image_url = #{imageUrl},
+            thumbnail_url = #{thumbnailUrl},
+            actual_prompt = #{actualPrompt},
+            is_bookmark = 'N',
+            image_type = #{imageType},
+            create_date = NOW()
+    </insert>
+</mapper>

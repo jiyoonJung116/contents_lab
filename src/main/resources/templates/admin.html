@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1440">
+    <title>GrowInsta - 관리자 대시보드</title>
+    <!-- Pretendard 및 FontAwesome 로드 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+    <!-- 사이드바 고정 영역 -->
+    <aside>
+        <div>
+            <div class="logo-area">
+                <div class="logo">
+                    <i class="fa-solid fa-square-poll-vertical"></i> GrowInsta
+                    <span class="logo-admin-badge">ADMIN</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><i class="fa-solid fa-chart-pie"></i> 대시보드</li>
+                    <li><i class="fa-regular fa-calendar-check"></i> 오늘의 요약</li>
+                    <li><i class="fa-regular fa-lightbulb"></i> 콘텐츠 아이디어 관리</li>
+                    <li><i class="fa-solid fa-users"></i> 회원 관리</li>
+                    <li><i class="fa-regular fa-credit-card"></i> 결제 관리</li>
+                    <li><i class="fa-solid fa-headset"></i> AI 사용 이력</li>
+                    <li><i class="fa-regular fa-file-alt"></i> 결과물 관리</li>
+                    <li><i class="fa-regular fa-bell"></i> 공지 관리</li>
+                    <li><i class="fa-solid fa-gear"></i> 시스템 설정</li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="profile-box">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Admin">
+                <div class="profile-info">
+                    <p>관리자 계정</p>
+                    <span>admin@growinsta.com</span>
+                </div>
+            </div>
+            <button class="btn-logout">로그아웃</button>
+        </div>
+    </aside>
+
+    <!-- 메인 대시보드 스크롤 뷰 개방 -->
+    <div class="main-wrapper">
+        
+        <!-- 대시보드 공통 타이틀 헤더 바 -->
+        <div class="dashboard-header">
+            <div class="header-title">
+                <h1>관리자 대시보드</h1>
+                <p>GrowInsta 전체 서비스 운영 현황을 한눈에 확인하세요.</p>
+            </div>
+            <div class="date-selector">
+                <i class="fa-regular fa-calendar"></i> 2024.05.20 (월) <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i>
+            </div>
+        </div>
+
+        <!-- 왼쪽 메인 주요 핵심 테이블 및 통계 집계 데이터 구역 -->
+        <div class="content-left">
+            
+            <!-- 상단 5단 레이아웃 요약 대시보드 피드 -->
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="summary-card-header">
+                        <div class="icon-wrapper"><i class="fa-solid fa-pen-nib"></i></div>
+                        <span class="summary-label">프롬프트 생성 회수</span>
+                    </div>
+                    <div class="summary-value">12 회</div>
+                    <div class="summary-trend trend-up">전일 대비 ▲ 20%</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-card-header">
+                        <div class="icon-wrapper"><i class="fa-regular fa-comments"></i></div>
+                        <span class="summary-label">챗봇 대화 회수</span>
+                    </div>
+                    <div class="summary-value">8 회</div>
+                    <div class="summary-trend trend-up">전일 대비 ▲ 14.3%</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-card-header">
+                        <div class="icon-wrapper"><i class="fa-regular fa-bookmark"></i></div>
+                        <span class="summary-label">콘텐츠 저장 개수</span>
+                    </div>
+                    <div class="summary-value">5 개</div>
+                    <div class="summary-trend trend-down">전일 대비 ▼ 16.7%</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-card-header">
+                        <div class="icon-wrapper"><i class="fa-solid fa-user-plus"></i></div>
+                        <span class="summary-label">신규 회원 수</span>
+                    </div>
+                    <div class="summary-value">7 명</div>
+                    <div class="summary-trend trend-up">전일 대비 ▲ 40%</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-card-header">
+                        <div class="icon-wrapper"><i class="fa-solid fa-won-sign"></i></div>
+                        <span class="summary-label">결제 금액</span>
+                    </div>
+                    <div class="summary-value">₩186,000</div>
+                    <div class="summary-trend trend-up">전일 대비 ▲ 12.5%</div>
+                </div>
+            </div>
+
+            <!-- 섹션 1: 콘텐츠 아이디어 관리 데이터 테이블 피드 -->
+            <div class="card">
+                <div class="card-title">콘텐츠 아이디어 관리 <i class="fa-solid fa-circle-info info-icon"></i></div>
+                <div class="filter-bar">
+                    <div class="tabs">
+                        <div class="tab active">전체</div>
+                        <div class="tab">성장 전략</div>
+                        <div class="tab">추천</div>
+                        <div class="tab">채널 규모별 추천 프롬프트</div>
+                    </div>
+                    <button class="btn-action-purple"><i class="fa-solid fa-plus"></i> 새 콘텐츠 등록</button>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>카테고리</th>
+                                <th>제목</th>
+                                <th>사용 수</th>
+                                <th>생성일</th>
+                                <th>상태</th>
+                                <th>관리</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1024</td>
+                                <td>성장 전략</td>
+                                <td>초보 크리에이터를 위한 공감형 콘텐츠 아이디어</td>
+                                <td>1,248</td>
+                                <td>2024.05.18</td>
+                                <td><span class="badge-status active">노출</span></td>
+                                <td>
+                                    <div class="icon-btn-group">
+                                        <i class="fa-regular fa-pen-to-square icon-btn"></i>
+                                        <span class="toggle-switch"></span>
+                                        <i class="fa-regular fa-trash-can icon-btn"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1023</td>
+                                <td>추천</td>
+                                <td>팔로워 참여를 높이는 질문형 콘텐츠</td>
+                                <td>2,317</td>
+                                <td>2024.05.17</td>
+                                <td><span class="badge-status active">노출</span></td>
+                                <td>
+                                    <div class="icon-btn-group">
+                                        <i class="fa-regular fa-pen-to-square icon-btn"></i>
+                                        <span class="toggle-switch"></span>
+                                        <i class="fa-regular fa-trash-can icon-btn"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1022</td>
+                                <td>추천</td>
+                                <td>바이럴을 노리는 트렌드 활용 콘텐츠</td>
+                                <td>1,892</td>
+                                <td>2024.05.16</td>
+                                <td><span class="badge-status active">노출</span></td>
+                                <td>
+                                    <div class="icon-btn-group">
+                                        <i class="fa-regular fa-pen-to-square icon-btn"></i>
+                                        <span class="toggle-switch"></span>
+                                        <i class="fa-regular fa-trash-can icon-btn"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1021</td>
+                                <td>채널 규모별 추천</td>
+                                <td>1만 ~ 10만명 전문성 강조 콘텐츠 전략</td>
+                                <td>947</td>
+                                <td>2024.05.15</td>
+                                <td><span class="badge-status active">노출</span></td>
+                                <td>
+                                    <div class="icon-btn-group">
+                                        <i class="fa-regular fa-pen-to-square icon-btn"></i>
+                                        <span class="toggle-switch"></span>
+                                        <i class="fa-regular fa-trash-can icon-btn"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1020</td>
+                                <td>채널 규모별 추천</td>
+                                <td>10만명 이상 스토리텔링으로 브랜드 가치 높이기</td>
+                                <td>756</td>
+                                <td>2024.05.14</td>
+                                <td><span class="badge-status inactive">비노출</span></td>
+                                <td>
+                                    <div class="icon-btn-group">
+                                        <i class="fa-regular fa-pen-to-square icon-btn"></i>
+                                        <span class="toggle-switch off"></span>
+                                        <i class="fa-regular fa-trash-can icon-btn"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination-area">
+                    <div></div>
+                    <div class="pagination-pages">
+                        <button class="page-btn"><i class="fa-solid fa-chevron-left" style="font-size: 10px;"></i></button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn"><i class="fa-solid fa-chevron-right" style="font-size: 10px;"></i></button>
+                    </div>
+                    <select class="select-sm">
+                        <option>10개씩 보기</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 섹션 2: 회원 별 활동 현황 분석 테이블 구역 -->
+            <div class="card">
+                <div class="card-title">회원 별 활동 현황 <i class="fa-solid fa-circle-info info-icon"></i></div>
+                <div class="member-filter-grid">
+                    <input type="text" class="input-search" placeholder="회원명, 이메일 검색">
+                    <select class="select-md"><option>전체 구독 플랜</option></select>
+                    <button class="btn-outline-md"><i class="fa-regular fa-calendar"></i> 2024.05.13 ~ 2024.05.20</button>
+                    <button class="btn-outline-md"><i class="fa-solid fa-arrow-down-heading-line"></i> 엑셀 다운로드 <i class="fa-solid fa-download" style="font-size: 11px;"></i></button>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>회원</th>
+                                <th>이메일</th>
+                                <th>구독 플랜</th>
+                                <th>결제 상태</th>
+                                <th>가입일</th>
+                                <th>프롬프트 생성</th>
+                                <th>챗봇 대화</th>
+                                <th>콘텐츠 저장</th>
+                                <th>상세</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>yoon님</b></td>
+                                <td>yoon@example.com</td>
+                                <td><span class="badge-plan pro">프로</span></td>
+                                <td><span class="badge-pay">결제 완료</span></td>
+                                <td>2024.04.25</td>
+                                <td>52회</td>
+                                <td>31회</td>
+                                <td>18개</td>
+                                <td><button class="btn-text-link">상세 보기</button></td>
+                            </tr>
+                            <tr>
+                                <td><b>haru_creator</b></td>
+                                <td>haru@example.com</td>
+                                <td><span class="badge-plan pro">프로</span></td>
+                                <td><span class="badge-pay">결제 완료</span></td>
+                                <td>2024.04.20</td>
+                                <td>34회</td>
+                                <td>22회</td>
+                                <td>11개</td>
+                                <td><button class="btn-text-link">상세 보기</button></td>
+                            </tr>
+                            <tr>
+                                <td><b>design_haru</b></td>
+                                <td>design@example.com</td>
+                                <td><span class="badge-plan biz">비즈니스</span></td>
+                                <td><span class="badge-pay">결제 완료</span></td>
+                                <td>2024.04.18</td>
+                                <td>81회</td>
+                                <td>45회</td>
+                                <td>27개</td>
+                                <td><button class="btn-text-link">상세 보기</button></td>
+                            </tr>
+                            <tr>
+                                <td><b>soyun_</b></td>
+                                <td>soyun@example.com</td>
+                                <td><span class="badge-plan">프리</span></td>
+                                <td><span class="badge-free">무료</span></td>
+                                <td>2024.05.10</td>
+                                <td>8회</td>
+                                <td>5회</td>
+                                <td>2개</td>
+                                <td><button class="btn-text-link">상세 보기</button></td>
+                            </tr>
+                            <tr>
+                                <td><b>travel_u</b></td>
+                                <td>travel_u@example.com</td>
+                                <td><span class="badge-plan pro">프로</span></td>
+                                <td><span class="badge-pay">결제 완료</span></td>
+                                <td>2024.04.15</td>
+                                <td>27회</td>
+                                <td>17회</td>
+                                <td>9개</td>
+                                <td><button class="btn-text-link">상세 보기</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 섹션 3: 최근 AI 사용 및 결과물 세부 로그 스트림 -->
+            <div class="card">
+                <div class="filter-bar" style="margin-bottom: 20px;">
+                    <div class="card-title" style="margin-bottom: 0;">최근 AI 사용 및 결과물 <i class="fa-solid fa-circle-info info-icon"></i></div>
+                    <a href="#" class="link-more" style="font-size:13px;">전체 보기 ></a>
+                </div>
+                <div class="tabs" style="margin-bottom: 16px;">
+                    <div class="tab active">전체</div>
+                    <div class="tab">프롬프트 생성</div>
+                    <div class="tab">챗봇 대화</div>
+                    <div class="tab">결과물 생성</div>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>시간</th>
+                                <th>회원</th>
+                                <th>유형</th>
+                                <th>입력/제목</th>
+                                <th>결과물 미리보기</th>
+                                <th>상세</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024.05.20 14:30:22</td>
+                                <td><div class="user-meta"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=50" alt=""> yoon님</div></td>
+                                <td>이미지 생성</td>
+                                <td>여름 바다 여행 컨셉 인스타 필수 썸네일</td>
+                                <td><div style="background: #EAEEC5; padding:2px; border-radius:4px; display:inline-block;"><span style="font-size:16px;">🏝️</span></div></td>
+                                <td><button class="btn-text-link">상세 보기</button></td>
+                            </tr>
+                            <tr>
+                                <td>2024.05.20 14:28:11</td>
+                                <td><div class="user-meta"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=50" alt=""> haru_creator</div></td>
+                                <td>프롬프트 생성</td>
+                                <td>팔로워 참여를 높이는 질문형 콘텐츠 아이디어</td>
+                                <td>-</td>
+                                <td><button class="btn-text-link">상세 보기</button></td>
+                            </tr>
+                            <tr>
+                                <td>2024.05.20 14:27:09</td>
+                                <td><div class="user-meta"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=50" alt=""> design_haru</div></td>
+                                <td>챗봇 대화</td>
+                                <td>릴스 알고리즘에 대한 전략 알려줘</td>
+                                <td>-</td>
+                                <td><button class="btn-text-link">상세 보기</button></td>
+                            </tr>
+                            <tr>
+                                <td>2024.05.20 14:25:47</td>
+                                <td><div class="user-meta"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=50" alt=""> soyun_</div></td>
+                                <td>이미지 생성</td>
+                                <td>미니멀 스타일 책상 인테리어</td>
+                                <td><div style="background: #EAEEC5; padding:2px; border-radius:4px; display:inline-block;"><span style="font-size:16px;">🪑</span></div></td>
+                                <td><button class="btn-text-link">상세 보기</button></td>
+                            </tr>
+                            <tr>
+                                <td>2024.05.20 14:24:31</td>
+                                <td><div class="user-meta"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=50" alt=""> travel_u</div></td>
+                                <td>이미지 생성</td>
+                                <td>감성 카페 창가 사진 분위기 보정</td>
+                                <td><div style="background: #EAEEC5; padding:2px; border-radius:4px; display:inline-block;"><span style="font-size:16px;">☕</span></div></td>
+                                <td><button class="btn-text-link">상세 보기</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 오른쪽 서브 가이드 사이드 카드 레이아웃 분할 영역 -->
+        <div class="content-right">
+            
+            <!-- 카드 1: 실시간 가입 현황 -->
+            <div class="card">
+                <div class="right-header">
+                    <h4>실시간 가입 현황</h4>
+                    <a href="#" class="link-more">더보기 ></a>
+                </div>
+                <ul class="realtime-list">
+                    <li class="realtime-item">
+                        <div class="realtime-user">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=50" alt=""> mini_j_
+                        </div>
+                        <span class="realtime-time">1분 전</span>
+                    </li>
+                    <li class="realtime-item">
+                        <div class="realtime-user">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=50" alt=""> you_lee
+                        </div>
+                        <span class="realtime-time">3분 전</span>
+                    </li>
+                    <li class="realtime-item">
+                        <div class="realtime-user">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=50" alt=""> creator_jin
+                        </div>
+                        <span class="realtime-time">5분 전</span>
+                    </li>
+                    <li class="realtime-item">
+                        <div class="realtime-user">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=50" alt=""> seo_diary
+                        </div>
+                        <span class="realtime-time">7분 전</span>
+                    </li>
+                    <li class="realtime-item">
+                        <div class="realtime-user">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=50" alt=""> happy_day
+                        </div>
+                        <span class="realtime-time">9분 전</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 카드 2: 결제 현황 그래프 집계 카드 -->
+            <div class="card">
+                <div class="right-header">
+                    <h4>결제 현황 (오늘)</h4>
+                    <a href="#" class="link-more">더보기 ></a>
+                </div>
+                <div class="payment-summary">
+                    <div class="payment-row"><span>총 결제 건수</span><b>23건</b></div>
+                    <div class="payment-row"><span>총 결제 금액</span><b style="font-size:16px; color:#1D2939;">₩523,000</b></div>
+                </div>
+                
+                <!-- 가상 트렌드 라인 차트 영역 시각화 디자인 고정 -->
+                <div class="mini-chart">
+                    <svg class="chart-svg" viewBox="0 0 300 100">
+                        <path d="M 0 80 Q 50 70, 100 65 T 200 40 T 300 15" fill="none" stroke="#6347FF" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="300" cy="15" r="4" fill="#6347FF"/>
+                    </svg>
+                </div>
+                <div class="chart-labels">
+                    <span>00시</span>
+                    <span>08시</span>
+                    <span>16시</span>
+                    <span>24시</span>
+                </div>
+            </div>
+
+            <!-- 카드 3: 시스템 상시 모니터링 라이브 스탯 현황 -->
+            <div class="card">
+                <div class="right-header" style="margin-bottom: 12px;">
+                    <h4>시스템 상태</h4>
+                </div>
+                <table class="status-table">
+                    <tbody>
+                        <tr><td>서버 상태</td><td>정상</td></tr>
+                        <tr><td>DB 상태</td><td>정상</td></tr>
+                        <tr><td>AI API 상태</td><td>정상</td></tr>
+                        <tr><td>스토리지 상태</td><td>정상</td></tr>
+                    </tbody>
+                </table>
+                <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-gray); margin-top: 14px;">
+                    <span>마지막 점검 시간</span>
+                    <span>2024.05.20 09:00</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

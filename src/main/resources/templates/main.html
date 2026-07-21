@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1440">
+    <title>GrowInsta - 홈 대시보드</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <aside>
+        <div>
+            <div class="logo-area">
+                <div class="logo"><i class="fa-solid fa-square-poll-vertical"></i> GrowInsta</div>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><i class="fa-solid fa-house"></i> 홈</li>
+                    <li><i class="fa-regular fa-comments"></i> 챗봇</li>
+                    <li><i class="fa-regular fa-lightbulb"></i> 콘텐츠 아이디어</li>
+                    <li><i class="fa-regular fa-credit-card"></i> 구독</li>
+                    <li><i class="fa-solid fa-users"></i> 커뮤니티</li>
+                    <li><i class="fa-regular fa-circle-question"></i> FAQ & 문의</li>
+                </ul>
+            </nav>
+        </div>
+
+        <div>
+            <!-- 오늘의 사용 요약 미니 보드 -->
+            <div class="summary-widget">
+                <h4>오늘의 사용 요약</h4>
+                <div class="summary-row"><span>프롬프트 생성</span><span>12회</span></div>
+                <div class="summary-row"><span>챗봇 대화</span><span>8회</span></div>
+                <div class="summary-row"><span>콘텐츠 저장</span><span>5회</span></div>
+                <div class="summary-row total"><span>평균 반응률</span><span>8.47%</span></div>
+                <button class="btn-widget-more">자세히 보기 <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+            
+            <div class="sidebar-bottom-nav">
+                <div class="bottom-nav-item"><i class="fa-solid fa-gear"></i> 설정</div>
+                <div class="bottom-nav-item" style="color: #F43F5E;"><i class="fa-solid fa-arrow-right-from-bracket"></i> 로그아웃</div>
+            </div>
+        </div>
+    </aside>
+    <div class="main-wrapper">
+        <div class="header-top-bar">
+            <div class="noti-badge">
+                <i class="fa-regular fa-bell"></i>
+                <div class="noti-count">12</div>
+            </div>
+            <a th:if="${isLogin}" href="/user/profile" style="text-decoration: none; display: inline-block;">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" class="top-profile-img" alt="프로필">
+            </a>
+            <a th:unless="${isLogin}" href="/user/login" class="btn-login-top" style="text-decoration: none; background: #633bf3; color: white; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 600;">
+                로그인
+            </a>
+        </div>
+        <div class="welcome-header">
+            <div class="welcome-title">
+                <h1 th:if="${isLogin}">안녕하세요, <span th:text="${userName}"></span>님! 👋</h1>
+            </div>
+            <button class="btn-refresh"><i class="fa-solid fa-rotate"></i> 새로고침</button>
+        </div>
+        <div class="card">
+            <div class="chatbot-container">
+                <div class="chatbot-header-line">
+                    <div class="card-title" style="color: var(--primary);"><i class="fa-solid fa-wand-magic-sparkles"></i> AI 챗봇 <p>나만의 AI 파트너와 함께 콘텐츠 아이디어를 구체화해보세요.</p></div>
+                    <select class="model-selector">
+                        <option>GPT-4o</option>
+                    </select>
+                </div>
+                
+                <!-- 입력 창 구조체 -->
+                <div class="chat-input-box">
+                    <textarea class="chat-textarea" placeholder="어떤 콘텐츠를 만들고 싶으신가요?"></textarea>
+                    <div class="chat-input-actions">
+                        <div class="action-left-btns">
+                            <button class="btn-input-opt"><i class="fa-regular fa-image"></i> 이미지 업로드</button>
+                            <button class="btn-input-opt"><i class="fa-solid fa-link"></i> 참조 추가</button>
+                        </div>
+                        <button class="btn-send-chat"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+
+                <!-- 칩셋 가이드 라인 -->
+                <div class="prompt-chips">
+                    <div class="prompt-chip"><i class="fa-regular fa-file-lines"></i> 감성적인 인스타툰 아이디어 줘</div>
+                    <div class="prompt-chip"><i class="fa-solid fa-clapperboard"></i> 릴스용 꿀팁 주제 추천해줘</div>
+                    <div class="prompt-chip"><i class="fa-solid fa-arrow-trend-up"></i> 여행 계정 성장 전략 알려줘</div>
+                    <div class="prompt-chip"><i class="fa-regular fa-bookmark"></i> 저장 많이 되는 문구는?</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 중간 분할 2단 리스트 카드 레이아웃 -->
+        <div class="split-grid-2">
+            <!-- 유저 맞춤형 추천 -->
+            <div class="card">
+                <div class="card-header-flex">
+                    <div class="card-title">유저 맞춤형 추천 <i class="fa-regular fa-circle-question info-icon"></i></div>
+                    <a href="#" class="btn-more-link">더보기 <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i></a>
+                </div>
+                <div class="tab-menu">
+                    <div class="tab-item active">전체</div>
+                    <div class="tab-item">인스타툰</div>
+                    <div class="tab-item">릴스/쇼츠</div>
+                    <div class="tab-item">썸네일</div>
+                    <div class="tab-item">캐러셀</div>
+                    <div class="tab-item">기타</div>
+                </div>
+                <div class="recommend-list">
+                    <div class="recommend-item">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=150" class="rec-thumb" alt="">
+                        <div class="rec-info-area">
+                            <div>
+                                <span class="rec-badge toon">인스타툰</span>
+                                <h4 class="rec-title">퇴근 후 혼자만의 시간을 보내는 감성 인스타툰</h4>
+                                <div class="rec-tags"><span>#감성</span><span>#일상</span><span>#공감</span></div>
+                            </div>
+                            <div class="rec-metrics">
+                                <span><i class="fa-regular fa-heart"></i> 2.4K</span>
+                                <span><i class="fa-regular fa-comment"></i> 1.8K</span>
+                                <span><i class="fa-regular fa-paper-plane"></i> 3.2K</span>
+                            </div>
+                        </div>
+                        <button class="btn-bookmark"><i class="fa-regular fa-bookmark"></i></button>
+                    </div>
+                    <div class="recommend-item">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=150" class="rec-thumb" alt="">
+                        <div class="rec-info-area">
+                            <div>
+                                <span class="rec-badge travel">여행</span>
+                                <h4 class="rec-title">여름 바다 여행 힐링 시나리오</h4>
+                                <div class="rec-tags"><span>#여행</span><span>#여름</span><span>#힐링</span></div>
+                            </div>
+                            <div class="rec-metrics">
+                                <span><i class="fa-regular fa-heart"></i> 3.1K</span>
+                                <span><i class="fa-regular fa-comment"></i> 2.1K</span>
+                                <span><i class="fa-regular fa-paper-plane"></i> 4.0K</span>
+                            </div>
+                        </div>
+                        <button class="btn-bookmark"><i class="fa-regular fa-bookmark"></i></button>
+                    </div>
+                    <div class="recommend-item">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=150" class="rec-thumb" alt="">
+                        <div class="rec-info-area">
+                            <div>
+                                <span class="rec-badge thumb">썸네일</span>
+                                <h4 class="rec-title">"5가지 습관" 썸네일 문구 아이디어</h4>
+                                <div class="rec-tags"><span>#자기계발</span><span>#습관</span><span>#썸네일</span></div>
+                            </div>
+                            <div class="rec-metrics">
+                                <span><i class="fa-regular fa-heart"></i> 1.8K</span>
+                                <span><i class="fa-regular fa-comment"></i> 1.2K</span>
+                                <span><i class="fa-regular fa-paper-plane"></i> 2.6K</span>
+                            </div>
+                        </div>
+                        <button class="btn-bookmark"><i class="fa-regular fa-bookmark"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 추가 추천 (새로고침) -->
+            <div class="card">
+                <div class="card-header-flex">
+                    <div class="card-title">추가 추천 (새로고침) <i class="fa-regular fa-circle-question info-icon"></i></div>
+                    <button class="btn-refresh" style="padding: 6px 10px; border-radius: 8px;"><i class="fa-solid fa-arrows-rotate"></i></button>
+                </div>
+                <div class="addon-list">
+                    <div class="addon-item">
+                        <div class="addon-icon-box" style="background: #FFF0F3; color: #FF6B8B;"><i class="fa-solid fa-heart"></i></div>
+                        <div class="addon-info">
+                            <h4 class="addon-title">요즘 MZ들이 공감하는 연애 심리</h4>
+                            <span class="addon-cate toon">인스타툰</span>
+                        </div>
+                        <div class="addon-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                    <div class="addon-item">
+                        <div class="addon-icon-box" style="background: #E6FBF3; color: #059669;"><i class="fa-solid fa-video"></i></div>
+                        <div class="addon-info">
+                            <h4 class="addon-title">하루 루틴 공유 릴스 아이디어</h4>
+                            <span class="addon-cate reels">릴스/쇼츠</span>
+                        </div>
+                        <div class="addon-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                    <div class="addon-item">
+                        <div class="addon-icon-box" style="background: #EFF6FF; color: #1D4ED8;"><i class="fa-solid fa-camera"></i></div>
+                        <div class="addon-info">
+                            <h4 class="addon-title">카페 감성 사진 잘 찍는 법</h4>
+                            <span class="addon-cate car">캐러셀</span>
+                        </div>
+                        <div class="addon-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                    <div class="addon-item">
+                        <div class="addon-icon-box" style="background: #FFF7ED; color: #EA580C;"><i class="fa-solid fa-lightbulb"></i></div>
+                        <div class="addon-info">
+                            <h4 class="addon-title">돈 아끼는 생활 꿀팁 7가지</h4>
+                            <span class="addon-cate tip">정보/팁</span>
+                        </div>
+                        <div class="addon-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                    <div class="addon-item">
+                        <div class="addon-icon-box" style="background: #F5F3FF; color: #7C3AED;"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+                        <div class="addon-info">
+                            <h4 class="addon-title">비 오는 날 감성 문구 모음</h4>
+                            <span class="addon-cate etc">기타</span>
+                        </div>
+                        <div class="addon-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3단 영역: 해시태그 트렌드 및 핵심 성과 결합 레이어 -->
+        <div class="split-grid-trend">
+            <!-- 해시태그 트렌드 트래킹 카드 -->
+            <div class="card">
+                <div class="card-header-flex">
+                    <div class="card-title">해시태그 트렌드 트래킹 <i class="fa-regular fa-circle-question info-icon"></i></div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <select class="select-xs"><option>7일</option></select>
+                        <a href="#" class="btn-more-link">더보기 <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i></a>
+                    </div>
+                </div>
+                
+                <div class="trend-inner-flex">
+                    <!-- 레프트 탑5 순위표 -->
+                    <div>
+                        <h5 style="font-size: 11px; font-weight: 700; color: var(--text-sub); margin-bottom: 10px;">실시간 인기 해시태그 TOP 5</h5>
+                        <table class="tag-rank-table">
+                            <tbody>
+                                <tr><td class="rank-num">1</td><td class="rank-name">#일상기록</td><td class="rank-val">128.4K</td><td class="rank-trend up"><i class="fa-solid fa-caret-up"></i> 12.5%</td></tr>
+                                <tr><td class="rank-num">2</td><td class="rank-name">#감성사진</td><td class="rank-val">96.2K</td><td class="rank-trend up"><i class="fa-solid fa-caret-up"></i> 8.7%</td></tr>
+                                <tr><td class="rank-num">3</td><td class="rank-name">#오늘의집</td><td class="rank-val">85.7K</td><td class="rank-trend up"><i class="fa-solid fa-caret-up"></i> 7.3%</td></tr>
+                                <tr><td class="rank-num">4</td><td class="rank-name">#여행스타그램</td><td class="rank-val">72.1K</td><td class="rank-trend up"><i class="fa-solid fa-caret-up"></i> 4.9%</td></tr>
+                                <tr><td class="rank-num">5</td><td class="rank-name">#자기계발</td><td class="rank-val">61.3K</td><td class="rank-trend down"><i class="fa-solid fa-caret-down"></i> 1.2%</td></tr>
+                            </tbody>
+                        </table>
+                        <p style="font-size: 10px; color: var(--text-gray); margin-top: 14px;">업데이트 2024.05.20 14:30</p>
+                    </div>
+                    
+                    <!-- 라이트 차트 드로잉 영역 -->
+                    <div style="position: relative; height: 160px;">
+                        <h5 style="font-size: 11px; font-weight: 700; color: var(--text-sub); margin-bottom: 10px;">인기 해시태그 추이</h5>
+                        <canvas id="trendLineChart" style="max-height: 140px;"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 핵심 성과 지표 카드 -->
+            <div class="card">
+                <div class="card-header-flex" style="margin-bottom: 14px;">
+                    <div class="card-title">핵심 성과 지표 <p>(Instagram 데이터 기반)</p> <i class="fa-regular fa-circle-question info-icon"></i></div>
+                </div>
+                <p style="font-size: 10px; color: var(--text-gray); text-align: right; margin-top: -12px; margin-bottom: 12px;">업데이트 2024.05.20 14:30</p>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card-item view">
+                        <div class="metric-icon-sphere"><i class="fa-regular fa-eye"></i></div>
+                        <div>
+                            <span class="metric-data-label">조회수</span>
+                            <div class="metric-data-flex"><span class="metric-data-num">1.24M</span><span class="metric-data-trend up"><i class="fa-solid fa-caret-up"></i> 18.6%</span></div>
+                        </div>
+                    </div>
+                    <div class="metric-card-item like">
+                        <div class="metric-icon-sphere"><i class="fa-regular fa-heart"></i></div>
+                        <div>
+                            <span class="metric-data-label">좋아요</span>
+                            <div class="metric-data-flex"><span class="metric-data-num">25.6K</span><span class="metric-data-trend up"><i class="fa-solid fa-caret-up"></i> 12.3%</span></div>
+                        </div>
+                    </div>
+                    <div class="metric-card-item comment">
+                        <div class="metric-icon-sphere"><i class="fa-regular fa-comment"></i></div>
+                        <div>
+                            <span class="metric-data-label">댓글</span>
+                            <div class="metric-data-flex"><span class="metric-data-num">3.12K</span><span class="metric-data-trend up"><i class="fa-solid fa-caret-up"></i> 8.1%</span></div>
+                        </div>
+                    </div>
+                    <div class="metric-card-item share">
+                        <div class="metric-icon-sphere"><i class="fa-regular fa-paper-plane"></i></div>
+                        <div>
+                            <span class="metric-data-label">공유</span>
+                            <div class="metric-data-flex"><span class="metric-data-num">2.08K</span><span class="metric-data-trend up"><i class="fa-solid fa-caret-up"></i> 15.4%</span></div>
+                        </div>
+                    </div>
+                    <div class="metric-card-item save" style="grid-column: span 2;">
+                        <div class="metric-icon-sphere"><i class="fa-regular fa-bookmark"></i></div>
+                        <div>
+                            <span class="metric-data-label">저장</span>
+                            <div class="metric-data-flex"><span class="metric-data-num">4.35K</span><span class="metric-data-trend up"><i class="fa-solid fa-caret-up"></i> 20.7%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 최하단 소셜 인게이지먼트 통계 통합 대형 보드 -->
+        <div class="card">
+            <div class="card-header-flex" style="margin-bottom: 8px;">
+                <div class="card-title">소셜 인게이지먼트 통계 <p>(해당 프롬프트로 생성된 콘텐츠 평균 반영)</p></div>
+                <div style="display: flex; gap: 14px; align-items: center;">
+                    <span style="font-size: 11px; color: var(--text-gray);">업데이트 2024.05.20 14:30</span>
+                    <a href="#" class="btn-more-link">더보기 <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i></a>
+                </div>
+            </div>
+
+            <div class="engagement-multi-grid">
+                <!-- 1열: 평균 반응 수 메트릭 대형 구형 원 -->
+                <div>
+                    <h5 style="font-size: 12px; font-weight: 700; color: #344054; margin-bottom: 12px;">평균 반응 수</h5>
+                    <div class="stat-avg-circle-box">
+                        <div class="avatar-group-icons">
+                            <div class="avatar-icon-circle pink"><i class="fa-solid fa-heart"></i></div>
+                            <div class="avatar-icon-circle purple"><i class="fa-solid fa-comment"></i></div>
+                            <div class="avatar-icon-circle blue"><i class="fa-solid fa-paper-plane"></i></div>
+                        </div>
+                        <div class="stat-avg-data-lines">
+                            <div class="avg-data-block"><div class="val">2.4K</div><div class="lbl">좋아요</div></div>
+                            <div class="avg-data-block"><div class="val">1.8K</div><div class="lbl">댓글</div></div>
+                            <div class="avg-data-block"><div class="val">3.2K</div><div class="lbl">공유/저장</div></div>
+                        </div>
+                        <p style="font-size: 10px; color: var(--text-gray); margin-top: 24px; text-align: left; width: 100%;">기간: 2024.05.14 ~ 2024.05.20</p>
+                    </div>
+                </div>
+
+                <!-- 2열: 성과 추이 복합 바 차트 컴포넌트 -->
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <h5 style="font-size: 12px; font-weight: 700; color: #344054;">성과 추이</h5>
+                        <div style="display: flex; gap: 4px;">
+                            <button class="select-xs" style="background: white;">일간</button>
+                            <button class="select-xs" style="background: var(--primary-soft); color: var(--primary); border-color: var(--primary-soft);">주간</button>
+                            <button class="select-xs" style="background: white;">월간</button>
+                        </div>
+                    </div>
+                    <div style="position: relative; height: 150px;">
+                        <canvas id="engagementBarChart" style="max-height: 150px;"></canvas>
+                    </div>
+                </div>
+
+                <!-- 3열: 상위 성과 프롬프트 TOP 5 리스트 -->
+                <div>
+                    <h5 style="font-size: 12px; font-weight: 700; color: #344054; margin-bottom: 12px;">상위 성과 프롬프트 TOP 5</h5>
+                    <div class="top5-list">
+                        <div class="top5-item">
+                            <div class="top5-badge-num">1</div>
+                            <div class="top5-info">
+                                <h4 class="top5-title">퇴근 후 혼자만의 시간을 보내는 감성 인스타툰</h4>
+                                <div class="top5-metrics"><span><i class="fa-regular fa-heart"></i> 2.4K</span><span><i class="fa-regular fa-comment"></i> 1.8K</span><span><i class="fa-regular fa-paper-plane"></i> 3.2K</span></div>
+                            </div>
+                        </div>
+                        <div class="top5-item">
+                            <div class="top5-badge-num">2</div>
+                            <div class="top5-info">
+                                <h4 class="top5-title">비 오는 날 감성 문구 모음</h4>
+                                <div class="top5-metrics"><span><i class="fa-regular fa-heart"></i> 2.1K</span><span><i class="fa-regular fa-comment"></i> 1.5K</span><span><i class="fa-regular fa-paper-plane"></i> 2.7%</span></div>
+                            </div>
+                        </div>
+                        <div class="top5-item">
+                            <div class="top5-badge-num">3</div>
+                            <div class="top5-info">
+                                <h4 class="top5-title">여름 바다 여행 힐링 시나리오</h4>
+                                <div class="top5-metrics"><span><i class="fa-regular fa-heart"></i> 3.1K</span><span><i class="fa-regular fa-comment"></i> 2.1K</span><span><i class="fa-regular fa-paper-plane"></i> 4.0K</span></div>
+                            </div>
+                        </div>
+                        <div class="top5-item">
+                            <div class="top5-badge-num">4</div>
+                            <div class="top5-info">
+                                <h4 class="top5-title">카페 감성 사진 잘 찍는 법</h4>
+                                <div class="top5-metrics"><span><i class="fa-regular fa-heart"></i> 1.9K</span><span><i class="fa-regular fa-comment"></i> 1.3K</span><span><i class="fa-regular fa-paper-plane"></i> 2.4K</span></div>
+                            </div>
+                        </div>
+                        <div class="top5-item">
+                            <div class="top5-badge-num">5</div>
+                            <div class="top5-info">
+                                <h4 class="top5-title">하루 루틴 공유 릴스 아이디어</h4>
+                                <div class="top5-metrics"><span><i class="fa-regular fa-heart"></i> 2.2K</span><span><i class="fa-regular fa-comment"></i> 1.6K</span><span><i class="fa-regular fa-paper-plane"></i> 2.9%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4열: 최근 활동 히스토리 타임라인 -->
+                <div>
+                    <h5 style="font-size: 12px; font-weight: 700; color: #344054; margin-bottom: 12px;">최근 활동 히스토리</h5>
+                    <div class="history-timeline">
+                        <div class="history-item">
+                            <div class="history-node-icon active"><i class="fa-regular fa-file-lines"></i></div>
+                            <div class="history-info-text"><h5>감성 인스타툰 프롬프트 사용</h5><p>2024.05.20 14:35</p></div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-node-icon"><i class="fa-solid fa-code"></i></div>
+                            <div class="history-info-text"><h5>비 오는 날 문구 생성 완료</h5><p>2024.05.20 14:18</p></div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-node-icon"><i class="fa-regular fa-circle-check"></i></div>
+                            <div class="history-info-text"><h5>릴스 대본 생성 완료</h5><p>2024.05.20 13:52</p></div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-node-icon"><i class="fa-regular fa-eye"></i></div>
+                            <div class="history-info-text"><h5>해시태그 추천 실행</h5><p>2024.05.20 13:12</p></div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-node-icon"><i class="fa-regular fa-image"></i></div>
+                            <div class="history-info-text"><h5>이미지 분석 완료</h5><p>2024.05.20 12:41</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 차트 렌더링 스크립트 -->
+    <script>
+        // 1. 인기 해시태그 추이 꺾은선 차트 설정
+        const ctxLine = document.getElementById('trendLineChart').getContext('2d');
+        new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['05.14', '05.15', '05.16', '05.17', '05.18', '05.19', '05.20'],
+                datasets: [
+                    { label: '일상기록', data: [110, 95, 120, 115, 125, 130, 128], borderColor: '#6347FF', borderWidth: 2, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#6347FF' },
+                    { label: '감성사진', data: [70, 75, 65, 78, 85, 82, 96], borderColor: '#059669', borderWidth: 2, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#059669' },
+                    { label: '여행스타그램', data: [45, 55, 48, 50, 52, 60, 72], borderColor: '#3B82F6', borderWidth: 2, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#3B82F6' }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+                    y: { min: 0, max: 150, ticks: { stepSize: 50, font: { size: 10 } } }
+                }
+            }
+        });
+
+        // 2. 성과 추이 복합 그룹 바 차트 설정
+        const ctxBar = document.getElementById('engagementBarChart').getContext('2d');
+        new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['05.14', '05.15', '05.16', '05.17', '05.18', '05.19', '05.20'],
+                datasets: [
+                    { label: '좋아요', data: [3.5, 2.8, 4.2, 3.9, 4.8, 4.1, 5.2], backgroundColor: '#FF6B8B', barPercentage: 0.7, categoryPercentage: 0.6 },
+                    { label: '댓글', data: [2.1, 1.9, 3.0, 2.4, 3.5, 2.8, 3.8], backgroundColor: '#8B5CF6', barPercentage: 0.7, categoryPercentage: 0.6 },
+                    { label: '공유/저장', data: [4.0, 3.2, 4.8, 4.5, 5.5, 4.9, 6.0], backgroundColor: '#3B82F6', barPercentage: 0.7, categoryPercentage: 0.6 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+                    y: { min: 0, max: 6, ticks: { stepSize: 2, callback: value => value + 'K', font: { size: 10 } } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

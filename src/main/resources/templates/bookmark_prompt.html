@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrowInsta - 북마크 프롬프트</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/bookmark_prompt.css">
+  <link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+
+  <aside>
+    <div>
+      <div class="logo-area">
+        <div class="logo"><i class="fa-solid fa-chart-pie"></i> GrowInsta</div>
+      </div>
+      <nav>
+        <ul>
+          <li><i class="fa-solid fa-house"></i> 홈</li>
+          <li><i class="fa-solid fa-comment-dots"></i> 챗봇</li>
+          <li><i class="fa-solid fa-lightbulb"></i> 콘텐츠 아이디어</li>
+          <li><i class="fa-solid fa-credit-card"></i> 구독</li>
+          <li><i class="fa-solid fa-users"></i> 커뮤니티</li>
+          <li><i class="fa-solid fa-circle-question"></i> FAQ & 문의</li>
+        </ul>
+      </nav>
+    </div>
+
+    <div>
+      <div class="summary-widget">
+        <h4>오늘의 사용 요약</h4>
+        <div class="summary-row"><span>프롬프트 생성</span><span>12회</span></div>
+        <div class="summary-row"><span>챗봇 대화</span><span>8회</span></div>
+        <div class="summary-row"><span>콘텐츠 저장</span><span>5개</span></div>
+        <div class="summary-row accent"><span>평균 반응률</span><span>8.47%</span></div>
+        <button class="btn-widget-more">자세히 보기 <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="sidebar-bottom-nav">
+        <nav>
+          <ul>
+            <li class="active"><i class="fa-solid fa-gear"></i> 설정</li>
+            <li>
+              <a href="/user/logout">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> 로그아웃
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-wrapper">
+    <div class="header-top-bar">
+      <div class="page-title-area">
+        <h1>내 정보 관리</h1>
+        <p>계정 정보 및 구독 정보를 관리하세요.</p>
+      </div>
+      <div class="header-right-meta">
+        <div class="noti-badge">
+          <i class="fa-regular fa-bell"></i>
+          <span class="noti-count">12</span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" class="top-profile-img" alt="User Profile">
+      </div>
+    </div>
+
+    <div class="tab-menu">
+      <div class="tab-item">계정 정보</div>
+      <div class="tab-item">결제 내역</div>
+      <div class="tab-item">AI 사용 이력</div>
+      <div class="tab-item">저장한 콘텐츠</div>
+      <div class="tab-item active">북마크 프롬프트</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header-flex" style="margin-bottom: 12px;">
+        <div>
+          <div class="card-title-main">북마크 프롬프트</div>
+          <p style="font-size: 12px; color: var(--text-sub); margin-top: 4px;">자주 사용하는 프롬프트를 저장하고 관리할 수 있어요.</p>
+        </div>
+        <div class="search-filter-right">
+          <select class="select-control"><option>최신순</option></select>
+          <button class="btn-outline-sm"><i class="fa-solid fa-folder-gear"></i> 폴더 관리</button>
+        </div>
+      </div>
+
+      <div class="control-panel-row">
+        <div class="chip-group">
+          <div class="filter-chip active">전체</div>
+          <div class="filter-chip">콘텐츠 아이디어</div>
+          <div class="filter-chip">카피라이팅</div>
+          <div class="filter-chip">콘텐츠 분석</div>
+          <div class="filter-chip">이미지 생성</div>
+          <div class="filter-chip">해시태그</div>
+          <div class="filter-chip">기타</div>
+        </div>
+        <div class="search-filter-right">
+          <div class="search-input-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="프롬프트 제목 또는 키워드 검색">
+          </div>
+          <select class="select-control"><option>전체 폴더</option></select>
+        </div>
+      </div>
+
+      <div class="prompt-grid-3">
+        <div class="prompt-card-item">
+          <div class="prompt-card-top">
+            <span class="cate-badge-mini idea">콘텐츠 아이디어</span>
+            <button class="btn-card-more"><i class="fa-solid fa-ellipsis"></i></button>
+          </div>
+          <div class="prompt-card-title">여름 휴가 인스타 게시물 아이디어</div>
+          <div class="prompt-card-desc">여름 휴가를 주제로 인스타그램에서 인기 있을 만한 콘텐츠 아이디어 10가지를 제안해줘. 해시태그와 함께 알려줘.</div>
+          <div class="prompt-card-tags">#여름 #휴가 #인스타아이디어</div>
+          <div class="prompt-card-footer">
+            <span class="prompt-card-date">2024.05.20 14:32</span>
+            <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+          </div>
+        </div>
+
+        <div class="prompt-card-item">
+          <div class="prompt-card-top">
+            <span class="cate-badge-mini copy">카피라이팅</span>
+            <button class="btn-card-more"><i class="fa-solid fa-ellipsis"></i></button>
+          </div>
+          <div class="prompt-card-title">신제품 런칭 인스타그램 캡션 작성</div>
+          <div class="prompt-card-desc">스킨케어 신제품 런칭을 알리는 감성적인 인스타그램 캡션을 5가지 작성해줘. 이모지와 해시태그도 포함해줘.</div>
+          <div class="prompt-card-tags">#신제품 #스킨케어 #런칭</div>
+          <div class="prompt-card-footer">
+            <span class="prompt-card-date">2024.05.20 14:21</span>
+            <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+          </div>
+        </div>
+
+        <div class="prompt-card-item">
+          <div class="prompt-card-top">
+            <span class="cate-badge-mini image">이미지 생성</span>
+            <button class="btn-card-more"><i class="fa-solid fa-ellipsis"></i></button>
+          </div>
+          <div class="prompt-card-title">카페 감성 인테리어 이미지</div>
+          <div class="prompt-card-desc">따뜻한 조명과 우드톤 가구가 있는 감성적인 카페 인테리어 사진을 만들어줘. 인스타그램 업로드용으로 적합하게.</div>
+          <div class="prompt-card-tags">#카페 #인테리어 #감성사진</div>
+          <div class="prompt-card-footer">
+            <span class="prompt-card-date">2024.05.20 13:58</span>
+            <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+          </div>
+        </div>
+
+        <div class="prompt-card-item">
+          <div class="prompt-card-top">
+            <span class="cate-badge-mini analysis">콘텐츠 분석</span>
+            <button class="btn-card-more"><i class="fa-solid fa-ellipsis"></i></button>
+          </div>
+          <div class="prompt-card-title">경쟁사 인스타그램 분석 리포트</div>
+          <div class="prompt-card-desc">@competitor 브랜드의 최근 30일간 인스타그램 게시물 성과를 분석해줘. 인기 콘텐츠 유형과 해시태그 포함.</div>
+          <div class="prompt-card-tags">#경쟁사분석 #인스타분석 #리포트</div>
+          <div class="prompt-card-footer">
+            <span class="prompt-card-date">2024.05.20 13:42</span>
+            <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+          </div>
+        </div>
+
+        <div class="prompt-card-item">
+          <div class="prompt-card-top">
+            <span class="cate-badge-mini hashtag">해시태그</span>
+            <button class="btn-card-more"><i class="fa-solid fa-ellipsis"></i></button>
+          </div>
+          <div class="prompt-card-title">뷰티 관련 인기 해시태그 추천</div>
+          <div class="prompt-card-desc">뷰티 브랜드 게시물에 사용할 수 있는 인기 해시태그 20개를 추천해줘. 카테고리별로 정리해줘.</div>
+          <div class="prompt-card-tags">#뷰티 #해시태그 #인기해시태그</div>
+          <div class="prompt-card-footer">
+            <span class="prompt-card-date">2024.05.20 13:10</span>
+            <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+          </div>
+        </div>
+
+        <div class="prompt-card-item">
+          <div class="prompt-card-top">
+            <span class="cate-badge-mini etc">기타</span>
+            <button class="btn-card-more"><i class="fa-solid fa-ellipsis"></i></button>
+          </div>
+          <div class="prompt-card-title">인스타그램 DM 자동 응답 메시지</div>
+          <div class="prompt-card-desc">고객 문의에 친절하고 전문적으로 응답할 수 있는 인스타그램 DM 자동 응답 메시지 예시를 만들어줘.</div>
+          <div class="prompt-card-tags">#DM #자동응답 #메시지</div>
+          <div class="prompt-card-footer">
+            <span class="prompt-card-date">2024.05.20 12:51</span>
+            <button class="btn-bookmark-toggle"><i class="fa-solid fa-bookmark"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="center-load-more">
+        <button class="btn-outline-sm" style="color: var(--primary); border-color: var(--primary); padding: 10px 24px;">더 많은 프롬프트 보기 <i class="fa-solid fa-chevron-down"></i></button>
+      </div>
+
+      <div class="card-title-main" style="margin-bottom: 16px; border-top: 1px solid var(--border); padding-top: 24px;">
+        북마크 프롬프트 목록 <span style="font-size: 13px; font-weight: 600; color: var(--text-gray); margin-left: 6px;">총 28개</span>
+      </div>
+
+      <div class="list-table-container">
+        <table class="prompt-list-table">
+          <thead>
+            <tr>
+              <th style="width: 140px;">저장일</th>
+              <th style="width: 180px;">제목</th>
+              <th style="width: 130px;">카테고리</th>
+              <th style="width: 130px;">폴더</th>
+              <th>태그</th>
+              <th style="width: 80px; text-align: right;">작업</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-text-muted">2024.05.20 14:32:21</td>
+              <td>여름 휴가 인스타 게시물 아이디어</td>
+              <td class="td-text-muted">콘텐츠 아이디어</td>
+              <td>마케팅 아이디어</td>
+              <td class="tag-text-blue">#여름 #휴가</td>
+              <td>
+                <div class="table-action-icons">
+                  <button class="btn-table-icon"><i class="fa-solid fa-bookmark"></i></button>
+                  <button class="btn-table-icon delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-text-muted">2024.05.20 14:21:18</td>
+              <td>신제품 런칭 인스타그램 캡션 작성</td>
+              <td class="td-text-muted">카피라이팅</td>
+              <td>카피 문구</td>
+              <td class="tag-text-blue">#신제품 #런칭</td>
+              <td>
+                <div class="table-action-icons">
+                  <button class="btn-table-icon"><i class="fa-solid fa-bookmark"></i></button>
+                  <button class="btn-table-icon delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-text-muted">2024.05.20 13:58:07</td>
+              <td>카페 감성 인테리어 이미지</td>
+              <td class="td-text-muted">이미지 생성</td>
+              <td>이미지 레퍼런스</td>
+              <td class="tag-text-blue">#카페 #인테리어</td>
+              <td>
+                <div class="table-action-icons">
+                  <button class="btn-table-icon"><i class="fa-solid fa-bookmark"></i></button>
+                  <button class="btn-table-icon delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-text-muted">2024.05.20 13:42:55</td>
+              <td>경쟁사 인스타그램 분석 리포트</td>
+              <td class="td-text-muted">콘텐츠 분석</td>
+              <td>분석 리포트</td>
+              <td class="tag-text-blue">#분석 #경쟁사</td>
+              <td>
+                <div class="table-action-icons">
+                  <button class="btn-table-icon"><i class="fa-solid fa-bookmark"></i></button>
+                  <button class="btn-table-icon delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-text-muted">2024.05.20 13:10:32</td>
+              <td>뷰티 관련 인기 해시태그 추천</td>
+              <td class="td-text-muted">해시태그</td>
+              <td>해시태그 모음</td>
+              <td class="tag-text-blue">#뷰티 #해시태그</td>
+              <td>
+                <div class="table-action-icons">
+                  <button class="btn-table-icon"><i class="fa-solid fa-bookmark"></i></button>
+                  <button class="btn-table-icon delete-btn"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination-footer-bar">
+        <div class="pagination-numbers-wrap">
+          <div class="page-box"><i class="fa-solid fa-chevron-left"></i></div>
+          <div class="page-box active">1</div>
+          <div class="page-box">2</div>
+          <div class="page-box">3</div>
+          <div class="page-box"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+        <select class="select-control" style="padding: 6px 12px; font-size: 12px;"><option>10개씩 보기</option></select>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

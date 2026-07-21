@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrowInsta - 결제 내역</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/pay_list.css">
+  <link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+
+  <aside>
+    <div>
+      <div class="logo-area">
+        <div class="logo">
+          <i class="fa-solid fa-chart-pie"></i> GrowInsta
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><i class="fa-solid fa-house"></i> 홈</li>
+          <li><i class="fa-solid fa-comment-dots"></i> 챗봇</li>
+          <li><i class="fa-solid fa-lightbulb"></i> 콘텐츠 아이디어</li>
+          <li><i class="fa-solid fa-credit-card"></i> 구독</li>
+          <li><i class="fa-solid fa-users"></i> 커뮤니티</li>
+          <li><i class="fa-solid fa-circle-question"></i> FAQ & 문의</li>
+        </ul>
+      </nav>
+    </div>
+
+    <div>
+      <div class="summary-widget">
+        <h4>오늘의 사용 요약</h4>
+        <div class="summary-row"><span>프롬프트 생성</span><span>12회</span></div>
+        <div class="summary-row"><span>챗봇 대화</span><span>8회</span></div>
+        <div class="summary-row"><span>콘텐츠 저장</span><span>5개</span></div>
+        <div class="summary-row accent"><span>평균 반응률</span><span>8.47%</span></div>
+        <button class="btn-widget-more">자세히 보기 <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="sidebar-bottom-nav">
+        <nav>
+          <ul>
+            <li class="active"><i class="fa-solid fa-gear"></i> 설정</li>
+            <li>
+              <a href="/user/logout">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i> 로그아웃
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-wrapper">
+    <div class="header-top-bar">
+      <div class="page-title-area">
+        <h1>결제 내역</h1>
+        <p>지금까지의 결제 내역을 확인할 수 있습니다.</p>
+      </div>
+      <div class="header-right-meta">
+        <div class="noti-badge">
+          <i class="fa-regular fa-bell"></i>
+          <span class="noti-count">12</span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" class="top-profile-img" alt="User Profile">
+      </div>
+    </div>
+
+    <div class="tab-menu">
+      <div class="tab-item">계정 정보</div>
+      <div class="tab-item active">결제 내역</div>
+      <div class="tab-item">AI 사용 이력</div>
+      <div class="tab-item">저장한 콘텐츠</div>
+      <div class="tab-item">북마크 프롬프트</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header-flex">
+        <div class="card-title">결제 요약</div>
+        <button class="btn-outline-sm"><i class="fa-solid fa-download"></i> 영수증 전체 다운로드</button>
+      </div>
+      
+      <div class="summary-grid-4">
+        <div class="summary-card-item">
+          <div class="summary-icon-box purple"><i class="fa-solid fa-wallet"></i></div>
+          <div class="summary-info-block">
+            <div class="lbl">총 결제 금액</div>
+            <div class="val">₩174,000</div>
+            <div class="sub-lbl">누적 결제 금액</div>
+          </div>
+        </div>
+        <div class="summary-card-item">
+          <div class="summary-icon-box green"><i class="fa-solid fa-receipt"></i></div>
+          <div class="summary-info-block">
+            <div class="lbl">총 결제 횟수</div>
+            <div class="val">6회</div>
+            <div class="sub-lbl">누적 결제 횟수</div>
+          </div>
+        </div>
+        <div class="summary-card-item">
+          <div class="summary-icon-box orange"><i class="fa-solid fa-box-open"></i></div>
+          <div class="summary-info-block">
+            <div class="lbl">현재 플랜</div>
+            <div class="val">PRO 플랜</div>
+            <div class="sub-lbl">월 29,000원</div>
+          </div>
+        </div>
+        <div class="summary-card-item">
+          <div class="summary-icon-box blue"><i class="fa-solid fa-calendar-days"></i></div>
+          <div class="summary-info-block">
+            <div class="lbl">다음 결제일</div>
+            <div class="val">2026.06.20</div>
+            <div class="sub-lbl">30일 후</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-filter-bar">
+        <select class="select-control">
+          <option>전체 결제 내역</option>
+        </select>
+        <div class="filter-left-group">
+          <div class="date-picker-wrapper">
+            <input type="text" value="2024.05.20 ~ 2025.05.20" readonly>
+            <i class="fa-regular fa-calendar"></i>
+          </div>
+          <button class="btn-outline-sm"><i class="fa-solid fa-sliders"></i> 필터</button>
+        </div>
+      </div>
+
+      <div class="data-table-container">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>결제일</th>
+              <th>주문번호</th>
+              <th>구독 플랜</th>
+              <th>결제 금액</th>
+              <th>결제 수단</th>
+              <th>상태</th>
+              <th style="text-align: center;">영수증</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-date">2025.05.20 14:30:22</td>
+              <td class="td-order">ORD-20250520-0006</td>
+              <td>PRO 플랜 (월간)</td>
+              <td>₩29,000</td>
+              <td>
+                <div class="card-vendor">
+                  <div class="circle-logo"><span class="red"></span><span class="yellow"></span></div>
+                  카드 •••• 1234
+                </div>
+              </td>
+              <td><div class="status-badge-complete">결제 완료</div></td>
+              <td style="text-align: center;"><button class="btn-icon-download"><i class="fa-solid fa-download"></i></button></td>
+            </tr>
+            <tr>
+              <td class="td-date">2025.04.20 14:30:18</td>
+              <td class="td-order">ORD-20250420-0005</td>
+              <td>PRO 플랜 (월간)</td>
+              <td>₩29,000</td>
+              <td>
+                <div class="card-vendor">
+                  <div class="circle-logo"><span class="red"></span><span class="yellow"></span></div>
+                  카드 •••• 1234
+                </div>
+              </td>
+              <td><div class="status-badge-complete">결제 완료</div></td>
+              <td style="text-align: center;"><button class="btn-icon-download"><i class="fa-solid fa-download"></i></button></td>
+            </tr>
+            <tr>
+              <td class="td-date">2025.03.20 14:30:11</td>
+              <td class="td-order">ORD-20250320-0004</td>
+              <td>PRO 플랜 (월간)</td>
+              <td>₩29,000</td>
+              <td>
+                <div class="card-vendor">
+                  <div class="circle-logo"><span class="red"></span><span class="yellow"></span></div>
+                  카드 •••• 1234
+                </div>
+              </td>
+              <td><div class="status-badge-complete">결제 완료</div></td>
+              <td style="text-align: center;"><button class="btn-icon-download"><i class="fa-solid fa-download"></i></button></td>
+            </tr>
+            <tr>
+              <td class="td-date">2025.02.20 14:30:09</td>
+              <td class="td-order">ORD-20250220-0003</td>
+              <td>PRO 플랜 (월간)</td>
+              <td>₩29,000</td>
+              <td>
+                <div class="card-vendor">
+                  <div class="circle-logo"><span class="red"></span><span class="yellow"></span></div>
+                  카드 •••• 1234
+                </div>
+              </td>
+              <td><div class="status-badge-complete">결제 완료</div></td>
+              <td style="text-align: center;"><button class="btn-icon-download"><i class="fa-solid fa-download"></i></button></td>
+            </tr>
+            <tr>
+              <td class="td-date">2025.01.20 14:30:05</td>
+              <td class="td-order">ORD-20250120-0002</td>
+              <td>PRO 플랜 (월간)</td>
+              <td>₩29,000</td>
+              <td>
+                <div class="card-vendor">
+                  <div class="circle-logo"><span class="red"></span><span class="yellow"></span></div>
+                  카드 •••• 1234
+                </div>
+              </td>
+              <td><div class="status-badge-complete">결제 완료</div></td>
+              <td style="text-align: center;"><button class="btn-icon-download"><i class="fa-solid fa-download"></i></button></td>
+            </tr>
+            <tr>
+              <td class="td-date">2024.12.20 14:30:01</td>
+              <td class="td-order">ORD-20241220-0001</td>
+              <td>PRO 플랜 (월간)</td>
+              <td>₩29,000</td>
+              <td>
+                <div class="card-vendor">
+                  <div class="circle-logo"><span class="red"></span><span class="yellow"></span></div>
+                  카드 •••• 1234
+                </div>
+              </td>
+              <td><div class="status-badge-complete">결제 완료</div></td>
+              <td style="text-align: center;"><button class="btn-icon-download"><i class="fa-solid fa-download"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-footer-pagination">
+        <div class="pagination-pages">
+          <div class="page-nav-btn"><i class="fa-solid fa-chevron-left"></i></div>
+          <div class="page-nav-btn active">1</div>
+          <div class="page-nav-btn"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+        <select class="select-control" style="padding: 6px 12px; font-size: 12px;">
+          <option>10개씩 보기</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="bottom-split-grid">
+      <div class="notice-card">
+        <div class="card-title">결제 관련 안내</div>
+        <ul class="notice-list">
+          <li>결제 완료 후 즉시 서비스 이용이 가능합니다.</li>
+          <li>결제 취소는 결제일로부터 7일 이내에 가능합니다.</li>
+          <li>영수증은 결제일로부터 1년간 다운로드 가능합니다.</li>
+          <li>문의사항이 있으시면 언제든지 고객센터로 연락주세요.</li>
+        </ul>
+        <button class="btn-purple-text-box">고객센터 문의하기 <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+
+      <div class="right-manage-stack">
+        <div class="card">
+          <div class="card-title" style="margin-bottom: 16px;">결제 수단 관리</div>
+          <div class="payment-method-row">
+            <div class="card-vendor">
+              <div class="circle-logo"><span class="red"></span><span class="yellow"></span></div>
+              카드 •••• 1234
+            </div>
+            <span class="badge-primary-card">기본 카드</span>
+          </div>
+          <button class="btn-full-outline">결제 수단 변경</button>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="margin-bottom: 16px;">구독 관리</div>
+          <div class="plan-info-box">
+            <div class="plan-info-top">
+              <span class="plan-title-bold">PRO 플랜 (월간)</span>
+              <span class="plan-price-text">월 29,000원</span>
+            </div>
+            <div class="plan-info-bottom">다음 결제일: 2026.06.20</div>
+          </div>
+          <div class="grid-buttons-2">
+            <button class="btn-full-outline">구독 플랜 변경</button>
+            <button class="btn-danger-outline">구독 취소</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

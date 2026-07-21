@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowInsta - 챗봇</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/chatbot.css}">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script th:src="@{/js/chatbot.js}"></script>
+<body class="flex h-screen w-screen text-gray-800 antialiased bg-[#F8F9FA]">
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col justify-between h-full flex-shrink-0 z-10">
+        <div class="p-5 flex flex-col min-h-0 flex-1">
+            <div class="flex items-center gap-2 mb-6 flex-shrink-0">
+                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">G</div>
+                <span class="text-xl font-bold tracking-tight text-gray-900">GrowInsta</span>
+            </div>
+            <nav class="space-y-1 overflow-y-auto flex-1 pr-1 custom-scrollbar">
+                <a href="#" class="flex items-center gap-3 px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-50 font-medium text-sm">
+                    <i class="fa-solid fa-house text-gray-400 w-5"></i> 홈
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2 bg-indigo-50 text-indigo-600 rounded-lg font-semibold text-sm">
+                    <i class="fa-regular fa-comments text-indigo-500 w-5"></i> 챗봇
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-50 font-medium text-sm">
+                    <i class="fa-regular fa-lightbulb text-gray-400 w-5"></i> 콘텐츠 아이디어
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-50 font-medium text-sm">
+                    <i class="fa-regular fa-credit-card text-gray-400 w-5"></i> 구독
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-50 font-medium text-sm">
+                    <i class="fa-solid fa-users text-gray-400 w-5"></i> 커뮤니티
+                </a>
+                <a href="#" class="flex items-center gap-3 px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-50 font-medium text-sm">
+                    <i class="fa-regular fa-circle-question text-gray-400 w-5"></i> FAQ & 문의
+                </a>
+            </nav>
+        </div>
+
+        <div class="p-4 border-t border-gray-100 flex-shrink-0">
+            <a href="#" class="flex items-center gap-3 px-3 py-1.5 text-gray-600 hover:text-gray-900 font-medium text-xs mb-2">
+                <i class="fa-solid fa-gear text-gray-400"></i> 설정
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-1.5 text-gray-600 hover:text-gray-900 font-medium text-xs mb-2">
+                <i class="fa-solid fa-arrow-right-from-bracket text-gray-400"></i> 로그아웃
+            </a>
+        </div>
+    </aside>
+
+    <main class="flex-1 h-full flex flex-col min-w-0 bg-white border-r border-gray-200 overflow-hidden">
+        <header class="h-14 border-b border-gray-200 flex items-center justify-between px-5 flex-shrink-0">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-indigo-50 text-indigo-600 rounded flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <h1 class="text-sm font-bold text-gray-900">캐릭터 메이커</h1>
+                        <span class="bg-indigo-50 text-indigo-600 text-[9px] font-bold px-1.5 py-0.5 rounded">베이스 챗봇</span>
+                    </div>
+                    <p class="text-[10px] text-gray-400">방 설정 없이 자유롭게 대화해보세요.</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <div class="flex -space-x-1.5 items-center">
+                    <img class="w-5 h-5 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=60&q=80" alt="Avatar">
+                    <img class="w-5 h-5 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=60&q=80" alt="Avatar">
+                    <span class="text-[10px] font-bold text-gray-400 bg-gray-50 border border-gray-200 rounded-full w-5 h-5 flex items-center justify-center !ml-1">+2</span>
+                </div>
+                <button class="text-[11px] border border-gray-200 hover:bg-gray-50 text-gray-600 px-2.5 py-1 rounded-md font-semibold"><i class="fa-solid fa-user-plus mr-1"></i>초대</button>
+                <button class="text-gray-400 hover:text-gray-600 p-1"><i class="fa-solid fa-ellipsis"></i></button>
+            </div>
+        </header>
+
+        <div id="chatContainer" class="flex-1 overflow-y-auto p-5 space-y-5 custom-scrollbar bg-[#FAFBFD]">
+            <div id="loading" class="text-sm font-semibold text-indigo-600 text-center"></div>
+            <div id="result" class="prose prose-sm max-w-none text-xs text-gray-800 bg-white p-4 rounded-xl border border-gray-100 shadow-sm hidden"></div>
+            <div id="carouselContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"></div>
+        </div>
+
+        <footer class="p-4 border-t border-gray-200 flex-shrink-0 bg-white">
+            <div id="builderAssetSelector" class="hidden flex flex-col gap-2 p-3 bg-gray-50 border border-gray-200 rounded-t-xl border-b-0">
+                <div class="flex gap-3">
+                    <div class="flex-1">
+                        <label class="text-[10px] font-bold text-gray-500 block mb-1">🎬 매칭할 스토리 대본 선택</label>
+                        <select id="selectedScript" class="w-full p-2 text-xs border rounded-lg bg-white outline-none focus:border-indigo-500">
+                            <option value="">-- 이전에 작성한 대본 선택 --</option>
+                            </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold text-gray-500 block mb-1">👥 등장 캐릭터 지정 (여러 개 선택 가능)</label>
+                    <div id="characterChecklist" class="flex flex-wrap gap-2 p-2 bg-white border rounded-lg max-h-24 overflow-y-auto text-xs">
+                        <p class="text-gray-400 text-[11px]">선택 가능한 캐릭터를 불러오는 중입니다...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border border-gray-200 rounded-xl p-2 bg-gray-50/50 focus-within:border-indigo-500 focus-within:bg-white transition-all">
+                <textarea id="prompt" rows="2" class="w-full bg-transparent outline-none resize-none text-xs text-gray-800 placeholder-gray-400" placeholder="대본 주제를 쓰거나, 생성하고 싶은 캐릭터 특징을 입력하세요... (예: 재테크하는 주황색 붕어빵 캐릭터)"></textarea>
+                <div class="flex justify-between items-center pt-1.5">
+                    <div class="flex items-center gap-1">
+                        <button class="text-gray-400 hover:text-gray-600 text-xs px-2 py-1 rounded hover:bg-gray-100 font-semibold flex items-center gap-1"><i class="fa-regular fa-image"></i> 이미지 업로드</button>
+                        <button class="text-gray-400 hover:text-gray-600 text-xs px-2 py-1 rounded hover:bg-gray-100 font-semibold flex items-center gap-1"><i class="fa-solid fa-plus"></i> 참조 추가</button>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button id="sendButton" onclick="generate()" title="인스타툰 대본 생성" class="px-2.5 h-7 bg-gray-800 text-white rounded-lg flex items-center justify-center hover:bg-gray-900 transition-all shadow-sm gap-1 text-[10px] font-bold">
+                            <span>대본 생성</span>
+                        </button>
+                        <button id="characterButton" onclick="generateCharacter()" title="캐릭터 마스코트 생성" class="px-2.5 h-7 bg-indigo-600 text-white rounded-lg flex items-center justify-center hover:bg-indigo-700 transition-all shadow-sm gap-1 text-[10px] font-bold">
+                            <span>캐릭터 기획/생성</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <p class="text-[9px] text-center text-gray-400 mt-2">AI가 생성한 결과물은 참고용이며, 정확성을 보장하지 않을 수 있습니다.</p>
+        </footer>
+        <div class="h-32 border-t border-gray-200 bg-gray-50/70 p-3 flex flex-col min-h-0 flex-shrink-0">
+        <div class="text-[10px] font-bold text-gray-400 mb-2 uppercase tracking-wide">내 챗봇 방 목록</div>
+        <div class="flex gap-2 overflow-x-auto flex-1 pb-1 custom-scrollbar">
+            <div th:each="room : ${roomList}" th:data-room-id="${room.id}" th:data-room_type="${room.roomType}"
+                class="room-item w-44 bg-white border border-gray-200 rounded-lg p-2 flex flex-col justify-between flex-shrink-0 shadow-sm cursor-pointer hover:bg-indigo-50/50 hover:border-indigo-200 transition-all">
+                
+                <div class="flex items-center gap-1.5">
+                    <img class="w-6 h-6 rounded-full object-cover" 
+                        th:src="${room.imageUrl != null ? room.imageUrl : 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=80&q=80'}" alt="Room Profile">
+                    
+                    <div class="overflow-hidden">
+                        <div class="text-[10px] font-bold truncate" th:text="${room.name}">방 이름</div>
+                        <div class="text-[8px] text-gray-400 truncate" th:text="${room.description}">방 설명 미리보기...</div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mt-1">
+                    <span class="text-[8px] text-gray-400">방금 전</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+</body>
+</html>

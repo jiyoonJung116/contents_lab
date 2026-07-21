@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1440">
+    <title>GrowInsta - 문의하기</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/faq_question.css">
+</head>
+<body>
+
+    <aside>
+        <div>
+            <div class="logo-area">
+                <div class="logo">
+                    <i class="fa-solid fa-square-poll-vertical"></i> GrowInsta
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><i class="fa-solid fa-house"></i> 홈</li>
+                    <li><i class="fa-regular fa-comments"></i> 챗봇</li>
+                    <li><i class="fa-regular fa-lightbulb"></i> 콘텐츠 아이디어</li>
+                    <li><i class="fa-solid fa-chart-line"></i> 구독</li>
+                    <li><i class="fa-solid fa-users"></i> 커뮤니티</li>
+                    <li class="active"><i class="fa-regular fa-circle-question"></i> FAQ & 문의</li>
+                </ul>
+            </nav>
+            
+            <div class="help-banner">
+                <h4>도움이 더 필요하신가요?</h4>
+                <p>궁금한 점이 해결되지 않으면 언제든 문의해 주세요.</p>
+                <button class="btn-help-trigger">자주 묻는 질문 보기 <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="profile-box">
+                <i class="fa-solid fa-gear" style="color: var(--text-sub); font-size: 16px;"></i>
+                <div class="profile-info"><h5>설정</h5></div>
+            </div>
+            <div class="profile-box">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="User Avatar">
+                <div class="profile-info"><h5>yoon@example.com</h5></div>
+                <i class="fa-solid fa-chevron-down" style="font-size: 12px; margin-left: auto; color: var(--text-gray);"></i>
+            </div>
+        </div>
+    </aside>
+
+    <div class="main-container">
+        
+        <a href="#" class="back-link"><i class="fa-solid fa-arrow-left"></i> 이전 페이지로 돌아가기</a>
+
+        <div class="header-wrap">
+            <div class="header-title-row">
+                <i class="fa-solid fa-circle-nodes"></i>
+                <div class="header-title">
+                    <h1>문의하기</h1>
+                    <p><span>궁금한</span> 점이나 불편한 사항을 남겨주시면 빠르게 답변드리겠습니다.</p>
+                </div>
+            </div>
+            <div class="header-right-icons">
+                <div class="bell-icon-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="bell-badge">2</span>
+                </div>
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" class="header-avatar" alt="Avatar">
+            </div>
+        </div>
+
+        <div class="content-layout">
+            
+            <div class="form-section">
+                
+                <div class="form-group-block">
+                    <h3>1. 문의 유형 선택<span>*</span></h3>
+                    <p class="sub-desc">문의하실 유형을 선택해주세요.</p>
+                    <div class="type-card-grid">
+                        <div class="type-card active">
+                            <i class="fa-regular fa-circle-question"></i>
+                            <h4>서비스 이용 문의</h4>
+                            <p>기능 사용 방법, 사용 관련 문의</p>
+                        </div>
+                        <div class="type-card">
+                            <i class="fa-regular fa-credit-card"></i>
+                            <h4>결제/구독 문의</h4>
+                            <p>결제 오류, 환불, 구독 관련 문의</p>
+                        </div>
+                        <div class="type-card">
+                            <i class="fa-solid fa-bug"></i>
+                            <h4>오류/버그 신고</h4>
+                            <p>서비스 오류나 버그 제보</p>
+                        </div>
+                        <div class="type-card">
+                            <i class="fa-regular fa-lightbulb"></i>
+                            <h4>제안/기능 요청</h4>
+                            <p>새로운 기능 제안이나 개선 요청</p>
+                        </div>
+                        <div class="type-card">
+                            <i class="fa-regular fa-paper-plane"></i>
+                            <h4>기타 문의</h4>
+                            <p>기타 일반적인 문의사항</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group-block">
+                    <h3>2. 문의 내용 선택</h3>
+                    
+                    <div class="row-flex">
+                        <div class="flex-main">
+                            <div class="label-with-limit">
+                                <label>제목<span>*</span></label>
+                                <span class="text-limit">0 / 100</span>
+                            </div>
+                            <input type="text" class="input-text" placeholder="문의 제목을 입력해주세요. (예: 결제 오류가 발생했어요)">
+                        </div>
+                        <div class="flex-side">
+                            <div class="label-with-limit"><label>우선순위</label></div>
+                            <div class="priority-group">
+                                <button class="btn-priority">낮음</button>
+                                <button class="btn-priority active">보통</button>
+                                <button class="btn-priority">높음</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 8px;">
+                        <div class="label-with-limit">
+                            <label>상세 내용<span>*</span></label>
+                            <span class="text-limit">0 / 2000</span>
+                        </div>
+                        <textarea class="textarea-box" placeholder="문의하실 내용을 최대한 자세히 작성해주세요.&#10;문제를 겪으신 상황, 발생 시간, 사용하신 기능 등을 입력해주시면&#10;더 정확하고 빠른 답변이 가능합니다."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group-block">
+                    <h3>3. 첨부파일<span>(선택)</span></h3>
+                    <p class="sub-desc">파일을 첨부하면 문제 해결에 도움이 됩니다.</p>
+                    <div class="file-drop-zone">
+                        <i class="fa-solid fa-upload"></i>
+                        <p>파일을 드래그하거나 클릭하여 첨부하세요. <span>JPG, PNG, PDF, 최대 10MB</span></p>
+                    </div>
+                </div>
+
+                <div class="form-group-block">
+                    <h3>4. 연락처 정보</h3>
+                    <p class="sub-desc">답변을 받으실 연락처를 입력해주세요.</p>
+                    <div class="row-flex">
+                        <div style="width: 320px;">
+                            <div class="label-with-limit"><label>연락 방법<span>*</span></label></div>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="contact-method" checked> 이메일</label>
+                                <label class="radio-label"><input type="radio" name="contact-method"> GrowInsta 내 메시지</label>
+                            </div>
+                        </div>
+                        <div class="flex-main">
+                            <div class="label-with-limit"><label>이메일 주소<span>*</span></label></div>
+                            <input type="text" class="input-text" placeholder="이메일 주소를 입력해주세요.">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="agreement-row">
+                    <label class="checkbox-label">
+                        <input type="checkbox"> 개인정보 수집 및 이용에 동의합니다. (필수)
+                    </label>
+                    <button class="btn-view-detail">자세히 보기 <i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+
+                <div class="form-actions-line">
+                    <button class="btn-form-cancel">취소</button>
+                    <button class="btn-form-submit"><i class="fa-regular fa-paper-plane"></i> 문의 접수하기</button>
+                </div>
+
+            </div>
+
+            <div class="guide-sidebar">
+                <h3>안내사항</h3>
+                
+                <div class="guide-item">
+                    <div class="guide-icon-circle"><i class="fa-regular fa-clock"></i></div>
+                    <div class="guide-text-box">
+                        <h4>평일 09:00 ~ 18:00</h4>
+                        <p>(주말 및 공휴일 휴무)</p>
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-icon-circle"><i class="fa-regular fa-comment-dots"></i></div>
+                    <div class="guide-text-box">
+                        <h4>평균 답변 시간</h4>
+                        <p>24시간 이내</p>
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-icon-circle"><i class="fa-regular fa-circle-check"></i></div>
+                    <div class="guide-text-box">
+                        <h4>정확한 답변을 위해</h4>
+                        <p>자세한 내용을 작성해 주시면 큰 도움이 됩니다</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

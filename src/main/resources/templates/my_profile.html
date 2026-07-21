@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrowInsta - 내 정보 관리</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/my_profile.css">
+  <link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+
+  <aside>
+    <div>
+      <div class="logo-area">
+        <div class="logo">
+          <i class="fa-solid fa-chart-pie"></i> GrowInsta
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><i class="fa-solid fa-house"></i> 홈</li>
+          <li><i class="fa-solid fa-comment-dots"></i> 챗봇</li>
+          <li><i class="fa-solid fa-lightbulb"></i> 콘텐츠 아이디어</li>
+          <li><i class="fa-solid fa-credit-card"></i> 구독</li>
+          <li><i class="fa-solid fa-users"></i> 커뮤니티</li>
+          <li><i class="fa-solid fa-circle-question"></i> FAQ & 문의</li>
+        </ul>
+      </nav>
+    </div>
+
+    <div>
+      <div class="summary-widget">
+        <h4>오늘의 사용 요약</h4>
+        <div class="summary-row"><span>프롬프트 생성</span><span>12회</span></div>
+        <div class="summary-row"><span>챗봇 대화</span><span>8회</span></div>
+        <div class="summary-row"><span>콘텐츠 저장</span><span>5개</span></div>
+        <div class="summary-row accent"><span>평균 반응률</span><span>8.47%</span></div>
+        <button class="btn-widget-more">자세히 보기 <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <div class="sidebar-bottom-nav">
+        <nav>
+          <ul>
+            <li class="active"><i class="fa-solid fa-gear"></i> 설정</li>
+            <li>
+              <a href="/user/logout">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> 로그아웃
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-wrapper">
+    <div class="header-top-bar">
+      <div class="page-title-area">
+        <h1>내 정보 관리</h1>
+        <p>계정 정보 및 구독 정보를 관리하세요.</p>
+      </div>
+      <div class="header-right-meta">
+        <div class="noti-badge">
+          <i class="fa-regular fa-bell"></i>
+          <span class="noti-count">12</span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" class="top-profile-img" alt="User Profile">
+      </div>
+    </div>
+
+    <div class="tab-menu">
+      <div class="tab-item active">계정 정보</div>
+      <div class="tab-item">결제 내역</div>
+      <div class="tab-item">AI 사용 이력</div>
+      <div class="tab-item">저장한 콘텐츠</div>
+      <div class="tab-item">북마크 프롬프트</div>
+    </div>
+
+    <div class="content-grid">
+      <div class="card">
+        <div class="card-title">프로필</div>
+        <div class="profile-card-body">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" class="avatar-large" alt="Profile">
+          <div class="profile-name" th:text="${user.nickname + '님'}"></div>
+          <div class="profile-email" th:text="${user.email}"></div>
+          <button class="btn-outline-purple">
+            <i class="fa-regular fa-image"></i> 프로필 이미지 변경
+          </button>
+          <div class="upload-notice">JPG, PNG 파일만 업로드 가능 (최대 5MB)</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <form id="infoForm" class="card">
+          <div class="card-title">기본 정보</div>
+          <div class="form-group">
+            <label>이름</label>
+            <input type="text" name="userName" class="input-control" th:value="${user.userName}">
+          </div>
+          <div class="form-group">
+            <label>닉네임</label>
+            <input type="text" name="nickname" class="input-control" th:value="${user.nickname}">
+          </div>
+          <div class="form-group">
+            <label>이메일</label>
+            <input type="email" name="email" class="input-control" th:value="${user.email}" readonly>
+          </div>
+          <button type="submit" class="btn-primary-md">저장하기</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <div class="card">
+        <form id="passwordForm" class="card">
+          <div class="card-title">비밀번호 변경</div>
+          <div class="form-group">
+            <label>현재 비밀번호</label>
+            <div class="input-wrapper">
+              <input type="password" name="currentPassword" class="input-control" required>
+              <i class="fa-regular fa-eye toggle-password"></i>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>새 비밀번호</label>
+            <div class="input-wrapper">
+              <input type="password" id="newPassword" name="newPassword" class="input-control" required>
+              <i class="fa-regular fa-eye toggle-password"></i>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>새 비밀번호 확인</label>
+            <div class="input-wrapper">
+              <input type="password" id="newPasswordConfirm" class="input-control" required>
+              <i class="fa-regular fa-eye toggle-password"></i>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary-md">비밀번호 변경</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="card-title">현재 이용 중 플랜</div>
+        <div class="plan-badge">PRO 플랜</div>
+        <div class="plan-price-row">월 29,000원</div>
+        <div class="plan-next-date">다음 결제일 : 2026.06.20</div>
+        <div class="flex-btn-group">
+          <button class="btn-outline-purple" style="padding: 10px 20px; font-size: 13px;">플랜 변경</button>
+          <button class="btn-outline-md">결제 내역 보기</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <div class="card">
+        <div class="card-title">이번 달 사용량</div>
+        <div class="usage-item">
+          <div class="usage-meta"><span>프롬프트 생성</span><span>127 / 200</span></div>
+          <div class="progress-track"><div class="progress-bar" style="width: 63.5%;"></div></div>
+        </div>
+        <div class="usage-item">
+          <div class="usage-meta"><span>챗봇 대화</span><span>89 / 200</span></div>
+          <div class="progress-track"><div class="progress-bar" style="width: 44.5%;"></div></div>
+        </div>
+        <div class="usage-item">
+          <div class="usage-meta"><span>이미지 생성</span><span>53 / 100</span></div>
+          <div class="progress-track"><div class="progress-bar" style="width: 53%;"></div></div>
+        </div>
+        <div class="usage-item">
+          <div class="usage-meta"><span>콘텐츠 저장</span><span>32 / 100</span></div>
+          <div class="progress-track"><div class="progress-bar" style="width: 32%;"></div></div>
+        </div>
+        <div class="card-footer-link">
+          <a href="#">AI 사용 이력 자세히 보기 <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">알림 설정</div>
+        <div class="toggle-row">
+          <div class="toggle-label">댓글 알림</div>
+          <div class="switch-btn"></div>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-label">대댓글 알림</div>
+          <div class="switch-btn"></div>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-label">팔로우 알림</div>
+          <div class="switch-btn"></div>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-label">좋아요 알림</div>
+          <div class="switch-btn off"></div>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-label">마케팅 알림</div>
+          <div class="switch-btn off"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-color: #FEE4E2;">
+      <div class="card-title" style="color: var(--danger);">회원 탈퇴</div>
+      <div class="danger-zone-text">탈퇴 시 모든 데이터가 삭제되며, 복구가 불가능합니다.</div>
+      <button class="btn-danger-md">회원 탈퇴</button>
+    </div>
+  </main>
+
+  <script>
+      const infoForm = document.getElementById('infoForm');
+      infoForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new URLSearchParams(new FormData(infoForm));
+      
+      fetch('/api/user/info/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        if(data.status === 'success') {
+          location.reload(); 
+        }
+      })
+      .catch(err => console.error(err));
+    });
+
+    const passwordForm = document.getElementById('passwordForm');
+    passwordForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const newPassword = document.getElementById('newPassword').value;
+      const newPasswordConfirm = document.getElementById('newPasswordConfirm').value;
+      
+      if (newPassword !== newPasswordConfirm) {
+        alert('새 비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+        return;
+      }
+      
+      const formData = new URLSearchParams(new FormData(passwordForm));
+      
+      fetch('/api/user/password/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message);
+        if(data.status === 'success') {
+          passwordForm.reset(); 
+        }
+      })
+      .catch(err => console.error(err));
+    });
+  </script>
+</body>
+</html>
