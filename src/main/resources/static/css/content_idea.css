@@ -367,17 +367,45 @@ body {
 }
 
 .btn-copy {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background-color: #4f46e5;
-  color: #ffffff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background-color: #4f46e5;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap; 
+}
+
+.btn-copy:hover {
+    background-color: #4338ca;
+}
+
+.btn-copy .material-symbols-outlined {
+    font-size: 18px;
+}
+
+.btn-delete-bookmark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;         
+    background-color: #eef2ff; 
+    color: #4f46e5;          
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;      
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;     
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
 }
 
 .bookmark-section {
@@ -434,7 +462,7 @@ body {
   color: #334155;
 }
 
-.bookmark-date {
+.bookmark-prompt {
   color: #94a3b8;
   font-size: 13px;
 }
