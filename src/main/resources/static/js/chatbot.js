@@ -683,7 +683,6 @@ function renderChatHistory(messageList) {
             let chatbotBubbleHTML = "";
 
             if (isScenarioData) {
-                console.log("here1");
                 try {
                     const scenarios = JSON.parse(text);
                     currentScenariosForRender = scenarios; 
@@ -757,7 +756,6 @@ function renderChatHistory(messageList) {
                     chatbotBubbleHTML = `<div class="bg-[#FFEFE0] text-gray-800 text-sm px-4 py-2.5 rounded-2xl rounded-tl-none shadow-sm whitespace-pre-line">${text}</div>`;
                 }
             } else {
-                console.log("here2");
                 const isLongIdeaText = text.includes("##") || text.includes("**") || text.length > 150;
                 let chatbotBubbleHTML = "";
 
@@ -779,7 +777,6 @@ function renderChatHistory(messageList) {
                         </div>
                     `;
                 } else {
-                    console.log("here3");
                     chatbotBubbleHTML = `
                         <div class="bg-[#FFEFE0] text-gray-800 text-sm px-4 py-2.5 rounded-2xl rounded-tl-none shadow-sm whitespace-pre-line leading-relaxed">
                             ${text}
