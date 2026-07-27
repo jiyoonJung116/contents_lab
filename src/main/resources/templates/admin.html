@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1440">
     <title>GrowInsta - 관리자 대시보드</title>
-    <!-- Pretendard 및 FontAwesome 로드 -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/admin.css}">
 </head>
 <body>
-
-    <!-- 사이드바 고정 영역 -->
     <aside>
         <div>
             <div class="logo-area">
@@ -47,10 +44,7 @@
         </div>
     </aside>
 
-    <!-- 메인 대시보드 스크롤 뷰 개방 -->
     <div class="main-wrapper">
-        
-        <!-- 대시보드 공통 타이틀 헤더 바 -->
         <div class="dashboard-header">
             <div class="header-title">
                 <h1>관리자 대시보드</h1>
@@ -60,11 +54,7 @@
                 <i class="fa-regular fa-calendar"></i> 2024.05.20 (월) <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i>
             </div>
         </div>
-
-        <!-- 왼쪽 메인 주요 핵심 테이블 및 통계 집계 데이터 구역 -->
         <div class="content-left">
-            
-            <!-- 상단 5단 레이아웃 요약 대시보드 피드 -->
             <div class="summary-grid">
                 <div class="summary-card">
                     <div class="summary-card-header">
@@ -107,8 +97,6 @@
                     <div class="summary-trend trend-up">전일 대비 ▲ 12.5%</div>
                 </div>
             </div>
-
-            <!-- 섹션 1: 콘텐츠 아이디어 관리 데이터 테이블 피드 -->
             <div class="card">
                 <div class="card-title">콘텐츠 아이디어 관리 <i class="fa-solid fa-circle-info info-icon"></i></div>
                 <div class="filter-bar">
@@ -226,8 +214,6 @@
                     </select>
                 </div>
             </div>
-
-            <!-- 섹션 2: 회원 별 활동 현황 분석 테이블 구역 -->
             <div class="card">
                 <div class="card-title">회원 별 활동 현황 <i class="fa-solid fa-circle-info info-icon"></i></div>
                 <div class="member-filter-grid">
@@ -311,8 +297,6 @@
                     </table>
                 </div>
             </div>
-
-            <!-- 섹션 3: 최근 AI 사용 및 결과물 세부 로그 스트림 -->
             <div class="card">
                 <div class="filter-bar" style="margin-bottom: 20px;">
                     <div class="card-title" style="margin-bottom: 0;">최근 AI 사용 및 결과물 <i class="fa-solid fa-circle-info info-icon"></i></div>
@@ -383,11 +367,7 @@
             </div>
 
         </div>
-
-        <!-- 오른쪽 서브 가이드 사이드 카드 레이아웃 분할 영역 -->
         <div class="content-right">
-            
-            <!-- 카드 1: 실시간 가입 현황 -->
             <div class="card">
                 <div class="right-header">
                     <h4>실시간 가입 현황</h4>
@@ -426,8 +406,6 @@
                     </li>
                 </ul>
             </div>
-
-            <!-- 카드 2: 결제 현황 그래프 집계 카드 -->
             <div class="card">
                 <div class="right-header">
                     <h4>결제 현황 (오늘)</h4>
@@ -437,8 +415,6 @@
                     <div class="payment-row"><span>총 결제 건수</span><b>23건</b></div>
                     <div class="payment-row"><span>총 결제 금액</span><b style="font-size:16px; color:#1D2939;">₩523,000</b></div>
                 </div>
-                
-                <!-- 가상 트렌드 라인 차트 영역 시각화 디자인 고정 -->
                 <div class="mini-chart">
                     <svg class="chart-svg" viewBox="0 0 300 100">
                         <path d="M 0 80 Q 50 70, 100 65 T 200 40 T 300 15" fill="none" stroke="#6347FF" stroke-width="3" stroke-linecap="round"/>
@@ -452,8 +428,6 @@
                     <span>24시</span>
                 </div>
             </div>
-
-            <!-- 카드 3: 시스템 상시 모니터링 라이브 스탯 현황 -->
             <div class="card">
                 <div class="right-header" style="margin-bottom: 12px;">
                     <h4>시스템 상태</h4>

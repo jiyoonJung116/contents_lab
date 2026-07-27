@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1440">
     <title>GrowInsta - 해시태그 트렌드 트래킹</title>
-    <!-- Pretendard 및 FontAwesome 로드 -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/main_hashtag.css">
 </head>
 <body>
-
-    <!-- 고정 네비게이션 사이드바 -->
     <aside>
         <div>
             <div class="logo-area">
@@ -27,8 +24,6 @@
                     <li><i class="fa-regular fa-circle-question"></i> FAQ & 문의</li>
                 </ul>
             </nav>
-            
-            <!-- 오늘의 사용 요약 카드 블록 -->
             <div class="summary-card">
                 <h4>오늘의 사용 요약</h4>
                 <div class="summary-row"><span>프롬프트 생성</span><span>12회</span></div>
@@ -51,11 +46,7 @@
             </div>
         </div>
     </aside>
-
-    <!-- 우측 메인 대시보드 스페이스 -->
     <div class="main-wrapper">
-        
-        <!-- 상단 타이틀 및 날짜 필터 라인 -->
         <div class="header-section">
             <div class="page-title">
                 <h1>해시태그 트렌드 트래킹 <i class="fa-regular fa-circle-question" style="color: var(--text-gray); font-size: 16px; cursor: pointer; font-weight: normal;"></i></h1>
@@ -66,8 +57,6 @@
                 <button class="btn-secondary" style="padding: 8px 10px;"><i class="fa-solid fa-rotate-right"></i></button>
             </div>
         </div>
-
-        <!-- 5단 주요 핵심 데이터 지표 보드 -->
         <div class="kpi-grid">
             <div class="kpi-card">
                 <h6>총 해시태그 수</h6>
@@ -95,8 +84,6 @@
                 <div class="kpi-trend">지난 7일 대비 <span class="up"><i class="fa-solid fa-caret-up"></i> 9.1%</span></div>
             </div>
         </div>
-
-        <!-- 서브 탭 이동 네비게이션 -->
         <div class="sub-tabs">
             <button class="sub-tab-item active">실시간 트렌드</button>
             <button class="sub-tab-item">상승 추이</button>
@@ -104,8 +91,6 @@
             <button class="sub-tab-item">관련 해시태그</button>
             <button class="sub-tab-item">활용 가이드</button>
         </div>
-
-        <!-- 섹션 1 그리드: 실시간 인기 해시태그 TOP 50 & 실시간 트렌드 그래프 -->
         <div class="grid-2col">
             <div class="dashboard-box">
                 <div class="box-header"><h3 class="box-title">실시간 인기 해시태그 TOP 50</h3></div>
@@ -164,8 +149,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- 섹션 2 그리드: 해시태그 성과 지표 비교 & 카테고리별 인기 해시태그 & 상승 중인 해시태그 -->
         <div class="grid-2col">
             <div style="display: flex; flex-direction: column; gap: 24px;">
                 <div class="dashboard-box">
@@ -219,8 +202,6 @@
                 </table>
             </div>
         </div>
-
-        <!-- 섹션 3: 해시태그 상세 분석 종합 보드 -->
         <div class="dashboard-box">
             <div class="box-header">
                 <h3 class="box-title">해시태그 상세 분석</h3>
@@ -231,7 +212,6 @@
             </div>
             
             <div class="detail-analysis-wrapper">
-                <!-- 기본 정보 열 -->
                 <div class="distribution-block">
                     <div class="dist-sub-title">기본 정보</div>
                     <div class="info-list-rows">
@@ -245,19 +225,14 @@
                         <div class="info-item-row"><span class="lbl">주요 사용 시간대</span><span class="val">오후 7시 ~ 11시</span></div>
                     </div>
                 </div>
-
-                <!-- 시간대별 게시물 수 열 -->
                 <div class="distribution-block">
                     <div class="dist-sub-title">시간대별 게시물 수</div>
                     <div class="mock-chart-placeholder" style="height: 100%;">시간대별 스플라인 라인 차트 영역 (0시 ~ 24시)</div>
                 </div>
-
-                <!-- 성별/연령별 분포 열 -->
                 <div class="distribution-block">
                     <div class="dist-sub-title">성별/연령별 분포</div>
                     <div style="display: flex; flex-direction: column; gap: 20px; border: 1px solid var(--border); padding: 16px; border-radius: 12px; height: 100%;">
                         <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 16px; height: 100%;">
-                            <!-- 성별 -->
                             <div style="display:flex; flex-direction:column; gap:12px;">
                                 <span style="font-size:11px; font-weight:700; color:var(--text-gray);">성별 분포</span>
                                 <div class="gender-chart-row">
@@ -268,7 +243,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- 연령별 -->
                             <div style="display:flex; flex-direction:column; gap:8px;">
                                 <span style="font-size:11px; font-weight:700; color:var(--text-gray);">연령별 분포</span>
                                 <div class="age-bar-list">
@@ -284,10 +258,7 @@
                 </div>
             </div>
         </div>
-
-        <!-- 하단 3컬럼 영역: 연관 해시태그 TOP 10 & 추천 활용 인사이트 & 해시태그 활용 예시 -->
         <div class="grid-3col">
-            <!-- 연관 해시태그 TOP 10 -->
             <div class="dashboard-box">
                 <div class="box-header"><h3 class="box-title">연관 해시태그 TOP 10</h3></div>
                 <div class="rank-bar-list">
@@ -303,8 +274,6 @@
                     <div class="rank-bar-item"><div class="rank-item-left"><span class="rank-num">10</span><span class="rank-tag-name">#기록의힘</span></div><div class="rank-bar-graph-wrapper"><div class="horizontal-fill-bar" style="width: 19px;"></div><span class="rank-metric-val">19.3%</span></div></div>
                 </div>
             </div>
-
-            <!-- 추천 활용 인사이트 -->
             <div class="dashboard-box">
                 <div class="box-header"><h3 class="box-title">추천 활용 인사이트</h3></div>
                 <div class="insight-checklist">
@@ -315,8 +284,6 @@
                     <div class="insight-item"><i class="fa-regular fa-square-check"></i> <span>주말(토, 일) 오후 시간대에 사용량이 급증해요.</span></div>
                 </div>
             </div>
-
-            <!-- 해시태그 활용 예시 -->
             <div class="dashboard-box">
                 <div class="box-header"><h3 class="box-title">해시태그 활용 예시</h3></div>
                 <div class="example-cards-grid">

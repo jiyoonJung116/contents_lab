@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1440">
     <title>GrowInsta - FAQ & 문의</title>
-    <!-- Pretendard 및 FontAwesome 아이콘 라이브러리 로드 -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/faq.css">
 </head>
 <body>
-
-    <!-- 좌측 공통 고정 네비게이션 메뉴바 -->
     <aside>
         <div>
             <div class="logo-area">
@@ -27,8 +24,6 @@
                     <li class="active"><i class="fa-regular fa-circle-question"></i> FAQ & 문의</li>
                 </ul>
             </nav>
-            
-            <!-- 왼쪽 사이드 윙 하단 도움말 카드 배너 -->
             <div class="help-banner">
                 <h4>도움이 더 필요하신가요?</h4>
                 <p>원하는 답변을 찾지 못하셨다면 문의하기를 통해 도움을 받을 수 있어요.</p>
@@ -48,11 +43,7 @@
             </div>
         </div>
     </aside>
-
-    <!-- 우측 메인 대시보드 스페이스 -->
     <div class="main-container">
-        
-        <!-- 대시보드 상단 헤더 래퍼 -->
         <div class="header-wrap">
             <div class="header-title">
                 <h1>FAQ & 문의</h1>
@@ -66,14 +57,10 @@
                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" class="header-avatar" alt="Avatar">
             </div>
         </div>
-
-        <!-- 내부 섹션 전환 수평 탭 메뉴 -->
         <div class="main-tabs">
             <button class="tab-item active">FAQ</button>
             <button class="tab-item">내 문의 내역</button>
         </div>
-
-        <!-- FAQ 통합 리스트 검색 영역 카드 -->
         <div class="content-card">
             <div class="faq-filter-grid">
                 <div class="search-input-box">
@@ -86,10 +73,7 @@
                     </select>
                 </div>
             </div>
-
-            <!-- 아코디언 목록 리스트 -->
             <div class="faq-accordion-list">
-                <!-- 아코디언 아이템 1 (열린 상태) -->
                 <div class="faq-item open">
                     <div class="faq-trigger">
                         <span>GrowInsta는 어떤 서비스인가요?</span>
@@ -100,48 +84,36 @@
                         커뮤니티를 통해 크리에이터들과 소통할 수 있는 플랫폼입니다.
                     </div>
                 </div>
-
-                <!-- 아코디언 아이템 2 -->
                 <div class="faq-item">
                     <div class="faq-trigger">
                         <span>무료 체험은 어떻게 이용하나요?</span>
                         <i class="fa-solid fa-plus faq-icon"></i>
                     </div>
                 </div>
-
-                <!-- 아코디언 아이템 3 -->
                 <div class="faq-item">
                     <div class="faq-trigger">
                         <span>결제는 어떤 방식으로 이루어지나요?</span>
                         <i class="fa-solid fa-plus faq-icon"></i>
                     </div>
                 </div>
-
-                <!-- 아코디언 아이템 4 -->
                 <div class="faq-item">
                     <div class="faq-trigger">
                         <span>구독 플랜은 언제든지 변경하거나 취소할 수 있나요?</span>
                         <i class="fa-solid fa-plus faq-icon"></i>
                     </div>
                 </div>
-
-                <!-- 아코디언 아이템 5 -->
                 <div class="faq-item">
                     <div class="faq-trigger">
                         <span>생성한 콘텐츠 아이디어는 어디에서 확인할 수 있나요?</span>
                         <i class="fa-solid fa-plus faq-icon"></i>
                     </div>
                 </div>
-
-                <!-- 아코디언 아이템 6 -->
                 <div class="faq-item">
                     <div class="faq-trigger">
                         <span>커뮤니티 이용 가이드라인이 있나요?</span>
                         <i class="fa-solid fa-plus faq-icon"></i>
                     </div>
                 </div>
-
-                <!-- 아코디언 아이템 7 -->
                 <div class="faq-item">
                     <div class="faq-trigger">
                         <span>개인정보는 안전하게 보호되나요?</span>
@@ -150,8 +122,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- 하단 섹션: 내 문의 내역 데이터 보드 -->
         <div class="content-card">
             <div class="card-header-row">
                 <div class="card-title-group">
@@ -160,15 +130,11 @@
                 </div>
                 <button class="btn-primary-action">문의하기</button>
             </div>
-
-            <!-- 테이블 내부 상단 필터 태그 필드 -->
             <div class="filter-btn-group">
                 <button class="btn-filter-tag active">전체</button>
                 <button class="btn-filter-tag">답변 대기</button>
                 <button class="btn-filter-tag">답변 완료</button>
             </div>
-
-            <!-- 문의 목록 리스트 테이블 -->
             <table class="data-table">
                 <thead>
                     <tr>
@@ -247,8 +213,6 @@
                     </tr>
                 </tbody>
             </table>
-
-            <!-- 하단 제어 바 (페이지네이션 및 드롭다운) -->
             <div class="table-ctrls-wrap">
                 <div></div>
                 <ul class="pagination-list">

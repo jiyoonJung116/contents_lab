@@ -9,8 +9,6 @@
     <link rel="stylesheet" th:href="@{/css/community.css}">
 </head>
 <body class="flex">
-
-    <!-- 좌측 사이드바 -->
     <aside class="w-64 bg-white min-h-screen border-r p-6 flex flex-col justify-between sticky top-0">
         <div>
             <div class="flex items-center gap-2 mb-10"><div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">G</div><span class="text-xl font-bold">GrowInsta</span></div>
@@ -30,8 +28,6 @@
             <button class="w-full mt-2 border py-1 rounded">프로필 보기</button>
         </div>
     </aside>
-
-    <!-- 중앙 게시판 영역 -->
     <main class="flex-1 p-8 max-w-3xl">
         <header class="flex justify-between items-center mb-6">
             <h1 class="text-2xl font-bold">커뮤니티 <i class="fa-solid fa-users text-lg"></i></h1>
@@ -41,8 +37,6 @@
                 <div class="w-8 h-8 bg-gray-300 rounded-full"></div>
             </div>
         </header>
-
-        <!-- 필터 탭 -->
         <div class="flex gap-6 border-b mb-6 text-sm font-semibold">
             <a href="#" class="pb-2 border-b-2 border-indigo-600 text-indigo-600">전체</a>
             <a href="#" class="pb-2 text-gray-500">팔로잉</a>
@@ -54,10 +48,7 @@
                 <button><i class="fa-solid fa-filter"></i> 필터</button>
             </div>
         </div>
-
-        <!-- 게시글 피드 -->
         <div class="space-y-6">
-            <!-- 글쓰기 카드 -->
             <div class="bg-white p-4 rounded-xl border flex items-center justify-between">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
@@ -65,8 +56,6 @@
                 </div>
                 <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg">게시하기</button>
             </div>
-
-            <!-- 게시글 예시 -->
             <div class="bg-white p-6 rounded-xl border">
                 <div class="flex justify-between items-center mb-4">
                     <div class="flex items-center gap-2 font-bold">yoon_creator <i class="fa-solid fa-circle-check text-blue-500"></i> <span class="text-gray-400 text-xs">2시간 전</span></div>
@@ -81,10 +70,7 @@
             </div>
         </div>
     </main>
-
-    <!-- 우측 패널 -->
     <aside class="w-80 p-8 space-y-8 sticky top-0 h-screen overflow-y-auto custom-scrollbar">
-        <!-- 실시간 알림 -->
         <div class="bg-white p-5 rounded-xl border shadow-sm">
             <h3 class="font-bold mb-4">실시간 알림 <span class="text-indigo-600 text-xs ml-2 cursor-pointer">모두 읽음</span></h3>
             <div class="space-y-4 text-xs text-gray-600">
@@ -92,8 +78,6 @@
                 <p>haru_creator님이 댓글을 남겼습니다.</p>
             </div>
         </div>
-
-        <!-- 추천 팔로우 -->
         <div class="bg-white p-5 rounded-xl border shadow-sm">
             <h3 class="font-bold mb-4">추천 팔로우</h3>
             <div class="space-y-4">
@@ -103,8 +87,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- 인기 해시태그 -->
         <div class="bg-white p-5 rounded-xl border shadow-sm">
             <div class="flex justify-between mb-4">
                 <h3 class="font-bold">인기 해시태그</h3>

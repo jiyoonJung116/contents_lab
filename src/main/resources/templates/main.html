@@ -28,7 +28,6 @@
         </div>
 
         <div>
-            <!-- 오늘의 사용 요약 미니 보드 -->
             <div class="summary-widget">
                 <h4>오늘의 사용 요약</h4>
                 <div class="summary-row"><span>프롬프트 생성</span><span>12회</span></div>
@@ -71,8 +70,6 @@
                         <option>GPT-4o</option>
                     </select>
                 </div>
-                
-                <!-- 입력 창 구조체 -->
                 <div class="chat-input-box">
                     <textarea class="chat-textarea" placeholder="어떤 콘텐츠를 만들고 싶으신가요?"></textarea>
                     <div class="chat-input-actions">
@@ -83,8 +80,6 @@
                         <button class="btn-send-chat"><i class="fa-solid fa-paper-plane"></i></button>
                     </div>
                 </div>
-
-                <!-- 칩셋 가이드 라인 -->
                 <div class="prompt-chips">
                     <div class="prompt-chip"><i class="fa-regular fa-file-lines"></i> 감성적인 인스타툰 아이디어 줘</div>
                     <div class="prompt-chip"><i class="fa-solid fa-clapperboard"></i> 릴스용 꿀팁 주제 추천해줘</div>
@@ -93,10 +88,7 @@
                 </div>
             </div>
         </div>
-
-        <!-- 중간 분할 2단 리스트 카드 레이아웃 -->
         <div class="split-grid-2">
-            <!-- 유저 맞춤형 추천 -->
             <div class="card">
                 <div class="card-header-flex">
                     <div class="card-title">유저 맞춤형 추천 <i class="fa-regular fa-circle-question info-icon"></i></div>
@@ -161,8 +153,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 추가 추천 (새로고침) -->
             <div class="card">
                 <div class="card-header-flex">
                     <div class="card-title">추가 추천 (새로고침) <i class="fa-regular fa-circle-question info-icon"></i></div>
@@ -212,10 +202,7 @@
                 </div>
             </div>
         </div>
-
-        <!-- 3단 영역: 해시태그 트렌드 및 핵심 성과 결합 레이어 -->
         <div class="split-grid-trend">
-            <!-- 해시태그 트렌드 트래킹 카드 -->
             <div class="card">
                 <div class="card-header-flex">
                     <div class="card-title">해시태그 트렌드 트래킹 <i class="fa-regular fa-circle-question info-icon"></i></div>
@@ -226,7 +213,6 @@
                 </div>
                 
                 <div class="trend-inner-flex">
-                    <!-- 레프트 탑5 순위표 -->
                     <div>
                         <h5 style="font-size: 11px; font-weight: 700; color: var(--text-sub); margin-bottom: 10px;">실시간 인기 해시태그 TOP 5</h5>
                         <table class="tag-rank-table">
@@ -240,16 +226,12 @@
                         </table>
                         <p style="font-size: 10px; color: var(--text-gray); margin-top: 14px;">업데이트 2024.05.20 14:30</p>
                     </div>
-                    
-                    <!-- 라이트 차트 드로잉 영역 -->
                     <div style="position: relative; height: 160px;">
                         <h5 style="font-size: 11px; font-weight: 700; color: var(--text-sub); margin-bottom: 10px;">인기 해시태그 추이</h5>
                         <canvas id="trendLineChart" style="max-height: 140px;"></canvas>
                     </div>
                 </div>
             </div>
-
-            <!-- 핵심 성과 지표 카드 -->
             <div class="card">
                 <div class="card-header-flex" style="margin-bottom: 14px;">
                     <div class="card-title">핵심 성과 지표 <p>(Instagram 데이터 기반)</p> <i class="fa-regular fa-circle-question info-icon"></i></div>
@@ -295,8 +277,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- 최하단 소셜 인게이지먼트 통계 통합 대형 보드 -->
         <div class="card">
             <div class="card-header-flex" style="margin-bottom: 8px;">
                 <div class="card-title">소셜 인게이지먼트 통계 <p>(해당 프롬프트로 생성된 콘텐츠 평균 반영)</p></div>
@@ -307,7 +287,6 @@
             </div>
 
             <div class="engagement-multi-grid">
-                <!-- 1열: 평균 반응 수 메트릭 대형 구형 원 -->
                 <div>
                     <h5 style="font-size: 12px; font-weight: 700; color: #344054; margin-bottom: 12px;">평균 반응 수</h5>
                     <div class="stat-avg-circle-box">
@@ -324,8 +303,6 @@
                         <p style="font-size: 10px; color: var(--text-gray); margin-top: 24px; text-align: left; width: 100%;">기간: 2024.05.14 ~ 2024.05.20</p>
                     </div>
                 </div>
-
-                <!-- 2열: 성과 추이 복합 바 차트 컴포넌트 -->
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
                         <h5 style="font-size: 12px; font-weight: 700; color: #344054;">성과 추이</h5>
@@ -339,8 +316,6 @@
                         <canvas id="engagementBarChart" style="max-height: 150px;"></canvas>
                     </div>
                 </div>
-
-                <!-- 3열: 상위 성과 프롬프트 TOP 5 리스트 -->
                 <div>
                     <h5 style="font-size: 12px; font-weight: 700; color: #344054; margin-bottom: 12px;">상위 성과 프롬프트 TOP 5</h5>
                     <div class="top5-list">
@@ -381,8 +356,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- 4열: 최근 활동 히스토리 타임라인 -->
                 <div>
                     <h5 style="font-size: 12px; font-weight: 700; color: #344054; margin-bottom: 12px;">최근 활동 히스토리</h5>
                     <div class="history-timeline">
@@ -412,8 +385,6 @@
         </div>
 
     </div>
-
-    <!-- 차트 렌더링 스크립트 -->
     <script>
         // 1. 인기 해시태그 추이 꺾은선 차트 설정
         const ctxLine = document.getElementById('trendLineChart').getContext('2d');
