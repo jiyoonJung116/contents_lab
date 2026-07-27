@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jjy.contents_lab.mapper.SubscribeMapper">
+    <resultMap id="SubscribeMap" type="com.jjy.contents_lab.dto.SubscribeDto">
+        <id property="id" column="id"/>
+        <result property="subscribeType" column="subscribe_type"/>
+        <result property="subscribeName" column="subscribe_name"/>
+        <result property="price" column="price"/>
+        <result property="billingCycle" column="billing_cycle"/>
+        <result property="discountRate" column="discount_rate"/>
+        <result property="description" column="description"/>
+    </resultMap>
+
+    <select id="getSubscribeList" resultMap="SubscribeMap">
+        SELECT *
+        FROM subscribe
+    </select>
+</mapper>
