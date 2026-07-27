@@ -763,13 +763,10 @@ function renderChatHistory(messageList) {
                     chatbotBubbleHTML = `
                         <div class="prose prose-sm max-w-full text-xs text-gray-800 bg-white p-4 rounded-xl border border-gray-150 shadow-sm w-full md:w-[550px]">
                             <div class="p-5 bg-white rounded-2xl border border-amber-100 shadow-sm">
-                                <!-- 상단 헤더 타이틀 -->
                                 <div class="flex items-center space-x-2 mb-4">
                                     <span class="p-1.5 bg-amber-50 rounded-xl text-amber-500 font-bold text-lg">💡</span>
                                     <h3 class="font-extrabold text-lg text-gray-800">인스타툰 아이디어 기획</h3>
                                 </div>
-                                
-                                <!-- 내용 스크롤 본문 바디 (마크다운 파싱 지원) -->
                                 <div class="prose max-w-none text-gray-700 leading-relaxed max-h-[500px] overflow-y-auto p-1 custom-scrollbar text-xs">
                                     ${typeof marked !== 'undefined' ? marked.parse(text) : `<div class="whitespace-pre-line">${text}</div>`}
                                 </div>
@@ -834,7 +831,6 @@ function switchScenarioInBubble(scenarioIdx) {
                     <p class="text-[11px] text-gray-500 ml-7">연출: ${cut.sceneDescription}</p>
                 </div>
                 <div class="pt-0.5">
-                    <!-- name="cut_select_${cut.cutIndex}"를 통해 컷별 고유 그룹 지정 -->
                     <input type="radio" 
                            name="cut_select_${cut.cutIndex}" 
                            class="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500 cursor-pointer" 
