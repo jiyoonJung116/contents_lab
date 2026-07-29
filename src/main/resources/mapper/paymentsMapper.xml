@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jjy.contents_lab.mapper.PaymentsMapper">
+    <resultMap id="PaymentsMap" type="com.jjy.contents_lab.dto.PaymentsDto">
+        <id property="id" column="id"/>
+        <result property="subscribeId" column="subscribe_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="amount" column="amount"/>
+        <result property="cardNumber" column="card_number"/>
+        <result property="paymentMethod" column="payment_method"/>
+        <result property="status" column="status"/>
+        <result property="receiptUrl" column="receipt_url"/>
+        <result property="createDate" column="create_date"/>
+        <result property="startDate" column="start_date"/>
+        <result property="endDate" column="end_date"/>
+        <result property="subscribeName" column="subscribe_name"/>
+        <result property="priceInfo" column="price_info"/>
+    </resultMap>
+
+    <select id="getPaymentsList" resultMap="PaymentsMap">
+        SELECT 
+            p.*,
+            s.subscribe_name
+        FROM payments p
+        INNER JOIN subscribe s
+        ON p.subscribe_id = s.id
+        WHERE p.user_id = #{userId}
+        ORDER BY p.create_date DESC
+        LIMIT #{size} OFFSET #{offset}
+    </select>
+
+    <select id="getPaymentsInfo" resultMap="PaymentsMap">
+        SELECT 
+            s.subscribe_name,                     
+            p.amount,                              
+            DATE_FORMAT(DATE_ADD(p.start_date, INTERVAL 1 MONTH), '%Y-%m-%d') start_date,
+            CONCAT(
+                CASE s.billing_cycle 
+                    WHEN 'MONTHLY' THEN '월'
+                    WHEN 'YEARLY' THEN '연'
+                    ELSE s.billing_cycle 
+                END, 
+                ' ',
+                FORMAT(s.price, 0), '원'
+            ) price_info
+        FROM 
+            payments p
+        INNER JOIN subscribe s
+        ON p.subscribe_id = s.id
+        WHERE p.user_id = #{userId}                                 
+        AND p.status = '1'                         
+        ORDER BY p.start_date DESC
+    </select>
+</mapper>

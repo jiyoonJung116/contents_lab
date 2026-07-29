@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,50 +76,45 @@
       <div class="tab-item">저장한 콘텐츠</div>
       <div class="tab-item">북마크 프롬프트</div>
     </div>
-
     <div class="card">
       <div class="card-header-flex">
         <div class="card-title">결제 요약</div>
         <button class="btn-outline-sm"><i class="fa-solid fa-download"></i> 영수증 전체 다운로드</button>
       </div>
       
-      <div class="summary-grid-4">
-        <div class="summary-card-item">
-          <div class="summary-icon-box purple"><i class="fa-solid fa-wallet"></i></div>
-          <div class="summary-info-block">
-            <div class="lbl">총 결제 금액</div>
-            <div class="val">₩174,000</div>
-            <div class="sub-lbl">누적 결제 금액</div>
-          </div>
-        </div>
-        <div class="summary-card-item">
-          <div class="summary-icon-box green"><i class="fa-solid fa-receipt"></i></div>
-          <div class="summary-info-block">
-            <div class="lbl">총 결제 횟수</div>
-            <div class="val">6회</div>
-            <div class="sub-lbl">누적 결제 횟수</div>
-          </div>
-        </div>
+      <div class="summary-grid-2" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
         <div class="summary-card-item">
           <div class="summary-icon-box orange"><i class="fa-solid fa-box-open"></i></div>
           <div class="summary-info-block">
             <div class="lbl">현재 플랜</div>
-            <div class="val">PRO 플랜</div>
-            <div class="sub-lbl">월 29,000원</div>
+            <div class="val" th:if="${pay_info != null}" th:text="${pay_info.subscribeName}"></div>
+            <div class="sub-lbl" th:if="${pay_info != null}" th:text="${pay_info.priceInfo}"></div>
+            <div class="val" th:if="${pay_info == null}">이용 중인 플랜 없음</div>
+            <div class="sub-lbl" th:if="${pay_info == null}">-</div>
           </div>
         </div>
         <div class="summary-card-item">
           <div class="summary-icon-box blue"><i class="fa-solid fa-calendar-days"></i></div>
           <div class="summary-info-block">
             <div class="lbl">다음 결제일</div>
-            <div class="val">2026.06.20</div>
-            <div class="sub-lbl">30일 후</div>
+            <div class="val" 
+                th:if="${pay_info != null and pay_info.startDate != null}" 
+                th:text="${pay_info.startDate}">2026.06.20</div>
+            
+            <div class="sub-lbl" 
+                th:if="${pay_info != null and pay_info.startDate != null}" 
+                th:with="targetDate=${T(java.time.LocalDate).parse(#strings.substring(pay_info.startDate, 0, 10))},
+                          daysLeft=${T(java.time.temporal.ChronoUnit).DAYS.between(T(java.time.LocalDate).now(), targetDate)}">
+              <span th:text="${daysLeft >= 0 ? daysLeft + '일 후' : '만료됨'}">30일 후</span>
+            </div>
+            <div class="val" th:if="${pay_info == null or pay_info.startDate == null}">-</div>
+            <div class="sub-lbl" th:if="${pay_info == null or pay_info.startDate == null}">-</div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="card">
+    <div class="card" 
+         th:with="currentPage=${param.page != null ? #conversions.convert(param.page, 'java.lang.Integer') : 0}, 
+                  currentSize=${param.size != null ? #conversions.convert(param.size, 'java.lang.Integer') : 10}">
       <div class="table-filter-bar">
         <select class="select-control">
           <option>전체 결제 내역</option>
@@ -138,7 +133,6 @@
           <thead>
             <tr>
               <th>결제일</th>
-              <th>주문번호</th>
               <th>구독 플랜</th>
               <th>결제 금액</th>
               <th>결제 수단</th>
@@ -147,102 +141,55 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="td-date">2025.05.20 14:30:22</td>
-              <td class="td-order">ORD-20250520-0006</td>
-              <td>PRO 플랜 (월간)</td>
-              <td>₩29,000</td>
-              <td>
-                <div class="card-vendor">
-                  <div class="circle-logo"><span class="red"></span><span class="yellow"></span></div>
-                  카드 •••• 1234
-                </div>
+            <tr th:if="${pay_list == null or pay_list.isEmpty()}">
+              <td colspan="6" style="text-align: center; padding: 40px 0; color: #888;">
+                결제 내역이 존재하지 않습니다.
               </td>
-              <td><div class="status-badge-complete">결제 완료</div></td>
-              <td style="text-align: center;"><button class="btn-icon-download"><i class="fa-solid fa-download"></i></button></td>
             </tr>
-            <tr>
-              <td class="td-date">2025.04.20 14:30:18</td>
-              <td class="td-order">ORD-20250420-0005</td>
-              <td>PRO 플랜 (월간)</td>
-              <td>₩29,000</td>
+            <tr th:each="pay : ${pay_list}">
+              <td class="td-date" th:text="${pay.startDate}">2025.05.20 14:30:22</td>
+              <td th:text="${pay.subscribeName}">PRO 플랜 (월간)</td>
+              <td th:text="${'₩' + #numbers.formatInteger(pay.amount, 0, 'COMMA')}">₩29,000</td>
               <td>
                 <div class="card-vendor">
                   <div class="circle-logo"><span class="red"></span><span class="yellow"></span></div>
-                  카드 •••• 1234
+                  <span th:text="${pay.cardNumber}">카드 •••• 1234</span>
                 </div>
               </td>
-              <td><div class="status-badge-complete">결제 완료</div></td>
-              <td style="text-align: center;"><button class="btn-icon-download"><i class="fa-solid fa-download"></i></button></td>
-            </tr>
-            <tr>
-              <td class="td-date">2025.03.20 14:30:11</td>
-              <td class="td-order">ORD-20250320-0004</td>
-              <td>PRO 플랜 (월간)</td>
-              <td>₩29,000</td>
               <td>
-                <div class="card-vendor">
-                  <div class="circle-logo"><span class="red"></span><span class="yellow"></span></div>
-                  카드 •••• 1234
+                <div class="status-badge-complete" 
+                    th:text="${pay.status == 1 or pay.status == '1' ? '성공' : (pay.status == 0 or pay.status == '0' ? '실패' : (pay.status == 2 or pay.status == '2' ? '취소' : '기타'))}">
+                  결제 완료
                 </div>
               </td>
-              <td><div class="status-badge-complete">결제 완료</div></td>
-              <td style="text-align: center;"><button class="btn-icon-download"><i class="fa-solid fa-download"></i></button></td>
-            </tr>
-            <tr>
-              <td class="td-date">2025.02.20 14:30:09</td>
-              <td class="td-order">ORD-20250220-0003</td>
-              <td>PRO 플랜 (월간)</td>
-              <td>₩29,000</td>
-              <td>
-                <div class="card-vendor">
-                  <div class="circle-logo"><span class="red"></span><span class="yellow"></span></div>
-                  카드 •••• 1234
-                </div>
+              <td style="text-align: center;">
+                <button class="btn-icon-download" th:onclick="|location.href='@{/pay/receipt/{id}(id=${pay.id})}'|">
+                  <i class="fa-solid fa-download"></i>
+                </button>
               </td>
-              <td><div class="status-badge-complete">결제 완료</div></td>
-              <td style="text-align: center;"><button class="btn-icon-download"><i class="fa-solid fa-download"></i></button></td>
-            </tr>
-            <tr>
-              <td class="td-date">2025.01.20 14:30:05</td>
-              <td class="td-order">ORD-20250120-0002</td>
-              <td>PRO 플랜 (월간)</td>
-              <td>₩29,000</td>
-              <td>
-                <div class="card-vendor">
-                  <div class="circle-logo"><span class="red"></span><span class="yellow"></span></div>
-                  카드 •••• 1234
-                </div>
-              </td>
-              <td><div class="status-badge-complete">결제 완료</div></td>
-              <td style="text-align: center;"><button class="btn-icon-download"><i class="fa-solid fa-download"></i></button></td>
-            </tr>
-            <tr>
-              <td class="td-date">2024.12.20 14:30:01</td>
-              <td class="td-order">ORD-20241220-0001</td>
-              <td>PRO 플랜 (월간)</td>
-              <td>₩29,000</td>
-              <td>
-                <div class="card-vendor">
-                  <div class="circle-logo"><span class="red"></span><span class="yellow"></span></div>
-                  카드 •••• 1234
-                </div>
-              </td>
-              <td><div class="status-badge-complete">결제 완료</div></td>
-              <td style="text-align: center;"><button class="btn-icon-download"><i class="fa-solid fa-download"></i></button></td>
             </tr>
           </tbody>
         </table>
       </div>
-
-      <div class="table-footer-pagination">
+      <div class="table-footer-pagination" th:if="${pay_list != null and !pay_list.isEmpty()}">
         <div class="pagination-pages">
-          <div class="page-nav-btn"><i class="fa-solid fa-chevron-left"></i></div>
-          <div class="page-nav-btn active">1</div>
-          <div class="page-nav-btn"><i class="fa-solid fa-chevron-right"></i></div>
+          <a class="page-nav-btn" 
+             th:classappend="${currentPage == 0} ? 'disabled'"
+             th:href="@{/pay(page=${currentPage - 1}, size=${currentSize})}">
+            <i class="fa-solid fa-chevron-left"></i>
+          </a>
+          <span style="font-size: 14px; font-weight: bold; padding: 0 12px; display: inline-flex; align-items: center;" 
+                th:text="${currentPage + 1}">1</span>
+          <a class="page-nav-btn" 
+             th:classappend="${pay_list.size() < currentSize} ? 'disabled'"
+             th:href="@{/pay(page=${currentPage + 1}, size=${currentSize})}">
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
         </div>
-        <select class="select-control" style="padding: 6px 12px; font-size: 12px;">
-          <option>10개씩 보기</option>
+        <select class="select-control" style="padding: 6px 12px; font-size: 12px;" onchange="location.href=this.value;">
+          <option th:value="@{/pay(page=0, size=10)}" th:selected="${currentSize == 10}">10개씩 보기</option>
+          <option th:value="@{/pay(page=0, size=20)}" th:selected="${currentSize == 20}">20개씩 보기</option>
+          <option th:value="@{/pay(page=0, size=50)}" th:selected="${currentSize == 50}">50개씩 보기</option>
         </select>
       </div>
     </div>
