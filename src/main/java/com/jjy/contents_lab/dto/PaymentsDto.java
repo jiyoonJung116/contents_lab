@@ -22,4 +22,7 @@ public class PaymentsDto {
 
     private String subscribeName;
     private String priceInfo;
+
+    private String billingKey;
+    private String customerEmail;
 }

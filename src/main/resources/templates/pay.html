@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/pay.css">
+    <script th:src="@{/js/pay.js}"></script>
+    <script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
 </head>
 <body class="flex min-h-screen text-gray-800">
 
@@ -58,6 +60,9 @@
     </aside>
 
     <main class="flex-1 ml-64 p-8 max-w-7xl">
+        <input type="hidden" id="user-name" th:value="${session.userName}" />
+        <input type="hidden" id="user-phone" th:value="${session.phoneNumber}" />
+        <input type="hidden" id="user-email" th:value="${session.email}" />
         <header class="flex justify-between items-center mb-8">
             <div>
                 <h1 class="text-2xl font-bold text-gray-900 tracking-tight">구독</h1>

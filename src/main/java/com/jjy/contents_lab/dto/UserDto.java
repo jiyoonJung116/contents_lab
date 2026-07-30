@@ -13,6 +13,7 @@ public class UserDto {
     private String password;
     private String userName;
     private String nickname;
+    private String phoneNumber;
     private String profileImageUrl;
     private String planType;
     private String interestContent;

@@ -12,4 +12,8 @@ public interface PaymentsMapper {
     List<PaymentsDto> getPaymentsList(Map<String, Object> param);
 
     PaymentsDto getPaymentsInfo(long userId);
+
+    int insertPayment(PaymentsDto paymentsDto);
+
+    int insertUserSubscription(PaymentsDto paymentsDto);
 }

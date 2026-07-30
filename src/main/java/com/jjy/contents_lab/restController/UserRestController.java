@@ -91,6 +91,9 @@ public class UserRestController {
 
                 session.setAttribute("login_info", jsonData);
                 session.setAttribute("userId", userId);
+                session.setAttribute("userName", userDto.getUserName());
+                session.setAttribute("phoneNumber", userDto.getPhoneNumber());
+                session.setAttribute("email", userDto.getEmail());
 
                 result.put("login_info", user);
             }

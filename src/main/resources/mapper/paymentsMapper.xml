@@ -53,4 +53,49 @@
         AND p.status = '1'                         
         ORDER BY p.start_date DESC
     </select>
+
+    <insert id="insertPayment" parameterType="com.jjy.contents_lab.dto.PaymentsDto" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO payments (
+            subscribe_id,
+            user_id,
+            amount,
+            payment_method,
+            status,
+            create_date
+        ) VALUES (
+            #{subscribeId},
+            #{userId},
+            #{amount},
+            'CARD',
+            '1',
+            NOW()
+        )
+    </insert>
+
+    <insert id="insertUserSubscription" parameterType="com.jjy.contents_lab.dto.PaymentsDto">
+        INSERT INTO user_subscription (
+            user_id,
+            subscribe_id,
+            billing_key,
+            status,
+            start_date,
+            end_date,
+            next_payment_date
+        ) VALUES (
+            #{userId},
+            #{subscribeId},
+            #{billingKey},
+            'ACTIVE',
+            NOW(),
+            DATE_ADD(NOW(), INTERVAL 1 MONTH),
+            DATE_ADD(NOW(), INTERVAL 1 MONTH)
+        )
+        ON DUPLICATE KEY UPDATE
+            subscribe_id = #{subscribeId},
+            billing_key = #{billingKey},
+            status = 'ACTIVE',
+            start_date = NOW(),
+            end_date = DATE_ADD(NOW(), INTERVAL 1 MONTH),
+            next_payment_date = DATE_ADD(NOW(), INTERVAL 1 MONTH)
+    </insert>
 </mapper>
