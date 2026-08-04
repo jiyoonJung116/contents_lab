@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jjy.contents_lab.mapper.InquiriesMapper">
+    <resultMap id="InquiriesMap" type="com.jjy.contents_lab.dto.InquiriesDto">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="inquiryType" column="inquiry_type"/>
+        <result property="priority" column="priority"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="attachmentUrl" column="attachment_url"/>
+        <result property="status" column="status"/>
+        <result property="adminReply" column="admin_reply"/>
+        <result property="createDate" column="create_date"/>
+        <result property="repliedDate" column="replied_date"/>
+    </resultMap>
+
+    <select id="getInquiriesList" parameterType="map" resultMap="InquiriesMap">
+        SELECT *
+        FROM inquiries
+        WHERE user_id = #{userId}
+        <if test="status != null and status != ''">
+            AND status = #{status}
+        </if>
+        LIMIT #{size} OFFSET #{offset}
+    </select>
+</mapper>

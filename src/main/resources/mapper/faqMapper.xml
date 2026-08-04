@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jjy.contents_lab.mapper.FaqMapper">
+    <resultMap id="FaqMap" type="com.jjy.contents_lab.dto.FaqDto">
+        <id property="id" column="id"/>
+        <result property="category" column="category"/>
+        <result property="question" column="question"/>
+        <result property="answer" column="answer"/>
+        <result property="createDate" column="create_date"/>
+    </resultMap>
+
+    <select id="getFaqList" parameterType="map" resultMap="FaqMap">
+        SELECT *
+        FROM faq
+        <where>
+            <if test="content != null and content != ''">
+                (
+                    question LIKE CONCAT('%', #{content}, '%')
+                    OR answer LIKE CONCAT('%', #{content}, '%')
+                )
+            </if>
+        </where>
+        LIMIT #{size} OFFSET #{offset}
+    </select>
+</mapper>

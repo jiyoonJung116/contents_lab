@@ -7,6 +7,7 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/faq.css">
+    <script th:src="@{/js/faq.js}"></script>
 </head>
 <body>
     <aside>
@@ -62,63 +63,32 @@
             <button class="tab-item">내 문의 내역</button>
         </div>
         <div class="content-card">
-            <div class="faq-filter-grid">
+            <form th:action="@{/faq}" method="get" class="faq-filter-grid">
                 <div class="search-input-box">
-                    <input type="text" placeholder="궁금한 내용을 검색해보세요.">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" name="content" th:value="${param.content}" placeholder="궁금한 내용을 검색해보세요.">
+                    <button type="submit" style="background:none; border:none; cursor:pointer;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
                 </div>
                 <div>
                     <select class="select-box">
                         <option>전체</option>
                     </select>
                 </div>
-            </div>
+            </form>
             <div class="faq-accordion-list">
-                <div class="faq-item open">
+                <div class="faq-item" th:each="faq : ${faq_list}">
                     <div class="faq-trigger">
-                        <span>GrowInsta는 어떤 서비스인가요?</span>
-                        <i class="fa-solid fa-minus faq-icon"></i>
-                    </div>
-                    <div class="faq-content">
-                        GrowInsta는 AI 챗봇을 통해 콘텐츠 아이디어를 생성하고, 성장 전략을 제공하며,<br>
-                        커뮤니티를 통해 크리에이터들과 소통할 수 있는 플랫폼입니다.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-trigger">
-                        <span>무료 체험은 어떻게 이용하나요?</span>
+                        <span th:text="${faq.question}">질문 제목이 들어갑니다.</span>
                         <i class="fa-solid fa-plus faq-icon"></i>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-trigger">
-                        <span>결제는 어떤 방식으로 이루어지나요?</span>
-                        <i class="fa-solid fa-plus faq-icon"></i>
+                    
+                    <div class="faq-content" th:utext="${faq.answer}">
+                        답변 내용이 들어갑니다.
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-trigger">
-                        <span>구독 플랜은 언제든지 변경하거나 취소할 수 있나요?</span>
-                        <i class="fa-solid fa-plus faq-icon"></i>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-trigger">
-                        <span>생성한 콘텐츠 아이디어는 어디에서 확인할 수 있나요?</span>
-                        <i class="fa-solid fa-plus faq-icon"></i>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-trigger">
-                        <span>커뮤니티 이용 가이드라인이 있나요?</span>
-                        <i class="fa-solid fa-plus faq-icon"></i>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-trigger">
-                        <span>개인정보는 안전하게 보호되나요?</span>
-                        <i class="fa-solid fa-plus faq-icon"></i>
-                    </div>
+                <div th:if="${#lists.isEmpty(faq_list)}" class="no-data" style="text-align: center; padding: 40px 0;">
+                    검색 결과가 없습니다.
                 </div>
             </div>
         </div>
@@ -131,9 +101,15 @@
                 <button class="btn-primary-action">문의하기</button>
             </div>
             <div class="filter-btn-group">
-                <button class="btn-filter-tag active">전체</button>
-                <button class="btn-filter-tag">답변 대기</button>
-                <button class="btn-filter-tag">답변 완료</button>
+                <a th:href="@{/faq(status='ALL')}" 
+                class="btn-filter-tag" 
+                th:classappend="${#strings.equals(param.status, 'ALL') or param.status == null} ? 'active' : ''">전체</a>
+                <a th:href="@{/faq(status='0')}" 
+                class="btn-filter-tag" 
+                th:classappend="${#strings.equals(param.status, '0')} ? 'active' : ''">답변 대기</a>
+                <a th:href="@{/faq(status='1')}" 
+                class="btn-filter-tag" 
+                th:classappend="${#strings.equals(param.status, '1')} ? 'active' : ''">답변 완료</a>
             </div>
             <table class="data-table">
                 <thead>
@@ -148,86 +124,61 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>128</td>
-                        <td class="td-title">결제 후 구독이 활성화되지 않았어요.</td>
-                        <td>구독/결제</td>
-                        <td><span class="badge-status done">답변 완료</span></td>
-                        <td style="color: var(--text-sub);">2024.05.20 14:30</td>
-                        <td style="color: var(--text-gray);">2024.05.20 13:45</td>
-                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
+                    <tr th:each="inquiry : ${inquiries_list}">
+                        <td th:text="${inquiry.id}">128</td>
+                        <td class="td-title" th:text="${inquiry.title}">결제 후 구독이 활성화되지 않았어요.</td>
+                        <td th:text="${inquiry.inquiryType}">구독/결제</td>
+                        <td>
+                            <span th:if="${#strings.equals(inquiry.status, '1') or inquiry.status == 1}" 
+                                class="badge-status done">답변 완료</span>
+                            <span th:if="${#strings.equals(inquiry.status, '0') or inquiry.status == 0}" 
+                                class="badge-status wait">답변 대기</span>
+                        </td>
+                        <td style="color: var(--text-sub);" 
+                            th:text="${inquiry.repliedDate != null and #strings.length(inquiry.repliedDate) >= 16 ? #strings.substring(inquiry.repliedDate, 0, 16) : '-'}">
+                            2026-08-03 09:23
+                        </td>
+                        <td style="color: var(--text-gray);" 
+                            th:text="${inquiry.createDate != null and #strings.length(inquiry.createDate) >= 16 ? #strings.substring(inquiry.createDate, 0, 16) : '-'}">
+                            2026-08-03 09:23
+                        </td>
+                        <td align="right">
+                            <i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>127</td>
-                        <td class="td-title">AI 챗봇 응답이 정확하지 않은 것 같아요.</td>
-                        <td>서비스 이용</td>
-                        <td><span class="badge-status wait">답변 대기</span></td>
-                        <td style="color: var(--text-gray);">-</td>
-                        <td style="color: var(--text-gray);">2024.05.19 16:22</td>
-                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
-                    </tr>
-                    <tr>
-                        <td>126</td>
-                        <td class="td-title">비밀번호를 변경하고 싶어요.</td>
-                        <td>계정/보안</td>
-                        <td><span class="badge-status done">답변 완료</span></td>
-                        <td style="color: var(--text-sub);">2024.05.18 11:05</td>
-                        <td style="color: var(--text-gray);">2024.05.18 09:41</td>
-                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
-                    </tr>
-                    <tr>
-                        <td>125</td>
-                        <td class="td-title">환불 요청은 어떻게 하나요?</td>
-                        <td>구독/결제</td>
-                        <td><span class="badge-status done">답변 완료</span></td>
-                        <td style="color: var(--text-sub);">2024.05.17 15:13</td>
-                        <td style="color: var(--text-gray);">2024.05.17 14:02</td>
-                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
-                    </tr>
-                    <tr>
-                        <td>124</td>
-                        <td class="td-title">커뮤니티 게시글이 삭제된 이유가 궁금해요.</td>
-                        <td>커뮤니티</td>
-                        <td><span class="badge-status done">답변 완료</span></td>
-                        <td style="color: var(--text-sub);">2024.05.15 10:33</td>
-                        <td style="color: var(--text-gray);">2024.05.15 09:18</td>
-                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
-                    </tr>
-                    <tr>
-                        <td>123</td>
-                        <td class="td-title">추천 콘텐츠 아이디어가 보이지 않아요.</td>
-                        <td>콘텐츠 아이디어</td>
-                        <td><span class="badge-status done">답변 완료</span></td>
-                        <td style="color: var(--text-sub);">2024.05.14 17:50</td>
-                        <td style="color: var(--text-gray);">2024.05.14 16:11</td>
-                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
-                    </tr>
-                    <tr>
-                        <td>122</td>
-                        <td class="td-title">프로필 이미지 업로드가 안 돼요.</td>
-                        <td>계정/보안</td>
-                        <td><span class="badge-status done">답변 완료</span></td>
-                        <td style="color: var(--text-sub);">2024.05.13 13:27</td>
-                        <td style="color: var(--text-gray);">2024.05.13 11:08</td>
-                        <td align="right"><i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i></td>
+                    <tr th:if="${#lists.isEmpty(inquiries_list)}">
+                        <td colspan="7" style="text-align: center; padding: 40px 0; color: var(--text-gray);">
+                            문의 내역이 없습니다.
+                        </td>
                     </tr>
                 </tbody>
             </table>
+
             <div class="table-ctrls-wrap">
                 <div></div>
-                <ul class="pagination-list">
-                    <li class="page-node arrow"><i class="fa-solid fa-chevron-left" style="font-size: 11px;"></i></li>
-                    <li class="page-node active">1</li>
-                    <li class="page-node">2</li>
-                    <li class="page-node arrow"><i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i></li>
+                <ul class="pagination-list" th:if="${totalPages > 0}">
+                    <li class="page-node arrow" th:classappend="${currentPage == 0} ? 'disabled' : ''">
+                        <a th:href="${currentPage > 0} ? @{/faq(status=${status}, content=${param.content}, page=${currentPage - 1})} : 'javascript:void(0);'">
+                            <i class="fa-solid fa-chevron-left" style="font-size: 11px;"></i>
+                        </a>
+                    </li>
+                    <li class="page-node" 
+                        th:each="p : ${#numbers.sequence(0, totalPages - 1)}" 
+                        th:classappend="${p == currentPage} ? 'active' : ''">
+                        <a th:href="@{/faq(status=${status}, content=${param.content}, page=${p})}" 
+                        th:text="${p + 1}">1</a>
+                    </li>
+                    <li class="page-node arrow" th:classappend="${currentPage >= totalPages - 1} ? 'disabled' : ''">
+                        <a th:href="${currentPage < totalPages - 1} ? @{/faq(status=${status}, content=${param.content}, page=${currentPage + 1})} : 'javascript:void(0);'">
+                            <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+                        </a>
+                    </li>
                 </ul>
                 <select class="select-box-sm">
                     <option>10개씩 보기</option>
                 </select>
             </div>
         </div>
-
     </div>
-
 </body>
 </html>
