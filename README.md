@@ -27,12 +27,10 @@
 
 | 1. 캐릭터 페르소나 챗봇 | 2. 콘텐츠 기획/대본 챗봇 |
 | :---: | :---: |
-| ![Demo1](https://via.placeholder.com/400x220?text=Character+Chatbot) | ![Demo2](https://via.placeholder.com/400x220?text=Planning+Chatbot) |
 | 크리에이터 콘셉트에 맞춘 캐릭터 성격, 말투, 세계관 설정 | 플랫폼 최적화 스크립트, 훅(Hooking) 문구 자동 추출 |
 
 | 3. 인스타툰 자동 생성 챗봇 | 4. 구독 & 결제 시스템 |
 | :---: | :---: |
-| ![Demo3](https://via.placeholder.com/400x220?text=Instatoon+Generator) | ![Demo4](https://via.placeholder.com/400x220?text=Payment+System) |
 | 설정한 캐릭터 + 대사를 결합한 컷 툰 시각화 생성 | PG 결제 연동, 플랜별 권한 제어 및 결제 내역 관리 |
 
 ---
