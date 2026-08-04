@@ -1,7 +1,7 @@
 ﻿# 🎨 ContentsLab (콘텐츠랩)
 > **SNS 크리에이터를 위한 AI 기반 콘텐츠 기획 & 인스타툰 자동 생성 SaaS**
 
-![ContentsLab Banner](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Contents%20Lab&fontSize=60)
+![ContentsLab Banner](https://capsule-render.vercel.app/api?type=waving&color=00A896&customBgColor=A8E6CF&height=200&section=header&text=Contents%20Lab&fontSize=60&fontColor=ffffff)
 
 <div align="center">
 
