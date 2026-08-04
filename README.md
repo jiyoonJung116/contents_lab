@@ -7,7 +7,6 @@
 
 [![Tech Stack](https://img.shields.io/badge/Java-17-orange?logo=java)]()
 [![Framework](https://img.shields.io/badge/Spring%20Boot-3.x-green?logo=springboot)]()
-[![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)]()
 [![AI Integration](https://img.shields.io/badge/HuggingFace-API-yellow?logo=huggingface)]()
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)]()
 
