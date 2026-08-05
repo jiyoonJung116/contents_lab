@@ -10,4 +10,6 @@ import com.jjy.contents_lab.dto.InquiriesDto;
 @Mapper
 public interface InquiriesMapper {
     List<InquiriesDto> getInquiriesList(Map<String, Object> param);
+
+    long saveInquiries(InquiriesDto inquiriesDto);
 }

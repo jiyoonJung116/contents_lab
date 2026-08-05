@@ -31,4 +31,8 @@ public class InquiriesService {
         
         return inquiriesMapper.getInquiriesList(param);
     }
+
+    public long saveInquiries(InquiriesDto inquiriesDto) {
+        return inquiriesMapper.saveInquiries(inquiriesDto);
+    }
 }

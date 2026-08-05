@@ -18,7 +18,23 @@
     </resultMap>
 
     <select id="getInquiriesList" parameterType="map" resultMap="InquiriesMap">
-        SELECT *
+        SELECT 
+            id,
+            user_id,
+            priority,
+            title,
+            content,
+            status,
+            admin_reply, 
+            create_date,
+            CASE inquiry_type
+                WHEN 1 THEN '서비스 이용 문의'
+                WHEN 2 THEN '결제/구독 문의'
+                WHEN 3 THEN '오류/버그 신고'
+                WHEN 4 THEN '제안/기능 요청'
+                WHEN 5 THEN '기타 문의'
+                ELSE '기타'
+            END inquiry_type
         FROM inquiries
         WHERE user_id = #{userId}
         <if test="status != null and status != ''">
@@ -26,4 +42,18 @@
         </if>
         LIMIT #{size} OFFSET #{offset}
     </select>
+
+    <insert id="saveInquiries" parameterType="com.jjy.contents_lab.dto.InquiriesDto" useGeneratedKeys="true" keyProperty="id">
+        INSERT inquiries 
+        SET user_id = #{userId},
+            inquiry_type = #{inquiryType},
+            priority = #{priority},
+            title = #{title},
+            content = #{content},
+            <if test="attachmentUrl != null">
+                attachment_url = #{attachmentUrl},
+            </if>
+            status = 'PENDING',
+            create_date = NOW()
+    </insert> 
 </mapper>
