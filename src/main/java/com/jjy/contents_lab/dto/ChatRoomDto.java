@@ -24,4 +24,5 @@ public class ChatRoomDto {
     private String roomType;
     private String createDate;
     private String updateDate;    
+    private String userName;
 }

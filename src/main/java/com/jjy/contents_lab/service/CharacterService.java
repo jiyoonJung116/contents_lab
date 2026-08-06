@@ -67,6 +67,15 @@ public class CharacterService {
         return characterMapper.selectMessagesByRoomId(roomId);
     }
 
+    public List<ChatRoomDto> getChatRoomList(int page, int size) {
+        int offset = (page - 1) * size;
+        return characterMapper.getChatRoomList(offset, size);
+    }
+
+    public int getChatRoomCount() {
+        return characterMapper.getChatRoomCount();
+    }
+
     // AI 분석, 이미지 생성, MyBatis DB 저장을 한 번에 처리
     @Transactional
     public Map<String, Object> processCharacterPipeline(Map<String, Object> request) throws Exception {

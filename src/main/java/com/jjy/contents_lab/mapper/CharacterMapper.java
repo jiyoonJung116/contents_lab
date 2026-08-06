@@ -17,6 +17,10 @@ public interface CharacterMapper {
 
     List<Map<String, Object>> getSavedScripts(@Param("userId") Long userId);
 
+    List<ChatRoomDto> getChatRoomList(@Param("offset") int offset, @Param("size") int size);
+
+    int getChatRoomCount();
+
     Map<String, Object> selectChatRoomByRoomId(@Param("roomId") String roomId);
 
     Map<String, Object> selectScriptById(@Param("scriptId") String scriptId);

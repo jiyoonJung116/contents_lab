@@ -1,11 +1,15 @@
 package com.jjy.contents_lab.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.jjy.contents_lab.dto.ChatRoomDto;
+import com.jjy.contents_lab.service.CharacterService;
 import com.jjy.contents_lab.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -14,9 +18,11 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/admin")
 public class AdminController {
     private final UserService userService;
+    private final CharacterService characterService;
 
-    public AdminController(UserService userService) {
+    public AdminController(UserService userService, CharacterService characterService) {
         this.userService = userService;
+        this.characterService = characterService;
     }
 
     @GetMapping("list")
@@ -53,5 +59,22 @@ public class AdminController {
         }
 
         return "admin_dashboard";
+    }
+
+    @GetMapping("/chat")
+    public String chatRoomListPage(
+            @RequestParam(value = "page", defaultValue = "1") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size,
+            Model model) {
+
+        List<ChatRoomDto> chatRooms = characterService.getChatRoomList(page, size);
+        int totalCount = characterService.getChatRoomCount();
+        int totalPages = (int) Math.ceil((double) totalCount / size);
+
+        model.addAttribute("chatRooms", chatRooms);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages == 0 ? 1 : totalPages);
+
+        return "admin_result";
     }
 }

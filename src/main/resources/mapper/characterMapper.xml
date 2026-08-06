@@ -29,6 +29,7 @@
         <result property="roomType" column="room_type"/>
         <result property="createDate" column="create_date"/>
         <result property="updateDate" column="update_date"/>
+        <result property="userName" column="user_name"/>
     </resultMap>
 
     <select id="selectMessagesByRoomId" parameterType="string" resultType="map">
@@ -115,6 +116,29 @@
         FROM generated_images
         WHERE id = #{charId} 
             AND image_type = 'character'
+    </select>
+
+    <select id="getChatRoomList" resultMap="ChatRoomMap">
+        SELECT 
+            c.id,
+            c.name,
+            c.description,
+            c.room_id,
+            c.user_id,
+            u.user_name
+        FROM chat_rooms c
+        INNER JOIN users u 
+         ON c.user_id = u.id
+        ORDER BY c.create_date DESC
+        LIMIT #{size} OFFSET #{offset}
+    </select>
+
+    <select id="getChatRoomCount" resultType="int">
+        SELECT 
+            COUNT(*)
+        FROM chat_rooms c
+        INNER JOIN users u 
+         ON c.user_id = u.id
     </select>
 
     <insert id="insertMessage" parameterType="map" useGeneratedKeys="true" keyProperty="id">
