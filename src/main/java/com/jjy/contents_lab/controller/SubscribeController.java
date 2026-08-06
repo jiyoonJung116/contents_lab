@@ -27,8 +27,6 @@ public class SubscribeController {
         try {
             model.addAttribute("user_id", sessionUserId);
             model.addAttribute("subscribe_list", subscribeService.getSubscribeList());
-            System.out.println("here!!");
-            System.out.println(subscribeService.getSubscribeList());
         } catch (Exception e) {
             System.out.println("Error in sendLog: " + e.getMessage());
         }

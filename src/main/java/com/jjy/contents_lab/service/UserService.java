@@ -1,5 +1,7 @@
 package com.jjy.contents_lab.service;
 
+import java.util.List;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,16 @@ public class UserService {
     public UserService(UserMapper userMapper, BCryptPasswordEncoder passwordEncoder) {
         this.userMapper = userMapper;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    public List<UserDto> getUserList(int page, int size) {
+        int offset = (page - 1) * size;
+
+        return userMapper.getUserList(offset, size);
+    }
+
+    public int getUserCount() {
+        return userMapper.getUserCount();
     }
 
     public UserDto getUserById(long id) {

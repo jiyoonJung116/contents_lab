@@ -94,6 +94,7 @@ public class UserRestController {
                 session.setAttribute("userName", userDto.getUserName());
                 session.setAttribute("phoneNumber", userDto.getPhoneNumber());
                 session.setAttribute("email", userDto.getEmail());
+                session.setAttribute("adminYn", user.getAdminYn());
 
                 result.put("login_info", user);
             }

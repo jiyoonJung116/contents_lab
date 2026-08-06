@@ -24,6 +24,18 @@
         WHERE id = #{id}
     </select>
 
+    <select id="getUserList" resultMap="UserMap">
+        SELECT *
+        FROM users
+        ORDER BY create_date DESC
+        LIMIT #{size} OFFSET #{offset}
+    </select>
+
+    <select id="getUserCount" resultType="int">
+        SELECT COUNT(*)
+        FROM users
+    </select>
+
     <select id="findByEmail" parameterType="string" resultMap="UserMap">
         SELECT id, email, password
         FROM users 
