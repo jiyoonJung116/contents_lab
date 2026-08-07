@@ -1,12 +1,14 @@
 package com.jjy.contents_lab.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jjy.contents_lab.dto.ChatRoomDto;
 import com.jjy.contents_lab.service.CharacterService;
@@ -62,10 +64,9 @@ public class AdminController {
     }
 
     @GetMapping("/chat")
-    public String chatRoomListPage(
-            @RequestParam(value = "page", defaultValue = "1") int page,
-            @RequestParam(value = "size", defaultValue = "10") int size,
-            Model model) {
+    public String chatRoomListPage(@RequestParam(value = "page", defaultValue = "1") int page,
+                                    @RequestParam(value = "size", defaultValue = "10") int size,
+                                    Model model) {
 
         List<ChatRoomDto> chatRooms = characterService.getChatRoomList(page, size);
         int totalCount = characterService.getChatRoomCount();
@@ -76,5 +77,11 @@ public class AdminController {
         model.addAttribute("totalPages", totalPages == 0 ? 1 : totalPages);
 
         return "admin_result";
+    }
+
+    @GetMapping("/chat/messages")
+    @ResponseBody
+    public List<Map<String, Object>> getRoomMessages(@RequestParam("roomId") String roomId) {
+        return characterService.selectMessagesByRoomId(roomId);
     }
 }

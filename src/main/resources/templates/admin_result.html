@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1440">
@@ -7,9 +7,9 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/admin_result.css}">
+    <script th:src="@{/js/admin_result.js}"></script>
 </head>
 <body>
-
     <aside>
         <div>
             <div class="logo-area">
@@ -46,7 +46,6 @@
     </aside>
 
     <div class="main-wrapper">
-        
         <div class="header-top-bar">
             <div class="noti-badge">
                 <i class="fa-regular fa-bell"></i>
@@ -81,21 +80,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Map 데이터 반복 출력 (Map Key값은 SQL의 컬럼명과 일치) -->
                         <tr th:each="room : ${chatRooms}">
-                            <td><span class="badge-type chat" th:text="${room.id}">ROOM_01</span></td>
                             <td>
                                 <div class="user-cell">
                                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=50" alt="Avatar">
                                     <span th:text="${room.userName != null ? room.userName : '익명'}"></span>
                                 </div>
                             </td>
-                            <!-- 채팅방 이름 -->
+                            <td><span class="badge-type chat" th:text="${room.id}">ROOM_01</span></td>
                             <td th:text="${room.name}">채팅방 이름</td>
-                            <!-- 채팅방 설명 -->
                             <td th:text="${room.description != null ? room.description : '-'}">방 설명 내용입니다.</td>
-                            <!-- 상세 보기 버튼 -->
-                            <td><button class="btn-text-link">상세 보기</button></td>
+                            <td>
+                                <!-- 클릭 시 채팅 내역 모달 호출 -->
+                                <button type="button" class="btn-text-link" 
+                                        th:onclick="openChatHistoryModal([[${room.id}]], [[${room.name}]], [[${room.description}]])">
+                                    상세 보기
+                                </button>
+                            </td>
                         </tr>
                         <tr th:if="${#lists.isEmpty(chatRooms)}">
                             <td colspan="5" style="text-align: center; padding: 40px 0; color: #888;">
@@ -105,23 +106,23 @@
                     </tbody>
                 </table>
             </div>
+            
             <div class="pagination-area" th:if="${totalPages > 0}">
                 <div></div>
-
                 <div class="pagination-pages">
                     <a th:href="@{/chat(page=${currentPage - 1}, size=${size != null ? size : 10})}" 
-                    class="page-btn" 
-                    th:style="${currentPage == 1} ? 'pointer-events: none; opacity: 0.5;' : ''">
+                       class="page-btn" 
+                       th:style="${currentPage == 1} ? 'pointer-events: none; opacity: 0.5;' : ''">
                         <i class="fa-solid fa-chevron-left" style="font-size: 11px;"></i>
                     </a>
                     <a th:each="p : ${#numbers.sequence(1, totalPages)}"
-                    th:href="@{/chat(page=${p}, size=${size != null ? size : 10})}"
-                    th:text="${p}"
-                    class="page-btn"
-                    th:classappend="${p == currentPage} ? 'active' : ''">1</a>
+                       th:href="@{/chat(page=${p}, size=${size != null ? size : 10})}"
+                       th:text="${p}"
+                       class="page-btn"
+                       th:classappend="${p == currentPage} ? 'active' : ''">1</a>
                     <a th:href="@{/chat(page=${currentPage + 1}, size=${size != null ? size : 10})}" 
-                    class="page-btn" 
-                    th:style="${currentPage >= totalPages} ? 'pointer-events: none; opacity: 0.5;' : ''">
+                       class="page-btn" 
+                       th:style="${currentPage >= totalPages} ? 'pointer-events: none; opacity: 0.5;' : ''">
                         <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
                     </a>
                 </div>
@@ -130,6 +131,28 @@
                     <option value="20" th:selected="${size == 20}">20개씩 보기</option>
                     <option value="50" th:selected="${size == 50}">50개씩 보기</option>
                 </select>
+            </div>
+        </div>
+    </div>
+
+    <div id="chatHistoryModal" class="chat-modal-overlay" style="display: none;">
+        <div class="chat-modal-card">
+            <div class="chat-modal-header">
+                <div class="room-info">
+                    <div class="chat-icon">
+                        <i class="fa-regular fa-comments"></i>
+                    </div>
+                    <div>
+                        <h3 id="modalRoomTitle">채팅방 이름</h3>
+                        <p id="modalRoomDesc" class="room-desc">채팅방 설명</p>
+                    </div>
+                </div>
+                <button type="button" class="chat-close-btn" onclick="closeChatHistoryModal()">&times;</button>
+            </div>
+            <div class="chat-modal-body" id="chatMessageList">
+            </div>
+            <div class="chat-modal-footer">
+                <button type="button" class="btn-modal-close" onclick="closeChatHistoryModal()">닫기</button>
             </div>
         </div>
     </div>
