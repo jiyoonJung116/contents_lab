@@ -66,4 +66,26 @@ public class FaqController {
 
         return "faq";
     }
+
+    @GetMapping("/faq/detail")
+    public String detailPage(Model model, 
+                            HttpSession session,
+                            @RequestParam("id") long id) {
+        
+        if (session == null || session.getAttribute("userId") == null) {
+            return "redirect:/login";
+        }
+
+        InquiriesDto inquiry = inquiriesService.getInquiryById(id);
+        long userId = ((Number) session.getAttribute("userId")).longValue();
+        String adminYn = session.getAttribute("adminYn") != null ? session.getAttribute("adminYn").toString() : "N";
+
+        if (inquiry.getUserId() != userId && !"Y".equals(adminYn)) {
+            return "redirect:/faq";
+        }
+
+        model.addAttribute("inquiry", inquiry);
+
+        return "faq_detail";
+    }
 }

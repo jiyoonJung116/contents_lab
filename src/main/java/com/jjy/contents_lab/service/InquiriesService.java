@@ -32,7 +32,15 @@ public class InquiriesService {
         return inquiriesMapper.getInquiriesList(param);
     }
 
+    public InquiriesDto getInquiryById(long id) {
+        return inquiriesMapper.getInquiryById(id);
+    }
+
     public long saveInquiries(InquiriesDto inquiriesDto) {
         return inquiriesMapper.saveInquiries(inquiriesDto);
+    }
+
+    public long saveInquiryReply(long id, String adminReply) {
+        return inquiriesMapper.saveInquiryReply(id, adminReply);
     }
 }

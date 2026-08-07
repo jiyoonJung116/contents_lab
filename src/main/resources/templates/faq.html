@@ -124,7 +124,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="inquiry : ${inquiries_list}">
+                    <tr th:each="inquiry : ${inquiries_list}" 
+                        th:onclick="|location.href='@{/faq/detail(id=${inquiry.id})}'|" 
+                        style="cursor: pointer;">
                         <td th:text="${inquiry.id}">128</td>
                         <td class="td-title" th:text="${inquiry.title}">결제 후 구독이 활성화되지 않았어요.</td>
                         <td th:text="${inquiry.inquiryType}">구독/결제</td>
@@ -136,11 +138,9 @@
                         </td>
                         <td style="color: var(--text-sub);" 
                             th:text="${inquiry.repliedDate != null and #strings.length(inquiry.repliedDate) >= 16 ? #strings.substring(inquiry.repliedDate, 0, 16) : '-'}">
-                            2026-08-03 09:23
                         </td>
                         <td style="color: var(--text-gray);" 
                             th:text="${inquiry.createDate != null and #strings.length(inquiry.createDate) >= 16 ? #strings.substring(inquiry.createDate, 0, 16) : '-'}">
-                            2026-08-03 09:23
                         </td>
                         <td align="right">
                             <i class="fa-solid fa-chevron-right" style="color: var(--text-gray); font-size: 13px;"></i>

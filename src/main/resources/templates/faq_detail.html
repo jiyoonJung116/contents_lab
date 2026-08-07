@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1440">
+    <title>GrowInsta - 문의 상세</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/faq_detail.css">
+    <script th:src="@{/js/faq_detail.js}"></script>
+</head>
+<body>
+    <div class="content-card">
+        <div class="detail-header">
+            <a href="/faq" class="btn-back">
+                <i class="fa-solid fa-chevron-left"></i> 목록으로 돌아가기
+            </a>
+        </div>
+        <div class="inquiry-title-area">
+            <div class="title-badge-group">
+                <span class="category-tag" th:text="${inquiry.inquiryType}">결제/구독 문의</span>
+                <span class="badge-status" 
+                      th:classappend="${inquiry.status == '1' || inquiry.status == 1} ? 'done' : 'wait'"
+                      th:text="${inquiry.status == '1' || inquiry.status == 1} ? '답변 완료' : '답변 대기'">
+                    답변 완료
+                </span>
+            </div>
+            <h1 class="inquiry-main-title" th:text="${inquiry.title}"></h1>
+            <div class="inquiry-meta-info">
+                <span><i class="fa-regular fa-clock"></i> 작성일: <span th:text="${inquiry.createDate}"></span></span>
+                <span><i class="fa-regular fa-user"></i> 작성자: <span th:text="${inquiry.userId}"></span></span>
+            </div>
+        </div>
+        <div class="content-box" th:text="${inquiry.content}"></div>
+        <div class="reply-card">
+            <th:block th:if="${inquiry.status == '1' or inquiry.status == 1}">
+                <div class="reply-header">
+                    <div class="reply-author">
+                        <i class="fa-solid fa-circle-check"></i> GrowInsta 고객지원팀 답변
+                    </div>
+                    <div class="reply-date" th:text="${inquiry.repliedDate}"></div>
+                </div>
+                <div class="content-box" style="margin-bottom: 0; background: #fff;" th:text="${inquiry.adminReply}">
+                </div>
+            </th:block>
+            <div class="reply-pending-box" 
+                th:if="${(inquiry.status != '1' and inquiry.status != 1) and (session.adminYn != 'Y')}">
+                <i class="fa-regular fa-comments" style="font-size: 24px; margin-bottom: 8px; display: block; opacity: 0.5;"></i>
+                담당자가 문의 내용을 확인 중입니다. 빠른 시일 내에 답변드리겠습니다.
+            </div>
+            <div class="admin-editor-wrap" 
+                th:if="${session.adminYn == 'Y' and (inquiry.status != '1' and inquiry.status != 1)}">
+                <div class="reply-header" style="margin-top: 12px;">
+                    <div class="reply-author" style="color: var(--text-main);">
+                        <i class="fa-solid fa-pen-to-square"></i> 관리자 답변 작성
+                    </div>
+                </div>
+                <form id="replyForm" action="/api/inquiries/reply" method="post">
+                    <input type="hidden" name="id" th:value="${inquiry.id}">
+                    <textarea class="admin-textarea" name="adminReply" placeholder="답변 내용을 작성해주세요..." th:text="${inquiry.adminReply}"></textarea>
+                    <button type="submit" class="btn-submit">답변 저장하기</button>
+                </form>
+            </div>
+        </div> 
+    </div>
+</body>
+</html>

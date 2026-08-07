@@ -43,6 +43,21 @@
         LIMIT #{size} OFFSET #{offset}
     </select>
 
+    <select id="getInquiryById" resultType="com.jjy.contents_lab.dto.InquiriesDto">
+        SELECT 
+            id,
+            user_id,
+            title,
+            content,
+            inquiry_type,
+            status,
+            admin_reply,
+            create_date,
+            replied_date
+        FROM inquiries
+        WHERE id = #{id}
+    </select>
+
     <insert id="saveInquiries" parameterType="com.jjy.contents_lab.dto.InquiriesDto" useGeneratedKeys="true" keyProperty="id">
         INSERT inquiries 
         SET user_id = #{userId},
@@ -56,4 +71,13 @@
             status = 'PENDING',
             create_date = NOW()
     </insert> 
+
+    <update id="saveInquiryReply">
+        UPDATE inquiries
+        SET 
+            admin_reply = #{adminReply},
+            status = 'COMPLETED',
+            replied_date = NOW()
+        WHERE id = #{id}
+    </update>
 </mapper>
