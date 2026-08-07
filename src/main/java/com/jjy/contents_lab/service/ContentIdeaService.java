@@ -26,4 +26,8 @@ public class ContentIdeaService {
         
         return contentIdeaMapper.getPromptList(param);
     }
+
+    public long savePromptTemplate(PromptTemplateDto promptTemplateDto) {
+        return contentIdeaMapper.savePromptTemplate(promptTemplateDto);
+    }
 }

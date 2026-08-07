@@ -44,9 +44,14 @@
                 <h1>콘텐츠 아이디어</h1>
                 <p>성장 전략에 맞는 콘텐츠 아이디어와 프롬프트를 확인하고, 챗봇에 바로 활용해보세요.</p>
             </div>
-            <button class="btn-bookmark-view">
-                <span class="material-symbols-outlined">bookmark</span> 내 북마크 보기
-            </button>
+            <div class="header-actions" style="display: flex; align-items: center; gap: 8px;">
+                <button type="button" class="btn-admin-add" onclick="openPromptModal()">
+                    <span class="material-symbols-outlined">add</span> 프롬프트 등록
+                </button>
+                <button class="btn-bookmark-view">
+                    <span class="material-symbols-outlined">bookmark</span> 내 북마크 보기
+                </button>
+            </div>
         </header>
 
         <div class="tabs">
@@ -90,7 +95,6 @@
                 </select>
             </div>
         </section>
-
         <div class="card-grid">
             <div class="card" th:each="idea : ${content_idea_list}">
                 <div>
@@ -125,7 +129,6 @@
                 </div>
             </div> 
         </div>  
-
         <section class="bookmark-section">
             <div class="bookmark-header">
                 <h3>북마크한 프롬프트</h3>
@@ -164,5 +167,53 @@
             </table>
         </section>
     </main>
+    <div id="promptModal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>프롬프트 등록</h2>
+                <button type="button" class="close-btn" onclick="closePromptModal()">&times;</button>
+            </div>
+            
+            <form id="promptForm" class="modal-body" onsubmit="handlePromptSubmit(event)">
+                <div class="form-group">
+                    <label for="category">카테고리 (탭)</label>
+                    <select id="category" name="category" class="form-control" required>
+                        <option value="GROWTH">성장 전략</option>
+                        <option value="RECOMMEND">추천</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="targetSize">채널 규모</label>
+                    <select id="targetSize" name="targetSize" class="form-control" required>
+                        <option value="UNDER_1K">1천명 이하</option>
+                        <option value="1K_TO_10K">1천명 ~ 1만명</option>
+                        <option value="10K_TO_100K">1만명 ~ 10만명</option>
+                        <option value="OVER_100K">10만명 이상</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="title">제목</label>
+                    <input type="text" id="title" name="title" class="form-control" placeholder="제목을 입력하세요" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">설명</label>
+                    <input type="text" id="description" name="description" class="form-control" placeholder="카드 하단에 들어갈 간단한 설명" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="promptText">프롬프트 내용</label>
+                    <textarea id="promptText" name="promptText" class="form-control textarea" rows="4" placeholder="실제 챗봇에 전달될 프롬프트 문구" required></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closePromptModal()">취소</button>
+                    <button type="submit" class="btn btn-primary">등록하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

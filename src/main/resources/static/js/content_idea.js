@@ -114,13 +114,6 @@ function deleteBookmark(bookmarkId, buttonElement) {
             alert('북마크가 삭제되었습니다.');
             
             location.reload();
-
-            /* 💡 [방법 2] 새로고침 없이 화면에서 해당 테이블 행(tr)만 지우고 싶다면 위 location.reload() 대신 아래 코드 사용
-            const row = buttonElement.closest('tr');
-            if (row) {
-                row.remove();
-            }
-            */
         } else {
             alert(data.message || '북마크 삭제에 실패했습니다.');
         }
@@ -128,5 +121,49 @@ function deleteBookmark(bookmarkId, buttonElement) {
     .catch(error => {
         console.error('Error:', error);
         alert('북마크 삭제 중 오류가 발생했습니다.');
+    });
+}
+
+// 모달 열기
+function openPromptModal() {
+    const modal = document.getElementById('promptModal');
+    if (modal) modal.style.display = 'flex';
+}
+
+function closePromptModal() {
+    const modal = document.getElementById('promptModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.getElementById('promptForm').reset();
+    }
+}
+
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('promptModal');
+    if (event.target === modal) closePromptModal();
+});
+
+function handlePromptSubmit(event) {
+    event.preventDefault();
+    const form = document.getElementById('promptForm');
+    const formData = new FormData(form);
+
+    fetch('/api/idea/save', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert('프롬프트가 성공적으로 등록되었습니다.');
+            closePromptModal();
+            location.reload();
+        } else {
+            alert(data.message || '저장 중 오류가 발생했습니다.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('서버와 통신 중 문제가 발생했습니다.');
     });
 }

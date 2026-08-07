@@ -10,4 +10,6 @@ import com.jjy.contents_lab.dto.PromptTemplateDto;
 @Mapper
 public interface ContentIdeaMapper {
     List<PromptTemplateDto> getPromptList(Map<String, Object> param);
+
+    long savePromptTemplate(PromptTemplateDto promptTemplateDto);
 }

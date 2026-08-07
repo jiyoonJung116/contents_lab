@@ -24,4 +24,14 @@
         </where>
         LIMIT #{size} OFFSET #{offset}
     </select>
+
+    <insert id="savePromptTemplate" parameterType="com.jjy.contents_lab.dto.PromptTemplateDto" useGeneratedKeys="true" keyProperty="id">
+        INSERT prompt_templates 
+        SET category = #{category},
+            target_size = #{targetSize},
+            title = #{title},
+            description = #{description},
+            prompt_text = #{promptText},
+            create_date = NOW()
+    </insert>
 </mapper>
