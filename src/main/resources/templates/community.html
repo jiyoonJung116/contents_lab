@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/community.css}">
+    <script th:src="@{/js/community.js}"></script>
 </head>
 <body class="flex">
     <aside class="w-64 bg-white min-h-screen border-r p-6 flex flex-col justify-between sticky top-0">
         <div>
-            <div class="flex items-center gap-2 mb-10"><div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">G</div><span class="text-xl font-bold">GrowInsta</span></div>
+            <div class="flex items-center gap-2 mb-10">
+                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">G</div>
+                <span class="text-xl font-bold">GrowInsta</span>
+            </div>
             <nav class="space-y-4">
                 <a href="#" class="flex items-center gap-3 text-gray-500"><i class="fa-solid fa-house"></i> 홈</a>
                 <a href="#" class="flex items-center gap-3 text-gray-500"><i class="fa-solid fa-robot"></i> 챗봇</a>
@@ -56,16 +60,47 @@
                 </div>
                 <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg">게시하기</button>
             </div>
-            <div class="bg-white p-6 rounded-xl border">
+            <div th:if="${#lists.isEmpty(community_list)}" class="bg-white p-8 rounded-xl border text-center text-gray-500">
+                등록된 게시글이 없습니다. 첫 게시글을 작성해보세요!
+            </div>
+
+            <div th:each="post : ${community_list}" class="bg-white p-6 rounded-xl border">
                 <div class="flex justify-between items-center mb-4">
-                    <div class="flex items-center gap-2 font-bold">yoon_creator <i class="fa-solid fa-circle-check text-blue-500"></i> <span class="text-gray-400 text-xs">2시간 전</span></div>
-                    <button class="text-gray-400"><i class="fa-solid fa-ellipsis"></i></button>
+                    <div class="flex items-center gap-2 font-bold">
+                        <span th:text="${post.userName}">yoon_creator</span> 
+                        <i class="fa-solid fa-circle-check text-blue-500"></i> 
+                        <span class="text-gray-400 text-xs" th:text="${post.createDate}">2시간 전</span>
+                    </div>
+                    <div class="relative" th:if="${session.userId == post.userId}">
+                        <button type="button" class="text-gray-400 hover:text-gray-600 p-1" onclick="toggleDropdown(this)">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                        <div class="dropdown-menu hidden absolute right-0 mt-1 w-24 bg-white border rounded-lg shadow-lg z-10 text-sm py-1">
+                            <a th:href="@{/community/edit/{id}(id=${post.id})}" 
+                            class="block px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+                                <i class="fa-solid fa-pen-to-square text-xs"></i> 수정
+                            </a>
+                            <button type="button" 
+                                    th:onclick="|deletePost(${post.id})|" 
+                                    class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 flex items-center gap-2">
+                                <i class="fa-solid fa-trash-can text-xs"></i> 삭제
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <p class="mb-4">이 릴스 편집 꿀팁 공유해요! ✨</p>
-                <div class="bg-black w-full h-64 rounded-xl mb-4 flex items-center justify-center text-white">영상 플레이어</div>
+                <p class="mb-4 text-gray-800" th:text="${post.content}">이 릴스 편집 꿀팁 공유해요! ✨</p>
+                <div th:if="${post.mediaUrl != null}" class="bg-black w-full h-64 rounded-xl mb-4 flex items-center justify-center text-white overflow-hidden">
+                    <video th:src="${post.mediaUrl}" controls class="w-full h-full object-cover"></video>
+                </div>
                 <div class="flex gap-4 text-sm text-gray-500">
-                    <button><i class="fa-solid fa-heart"></i> 128</button>
-                    <button><i class="fa-solid fa-comment"></i> 23</button>
+                    <button class="flex items-center gap-1 hover:text-red-500">
+                        <i class="fa-solid fa-heart"></i> 
+                        <span th:text="${post.viewCount}">0</span>
+                    </button>
+                    <button class="flex items-center gap-1 hover:text-indigo-600">
+                        <i class="fa-solid fa-comment"></i> 
+                        <span th:text="${post.commentCount}">0</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -82,7 +117,13 @@
             <h3 class="font-bold mb-4">추천 팔로우</h3>
             <div class="space-y-4">
                 <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-2"><div class="w-8 h-8 bg-gray-200 rounded-full"></div><div><p class="text-sm font-bold">minji_</p><p class="text-[10px] text-gray-400">콘텐츠 마케팅 전문가</p></div></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+                        <div>
+                            <p class="text-sm font-bold">minji_</p>
+                            <p class="text-[10px] text-gray-400">콘텐츠 마케팅 전문가</p>
+                        </div>
+                    </div>
                     <button class="text-indigo-600 font-bold text-xs">팔로우</button>
                 </div>
             </div>
@@ -96,11 +137,8 @@
                 <div class="flex justify-between"><span class="text-indigo-600 font-medium">#릴스꿀팁</span><span class="text-gray-400">1.2K 게시글</span></div>
                 <div class="flex justify-between"><span class="text-indigo-600 font-medium">#유튜브쇼츠</span><span class="text-gray-400">942 게시글</span></div>
                 <div class="flex justify-between"><span class="text-indigo-600 font-medium">#콘텐츠아이디어</span><span class="text-gray-400">838 게시글</span></div>
-                <div class="flex justify-between"><span class="text-indigo-600 font-medium">#브이로그</span><span class="text-gray-400">672 게시글</span></div>
-                <div class="flex justify-between"><span class="text-indigo-600 font-medium">#편집팁</span><span class="text-gray-400">589 게시글</span></div>
             </div>
         </div>
     </aside>
-
 </body>
 </html>
