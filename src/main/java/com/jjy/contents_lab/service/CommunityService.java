@@ -25,4 +25,22 @@ public class CommunityService {
         
         return communityMapper.getCommunityList(param);
     }
+
+    public CommunityDto getCommunityById(long id) {
+        return communityMapper.getCommunityById(id);
+    }
+
+    public long saveCommunity(CommunityDto communityDto) {
+        if (communityDto.getId() == 0) {
+            communityMapper.insertCommunity(communityDto);
+        } else {
+            communityMapper.updateCommunity(communityDto);
+        }
+
+        return communityDto.getId();
+    }
+
+    public long deleteCommunity(long userId, long communityId) {
+        return communityMapper.deleteCommunity(userId, communityId);
+    }
 }

@@ -29,4 +29,41 @@
         ORDER BY c.create_date DESC
         LIMIT #{size} OFFSET #{offset}
     </select>
+
+    <select id="getCommunityById" resultType="com.jjy.contents_lab.dto.CommunityDto">
+        SELECT *
+        FROM community
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insertCommunity" parameterType="com.jjy.contents_lab.dto.CommunityDto" useGeneratedKeys="true" keyProperty="id">
+        INSERT community
+        SET user_id = #{userId},
+            content = #{content},
+            <if test="mediaUrl != null">
+                media_url = #{media_url},
+            </if>
+            create_date = NOW()
+    </insert>
+
+    <update id="updateCommunity" parameterType="com.jjy.contents_lab.dto.CommunityDto" useGeneratedKeys="true" keyProperty="id">
+        UPDATE community
+        SET 
+            <if test="content != null">
+                content = #{content},
+            </if>
+            <if test="mediaUrl != null">
+                media_url = #{media_url},
+            </if>
+            view_count = view_count + 1,
+            update_date = NOW()
+        WHERE id = #{id}
+         AND user_id = #{userId}
+    </update>
+
+    <delete id="deleteCommunity">
+        DELETE FROM community 
+        WHERE id = #{communityId}
+         AND user_id = #{userId}
+    </delete>
 </mapper>

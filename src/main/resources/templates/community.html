@@ -58,7 +58,9 @@
                     <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
                     <span class="text-gray-400">아이디어나 꿀팁을 공유해보세요!</span>
                 </div>
-                <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg">게시하기</button>
+                <a th:href="@{/community/post}" class="inline-block">
+                    <button type="button" class="bg-indigo-600 text-white px-4 py-2 rounded-lg">게시하기</button>
+                </a>
             </div>
             <div th:if="${#lists.isEmpty(community_list)}" class="bg-white p-8 rounded-xl border text-center text-gray-500">
                 등록된 게시글이 없습니다. 첫 게시글을 작성해보세요!
@@ -76,7 +78,7 @@
                             <i class="fa-solid fa-ellipsis"></i>
                         </button>
                         <div class="dropdown-menu hidden absolute right-0 mt-1 w-24 bg-white border rounded-lg shadow-lg z-10 text-sm py-1">
-                            <a th:href="@{/community/edit/{id}(id=${post.id})}" 
+                            <a th:href="@{/community/post(id=${post.id})}" 
                             class="block px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center gap-2">
                                 <i class="fa-solid fa-pen-to-square text-xs"></i> 수정
                             </a>

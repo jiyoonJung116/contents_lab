@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jjy.contents_lab.mapper.CommentsMapper">
+    <resultMap id="CommentsMap" type="com.jjy.contents_lab.dto.CommentsDto">
+        <id property="id" column="id"/>
+        <result property="communityId" column="community_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="parentCommentId" column="parent_comment_id"/>
+        <result property="content" column="content"/>
+        <result property="createDate" column="create_date"/>
+        <result property="updateDate" column="update_date"/>
+        <result property="userName" column="user_name"/>
+    </resultMap>
+
+    <select id="getCommentsList" parameterType="map" resultMap="CommentsMap">
+        SELECT 
+            c.id,
+            c.community_id,
+            c.user_id,
+            u.user_name,
+            c.parent_comment_id,
+            c.content,
+            c.create_date,
+            c.update_date
+        FROM comments c
+        LEFT JOIN users u 
+         ON c.user_id = u.id
+        WHERE c.community_id = #{communityId}
+        ORDER BY 
+            COALESCE(c.parent_comment_id, c.id) ASC,
+            c.parent_comment_id IS NOT NULL ASC,
+            c.create_date ASC
+    </select>
+
+    <insert id="insertComment" parameterType="com.jjy.contents_lab.dto.CommentsDto" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO comments
+        SET community_id = #{communityId},
+            user_id = #{userId},
+            parent_comment_id = #{parentCommentId},
+            content = #{content},
+            create_date = NOW()
+    </insert>
+
+    <update id="updateComment" parameterType="com.jjy.contents_lab.dto.CommentsDto">
+        UPDATE comments
+        SET content = #{content},
+            update_date = NOW()
+        WHERE id = #{id} 
+         AND user_id = #{userId}
+    </update>
+
+    <delete id="deleteComment" parameterType="map">
+        DELETE FROM comments
+        WHERE (id = #{id} AND user_id = #{userId})
+         OR parent_comment_id = #{id}
+    </delete>
+</mapper>

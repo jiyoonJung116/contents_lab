@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시글 상세 - 커뮤니티</title>
+  <link rel="stylesheet" th:href="@{/css/community_detail.css}">
+</head>
+<body>
+
+  <div class="post-detail-container">
+    <div class="detail-header">
+      <button class="btn-back">← 목록으로 돌아가기</button>
+    </div>
+    <div class="profile-section">
+      <div class="profile-info">
+        <div class="avatar"></div>
+        <div>
+          <div class="user-name">
+            yoon_creator
+            <span class="badge-verified">✓</span>
+          </div>
+          <div class="time-ago">2시간 전</div>
+        </div>
+      </div>
+      <button class="more-options">•••</button>
+    </div>
+    <div class="post-content">
+      이 릴스 편집 꿀팁 공유해요! ✨
+    </div>
+    <div class="media-box">
+      영상 플레이어
+    </div>
+    <div class="post-stats">
+      <div class="stat-item">❤️ <span>128</span></div>
+      <div class="stat-item">💬 <span>23</span></div>
+    </div>
+    <div class="comments-section">
+      <div class="comments-title">댓글 23개</div>
+      <div class="comment-input-box">
+        <input type="text" placeholder="댓글을 입력하세요...">
+        <button class="btn-submit-comment">등록</button>
+      </div>
+      <div class="comment-list">
+        <div class="comment-item">
+          <div class="comment-avatar"></div>
+          <div class="comment-body">
+            <div class="comment-user">video_editor_kim</div>
+            <div class="comment-text">우와 진짜 유용한 팁이네요! 사용된 컷 편집 템플릿 정보도 알 수 있을까요?</div>
+            <div class="comment-meta">
+              <span>1시간 전</span>
+              <span>좋아요 3개</span>
+              <span>답글 달기</span>
+            </div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-avatar"></div>
+          <div class="comment-body">
+            <div class="comment-user">design_guru</div>
+            <div class="comment-text">저도 이 기법 자주 쓰는데 작업 속도가 훨씬 빨라지더라구요 추천합니다!</div>
+            <div class="comment-meta">
+              <span>30분 전</span>
+              <span>좋아요 1개</span>
+              <span>답글 달기</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
