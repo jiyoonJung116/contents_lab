@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 작성 - 커뮤니티</title>
+  <link rel="stylesheet" th:href="@{/css/community_post.css}">
+  <script th:src="@{/js/community_post.js}"></script>
+</head>
+<body>
+
+  <div class="write-container">
+    <div class="write-header">
+      <h2 th:text="${post != null && post.id != 0 ? '게시글 수정' : '게시글 작성'}">게시글 작성</h2>
+      <button type="button" class="btn-close" onclick="history.back()">&times;</button>
+    </div>
+    <form id="writeForm" action="/api/community/save" method="post">
+      <input type="hidden" name="id" th:value="${post != null ? post.id : 0}">
+      <div class="form-group">
+        <label>내용</label>
+        <div class="editor-toolbar">
+          <button type="button" class="toolbar-btn"><b>B</b></button>
+          <button type="button" class="toolbar-btn"><i>I</i></button>
+          <button type="button" class="toolbar-btn"><u>U</u></button>
+          <button type="button" class="toolbar-btn">🖼️ 이미지</button>
+          <button type="button" class="toolbar-btn">🎬 영상</button>
+          <button type="button" class="toolbar-btn">🔗 링크</button>
+        </div>
+        <textarea id="content" name="content" class="editor-content" 
+                  placeholder="아이디어나 꿀팁, 영상 이야기를 공유해보세요!" 
+                  th:text="${post != null ? post.content : ''}" required></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-cancel" onclick="history.back()">취소</button>
+        <button type="submit" class="btn btn-submit" 
+                th:text="${post != null && post.id != 0 ? '수정하기' : '게시하기'}">게시하기</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
